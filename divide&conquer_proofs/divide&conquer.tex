@@ -3,10 +3,12 @@
 \usepackage[english]{babel}
 
 \usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
 
 \title{Divide \& Conquer Proofs}
 \author{Karim El Shenawy}
-\date{December 2020}
+\date{January 2021}
 
 \usepackage{natbib}
 \usepackage{graphicx}
@@ -27,7 +29,6 @@ This course notebook is the collection of theorem proofs, exercises and answers 
 Our hypothesises that $a \vert b$ and $a \vert c$ both mean respectively, by definition, that $b = k_1a$ and $c = k_2a$ for some integer $k_1$ and $k_2$. Also by definition, $a \vert (b+c)$ means that $b + c = k_3a$ for some integer $k_3$. Using that we can say that $b + c = k_1a + k_2a = a(k_1+k_2) = k_3a$. Thus by definition, $a \vert a(k_1+k_2)$, knowing that $(b+c) = a(k_1+k_2)$, we can satisfy the definition of $a \vert (b+c)$.
 \end{proof}
 
-
 \subsection*{1.2 Theorem} 
 \quad \textit{Let a, b, and c be integers. If $a \vert b$ and $a \vert c$, then $a \vert (b-c)$.}
 
@@ -45,10 +46,15 @@ Our hypothesises that $a \vert b$ and $a \vert c$ both mean respectively, by def
 \subsection*{1.4 Question} 
 \quad \textit{Can you weaken the hypothesis of the previous theorem and still prove the conclusion? Can you keep the same hypothesis, but replace the conclusion by the stronger conclusion that $a^2 \vert bc$ and still prove the theorem?}
 
-We can say that 
+We can weaken the hypothesis by saying that by definition, if $a \vert c$ is true then $a \ vert kc$ for some integer k. We can then maintain the same hypothesis and also state that because $bc = (k_1a)(k_2a) = k_1k_2a^2$, $a^2 \vert bc$
 
 \subsection*{1.5 Question} 
 \quad \textit{Can you formulate your own conjecture along the lines of the above theorems and then prove it to make your theorem?}
+
+We can formulate the following conjecture: \textit{Let a, b and c be integers. If $a \vert b$ and $a \vert c$ then $a \vert t$ where $t$ is the sum, difference or the multiplication total of $b$ and $c$.}
+\begin{proof}
+Using theorems 1.1, 1.2 and 1.3, we can proof this theorem.
+\end{proof}
 
 \subsection*{1.6 Theorem} 
 \quad \textit{Let a, b, and c be integers. If $a \vert b$, then $a \vert bc$.}
@@ -87,12 +93,413 @@ Based off of Theorem 1.4, we can deduce that
 \quad \textit{Let a, and n be integers with $n > 0$. Then $a \equiv a \;(\bmod\; n)$.}
 
 \begin{proof}
+By Definition, the statement above can be written as $n \vert a-a$ which would also mean that $n \vert 0$. And $n$ does divide $0$ with the following logic $0 = n * 0$.
 \end{proof}
 
 \subsection*{1.10 Theorem} 
-\quad \textit{Let a, b, and n be integers with $n > 0. Then a \equiv a \;(\bmod\; n)$.}
+\quad \textit{Let a, b, and n be integers with $n > 0$. If $a \equiv b \;(\bmod\; n)$, then $b \equiv a \;(\bmod\; n)$}
+
+\begin{proof}
+By definition, we can represent the above statements as $n \vert a-b$ and $n \vert b-a$. Using the Theorem 1.2 proved above we can deduce that this is true.
+\end{proof}
+
+\subsection*{1.11 Theorem} 
+\quad \textit{Let a, b, c and n be integers with $n > 0$. If $a \equiv b \;(\bmod\; n)$ and $b \equiv c \;(\bmod\; n)$ then $a \equiv c \;(\bmod\; n)$}
+
+\begin{proof}
+By definition, $a \equiv b \;(\bmod\; n)$ can be represented as:
+\begin{flalign*}
+&& (a-b) &= nk && \text{for a given integer k} \\
+\Rightarrow && 1) b &= a - nk
+\end{flalign*}
+
+Similarly, 
+\begin{flalign*}
+&& (c-b) &= ns && \text{for a given integer s} \\
+\Rightarrow && 2) b &= c - ns
+\end{flalign*}
+Now equating 1) and 2),
+\begin{flalign*}
+&& c &= c && \\
+\Rightarrow && a-nk &= c - ns && \\
+\Rightarrow && a-c &= nk - ns && \\
+\Rightarrow && a-c &= n(k - s)
+\end{flalign*}
+Thus, satisfying the claim that $a \equiv c \;(\bmod\; n)$.
+\end{proof}
+
+\subsection*{1.12 Theorem} 
+\quad \textit{Let a, b, c, d and n be integers with $n > 0$. If $a \equiv b \;(\bmod\; n)$ and $c \equiv d \;(\bmod\; n)$ then $a + c \equiv b+d \;(\bmod\; n)$}
+
+\begin{proof}
+By definition, $a \equiv b \;(\bmod\; n)$ can be represented as:
+\begin{flalign*}
+&& (a-b) &= nk && \text{for a given integer k} \\
+\Rightarrow && 1) b &= a - nk
+\end{flalign*}
+
+Similarly, 
+\begin{flalign*}
+&& (c-d) &= ns && \text{for a given integer s} \\
+\Rightarrow && 2) d &= c - ns
+\end{flalign*}
+Now adding 1) and 2),
+\begin{flalign*}
+&& b+d &= (a - nk) + (c - ns) && \\
+\Rightarrow && b+d &= a + c - n(k + s) && \\
+\Rightarrow && n(k + s)&= (a + c) - (b+d)
+\end{flalign*}
+Thus, satisfying the claim that $a + c \equiv b+d \;(\bmod\; n)$.
+\end{proof}
+
+\subsection*{1.13 Theorem} 
+\quad \textit{Let a, b, c, d and n be integers with $n > 0$. If $a \equiv b \;(\bmod\; n)$ and $c \equiv d \;(\bmod\; n)$ then $a - c \equiv b-d \;(\bmod\; n)$}
+
+\begin{proof}
+By definition, $a \equiv b \;(\bmod\; n)$ can be represented as:
+\begin{flalign*}
+&& (a-b) &= nk && \text{for a given integer k} \\
+\Rightarrow && 1) b &= a - nk
+\end{flalign*}
+
+Similarly, 
+\begin{flalign*}
+&& (c-d) &= ns && \text{for a given integer s} \\
+\Rightarrow && 2) d &= c - ns
+\end{flalign*}
+Now subtracting 1) and 2),
+\begin{flalign*}
+&& b-d &= (a - nk) - (c - ns) && \\
+\Rightarrow && b-d &= a - c - n(k + s) && \\
+\Rightarrow && n(k + s)&= (a - c) - (b-d)
+\end{flalign*}
+Thus, satisfying the claim that $a - c \equiv b-d \;(\bmod\; n)$.
+\end{proof}
+
+\subsection*{1.14 Theorem} 
+\quad \textit{Let a, b, c, d and n be integers with $n > 0$. If $a \equiv b \;(\bmod\; n)$ and $c \equiv d \;(\bmod\; n)$ then $ac \equiv bd \;(\bmod\; n)$}
+
+\begin{proof}
+By definition, $a \equiv b \;(\bmod\; n)$ can be represented as:
+\begin{flalign*}
+&& (a-b) &= nk && \text{for a given integer k} \\
+\Rightarrow && 1) b &= a - nk
+\end{flalign*}
+
+Similarly, 
+\begin{flalign*}
+&& (c-d) &= ns && \text{for a given integer s} \\
+\Rightarrow && 2) d &= c - ns
+\end{flalign*}
+Now multiplying 1) and 2),
+\begin{flalign*}
+&& bd &= (a - nk)(c - ns) && \\
+\Rightarrow && bd &= ac - a(ns)-c(nk) + (nk)(ns) && \\
+\Rightarrow && bd &= ac - n*(a(s)-c(k) + n(k)(s))
+\end{flalign*}
+Thus, satisfying the claim that $ac \equiv bd \;(\bmod\; n)$.
+\end{proof}
+
+\subsection*{1.15 Theorem} 
+\quad \textit{Let a, b and n be integers with $n > 0$. Show that if $a \equiv b \;(\bmod\; n)$ then $a^2 \equiv b^2 \;(\bmod\; n)$}
+
+\begin{proof}
+$a^2 \equiv b^2 \;(\bmod\; n)$ can be represented as $a(a) \equiv b(b) \;(\bmod\; n)$ by exponential property. Based off Theorem 1.14, we know that $ac \equiv bd \;(\bmod\; n)$ if $a \equiv b \;(\bmod\; n)$ and $c \equiv d \;(\bmod\; n)$. This shows that $a^2 \equiv b^2 \;(\bmod\; n)$ is true.
+\end{proof}
+
+\subsection*{1.16 Theorem} 
+\quad \textit{Let a, b and n be integers with $n > 0$. Show that if $a \equiv b \;(\bmod\; n)$ then $a^3 \equiv b^3 \;(\bmod\; n)$}
+
+\begin{proof}
+By properties of exponents, $a^3 \equiv b^3 \;(\bmod\; n)$ can be represented as $(a)a^2 \equiv (a)b^2 \;(\bmod\; n)$. Using theorems 1.14 and 1.15, we can satisfy that $a^3 \equiv b^3 \;(\bmod\; n)$ is true.
+\end{proof}
+
+\subsection*{1.17 Theorem} 
+\quad \textit{Let a, b, k and n be integers with $n > 0$ and $k > 1$. Show that if $a \equiv b \;(\bmod\; n)$ and $a^{k-1} \equiv b^{k-1} \;(\bmod\; n)$, then}
+\begin{center}
+    $a^{k} \equiv b^{k} \;(\bmod\; n)$
+\end{center}
+
+\begin{proof}
+By properties of exponents, we can present the above statement as
+    \begin{flalign*}
+        && a^{k} &\equiv b^{k} \;(\bmod\; n) &&\\
+        && a^{k}a^1a^{-1} &\equiv b^{k}b^1b^{-1} \;(\bmod\; n)&&\\
+        && a^1a^{k-1} &\equiv b^1b^{k-1} \;(\bmod\; n)
+    \end{flalign*}
+Knowing that $a \equiv b \;(\bmod\; n)$ and $a^{k-1} \equiv b^{k-1} \;(\bmod\; n)$ and theorem 1.14, we can satisfy that $a^{k} \equiv b^{k} \;(\bmod\; n)$.
+\end{proof}
+
+\subsection*{1.18 Theorem} 
+\quad \textit{Let a, b, k and n be integers with $n > 0$ and $k > 1$. Show that if $a \equiv b \;(\bmod\; n)$, then}
+
+\begin{proof}
+\textbf{Base case (k = 1):  }
+    \begin{flalign*}
+        && a^{k} &\equiv b^{k} \;(\bmod\; n) &&\\
+        && a^{1} &\equiv b^{1} \;(\bmod\; n)
+    \end{flalign*}
+    Thus making the statement true if k = 1.\\
+\textbf{Inductive Hypothesis: } Assume k = h + 1\\
+\textbf{Inductive Step: }     
+    \begin{flalign*}
+        && a^{k} &\equiv b^{k} \;(\bmod\; n) &&\\
+        && a^{h+1} &\equiv b^{h+1} \;(\bmod\; n) &&\\
+        && a^{h}a &\equiv b^{h}b \;(\bmod\; n) && \text{(Exponential Property)}\\
+    \end{flalign*}
+    By theorem 1.14, we know that $a \equiv b \;(\bmod\; n)$ and $c \equiv d \;(\bmod\; n)$ then $ac \equiv bd \;(\bmod\; n)$. This helps satisfies $a^{h+1} \equiv b^{h+1} \;(\bmod\; n)$ since $a^{h} \equiv b^{h} \;(\bmod\; n)$ and $a \equiv b \;(\bmod\; n)$.
+\end{proof}
+
+\subsection*{1.19 Theorem}
+\begin{itemize}
+    \item \textbf{1.12 Theorem} 
+    \item \textbf{1.13 Theorem} 
+    \item \textbf{1.14 Theorem} 
+    \item \textbf{1.15 Theorem} 
+    \item \textbf{1.16 Theorem} 
+    \item \textbf{1.17 Theorem} 
+    \item \textbf{1.18 Theorem} 
+\end{itemize}
+
+\subsection*{1.20 Theorem} 
+\quad \textit{Let a, b, c and n be integers for which $ac \equiv bc \;(\bmod\; n)$. Can we conclude that $a \equiv b \;(\bmod\; n)$?}
 
 \begin{proof}
 \end{proof}
+
+\subsection*{1.21 Theorem} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.22 Theorem} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.23 Theorem} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.24 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.25 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.26 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.27 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.28 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.29 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.30 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.31 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.32 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.33 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.34 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.35 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.36 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.37 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.38 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.39 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.40 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.41 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.42 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.43 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.44 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.45 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.46 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.47 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.48 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.49 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.50 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.51 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.52 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.53 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.54 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.55 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.56 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.57 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.58 Corollary} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
+\subsection*{1.59 Exercise} 
+\quad \textit{Let ?}
+
+\begin{proof}
+\end{proof}
+
 
 \end{document}
