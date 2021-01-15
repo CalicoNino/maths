@@ -46,7 +46,7 @@ Our hypothesises that $a \vert b$ and $a \vert c$ both mean respectively, by def
 \subsection*{1.4 Question} 
 \quad \textit{Can you weaken the hypothesis of the previous theorem and still prove the conclusion? Can you keep the same hypothesis, but replace the conclusion by the stronger conclusion that $a^2 \vert bc$ and still prove the theorem?}
 
-We can weaken the hypothesis by saying that by definition, if $a \vert c$ is true then $a \ vert kc$ for some integer k. We can then maintain the same hypothesis and also state that because $bc = (k_1a)(k_2a) = k_1k_2a^2$, $a^2 \vert bc$
+We can weaken the hypothesis by saying that by definition, if $a \vert c$ is true then $a \vert kc$ for some integer k. We can then maintain the same hypothesis and also state that because $bc = (k_1a)(k_2a) = k_1k_2a^2$, $a^2 \vert bc$
 
 \subsection*{1.5 Question} 
 \quad \textit{Can you formulate your own conjecture along the lines of the above theorems and then prove it to make your theorem?}
@@ -60,7 +60,15 @@ Using theorems 1.1, 1.2 and 1.3, we can proof this theorem.
 \quad \textit{Let a, b, and c be integers. If $a \vert b$, then $a \vert bc$.}
 
 \begin{proof}
-Based off of Theorem 1.4, we can deduce that 
+By definition, we can deduce that $bc = ka$ where $k \in \mathbb{Z}$ since $a \vert b$ then $b = na$ where $n \in \mathbb{Z}$. Substituting b, 
+\begin{flalign*}
+    && bc &= ka &&\\
+    && (na)c &= ka &&\\
+    && a(nc) &= a(k) &&\\
+    && (nc) &= (k)
+\end{flalign*}
+Which ca n be expressed as $c \vert k$. Therefore, we can conclude that $bc = ka$ is true.
+
 \end{proof}
 
 \subsection*{1.7 Exercise} 
@@ -252,119 +260,175 @@ Knowing that $a \equiv b \;(\bmod\; n)$ and $a^{k-1} \equiv b^{k-1} \;(\bmod\; n
 
 \subsection*{1.19 Theorem}
 \begin{itemize}
-    \item \textbf{1.12 Theorem} 
-    \item \textbf{1.13 Theorem} 
-    \item \textbf{1.14 Theorem} 
-    \item \textbf{1.15 Theorem} 
-    \item \textbf{1.16 Theorem} 
-    \item \textbf{1.17 Theorem} 
-    \item \textbf{1.18 Theorem} 
+    \item \textbf{1.12 Theorem} $n = 3, a = 2, b = 17, c = 1$ and $d = 19$ then $2 + 1 \equiv 17+19 \;(\bmod\; 3)$
+    \item \textbf{1.13 Theorem} $n = 3, a = 2, b = 17, c = 1$ and $d = 19$ then $2 - 1 \equiv 17-19 \;(\bmod\; 3)$
+    \item \textbf{1.14 Theorem} $n = 3, a = 2, b = 17, c = 1$ and $d = 19$ then $2 *1 \equiv 17*19 \;(\bmod\; 3)$
+    \item \textbf{1.15 Theorem} $n = 3, a = 2, b = 17$ then $2^2 \equiv 17^2 \;(\bmod\; 3)$
+    \item \textbf{1.16 Theorem} $n = 3, a = 2, b = 17$ then $2^3 \equiv 17^3 \;(\bmod\; 3)$
+    \item \textbf{1.17 Theorem} $n = 3, a = 2, b = 17$ then $2^k \equiv 17^k \;(\bmod\; 3)$ where $k \in \mathbb{Z}$ and $k > 1$
+    \item \textbf{1.18 Theorem} $n = 3, a = 2, b = 17$ then $2^k \equiv 17^k \;(\bmod\; 3)$ where $k \in \mathbb{Z}$ and $k > 1$
 \end{itemize}
 
 \subsection*{1.20 Theorem} 
 \quad \textit{Let a, b, c and n be integers for which $ac \equiv bc \;(\bmod\; n)$. Can we conclude that $a \equiv b \;(\bmod\; n)$?}
 
 \begin{proof}
+By counterexample, given $a=1, b= 17, c=2$ and $n =3$ where $ac \equiv bc \;(\bmod\; n)$ with $1(2) \equiv 17(2) \;(\bmod\; 3)$. However, we can not conclude that $1 \equiv 17 \;(\bmod\; 3)$. 
 \end{proof}
 
 \subsection*{1.21 Theorem} 
-\quad \textit{Let ?}
+\quad \textit{Let a natural number n be expressed in base 10 as}
+\begin{center}
+    $n = a_ka_{k-1}...a_1a_0$
+\end{center}
+\textit{If $m=a_k+a_{k+1}+...+a_1+a_0$, then $n \equiv m \;(\bmod\; 3)$.}
 
 \begin{proof}
+By definition, $n \equiv m \;(\bmod\; 3)$ can be expressed as:
+    \begin{flalign*}
+        && 3 &\vert n-m &&\\
+    \end{flalign*}
 \end{proof}
+By theorem 1.2, for this theorem to be true, $3 \vert n$ and $3 \vert m$ must be true.
 
 \subsection*{1.22 Theorem} 
-\quad \textit{Let ?}
+\quad \textit{If a natural number is divisible by 3, then when expressed in base 10 , the sum of its digits is divisible by 3.}
 
 \begin{proof}
+Suppose natural number $n = a_ka_{k-1}...a_1a_0$ and sum of its digits $m=a_k+a_{k+1}+...+a_1+a_0$. We can use theorem 1.21 to prove this.
 \end{proof}
 
 \subsection*{1.23 Theorem} 
-\quad \textit{Let ?}
+\quad \textit{If the sum of the digits of a natural number expressed in base 10 is divisible by 3, then the number is divisible by 3 as well.}
 
 \begin{proof}
+Suppose natural number $n = a_ka_{k-1}...a_1a_0$ and sum of its digits $m=a_k+a_{k+1}+...+a_1+a_0$. We can use theorem 1.21 to prove this.
 \end{proof}
 
 \subsection*{1.24 Exercise} 
-\quad \textit{Let ?}
+\quad \textit{Suppose natural number $n = a_ka_{k-1}...a_1a_0$ and sum of its digits $m=a_k+a_{k+1}+...+a_1+a_0$. If the sum is divisible by 6, then the natural number is 3.}
 
 \begin{proof}
+By theorem 1.21, since 6 is divisible by 3 as well.
 \end{proof}
 
 \subsection*{1.25 Exercise} 
-\quad \textit{Let ?}
+
+\begin{enumerate}
+    \item $m = 25, n = 7$ 
+    \begin{flalign*}
+        m &= nq + r &&\\
+        25 &= 7q + r &&\\
+        25 &= 7\times3 + 4 &&\\
+        3 &= 7\times1 + 3 &&\\
+        7 &= 4\times1 + 3 &&\\
+    \end{flalign*}
+    $q = 3, r = 4$
+    \item $m = 277, n = 4$ 
+    \begin{flalign*}
+        m &= nq + r &&\\
+        277 &= 4q + r &&\\
+        277 &= 4\times69 + 1 &&\\
+        4 &= 4\times1 + 0
+    \end{flalign*}
+    $q = 69, r = 1$
+    \item $m = 33, n = 11$ 
+    \begin{flalign*}
+        m &= nq + r &&\\
+        33 &= 11q + r &&\\
+        33 &= 11\times3 + 0
+    \end{flalign*}
+    $q = 3, r = 0$
+    \item $m = 33, n = 45$ 
+    \begin{flalign*}
+        m &= nq + r &&\\
+        33 &= 45q + r &&\\
+        33 &= 45\times0 + 33
+    \end{flalign*}
+    $q = 1, r = -12$
+    
+\end{enumerate}
+
+\subsection*{1.26 Theorem} 
+\quad \textit{Prove the existence part of the Division Algorithm. (Hint: Given n and m, how will you define q? Once you choose this q, then how is r chosen? Then show that $0 \leq r \leq n -1$.)}
+
+\begin{proof}
+
+\end{proof}
+
+\subsection*{1.27 Theorem} 
+\quad \textit{Prove the uniqueness part of the Division Algorithm. (Hint: If $nq+r = nq^{'}+r^{'}$, then $nq-nq^{'}=r^{'}-r$. Use what you know about $r$ and $r^{'}$ as part of your argument that $q = q^{'}$.}
 
 \begin{proof}
 \end{proof}
 
-\subsection*{1.26 Exercise} 
-\quad \textit{Let ?}
+\subsection*{1.28 Theorem} 
+\quad \textit{Let a, b and n be integers with n > 0.  Then $a \equiv b \;(\bmod\; n)$ if and only if a and b have the same remainder when divided by n. Equivalently, $a \equiv b \;(\bmod\; n)$ if and only if when $a=nq_1+r_1$ $(0\leq r_1 \leq n-1)$ and $b = nq_2+r_2$ $ (0\leq r_2 \leq n-1)$, then $r_1=r_2$.}
 
 \begin{proof}
 \end{proof}
 
-\subsection*{1.27 Exercise} 
-\quad \textit{Let ?}
+\subsection*{1.29 Question} 
+\quad \textit{Do every two integers have a least one common divisor?}
 
 \begin{proof}
 \end{proof}
 
-\subsection*{1.28 Exercise} 
-\quad \textit{Let ?}
-
-\begin{proof}
-\end{proof}
-
-\subsection*{1.29 Exercise} 
-\quad \textit{Let ?}
-
-\begin{proof}
-\end{proof}
-
-\subsection*{1.30 Exercise} 
-\quad \textit{Let ?}
+\subsection*{1.30 Question} 
+\quad \textit{Can two integers have infinitely many common divisors?}
 
 \begin{proof}
 \end{proof}
 
 \subsection*{1.31 Exercise} 
-\quad \textit{Let ?}
+\quad \textit{Find the the following greatest common divisors. Which pairs are relatively prime?}
+
+\begin{enumerate}
+    \item (36, 22)
+    \item (45, -15)
+    \item (-296, -88)
+    \item (0, 256)
+    \item (15, 28)
+    \item (1, -2436)
+\end{enumerate}
+
+\subsection*{1.32 Theorem} 
+\quad \textit{Let a, n, b, r and k be integers. If $a = nb +r$ and $k \vert a$ and $k \vert b$, then $k \vert r$.}
 
 \begin{proof}
 \end{proof}
 
-\subsection*{1.32 Exercise} 
-\quad \textit{Let ?}
-
-\begin{proof}
-\end{proof}
-
-\subsection*{1.33 Exercise} 
-\quad \textit{Let ?}
+\subsection*{1.33 Theorem} 
+\quad \textit{Let a, b, $n_1$, and $r_1$ be integers with a and b not both $0$. If $a = n_{1}b+r_1$, then $(a,b)=(b,r_1)$.}
 
 \begin{proof}
 \end{proof}
 
 \subsection*{1.34 Exercise} 
-\quad \textit{Let ?}
+\quad \textit{Use the above theorem (Euclidean Algorithm) to show that if $a=51$ and $b=15$, then $(51, 15)=(6,3)=3$.}
 
 \begin{proof}
 \end{proof}
 
-\subsection*{1.35 Exercise} 
-\quad \textit{Let ?}
+\subsection*{1.35 Exercise (Euclidean Algorithm)} 
+\quad \textit{Devise a procedure for finding the greatest common divisor of two integers using the previous theorem and the Division Algorithm.}
 
 \begin{proof}
 \end{proof}
 
 \subsection*{1.36 Exercise} 
-\quad \textit{Let ?}
+\quad \textit{Use the Euclidean Algorithm to find}
 
-\begin{proof}
-\end{proof}
+\begin{enumerate}
+    \item (96, 112)
+    \item (162, 31)
+    \item (0, 256)
+    \item (-288, -166)
+    \item (1, -2436)
+\end{enumerate}
 
 \subsection*{1.37 Exercise} 
-\quad \textit{Let ?}
+\quad \textit{Find integers x and y such that $162x+31y=1$.}
 
 \begin{proof}
 \end{proof}
