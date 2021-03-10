@@ -20,7 +20,99 @@
 \section*{Introduction}
 This course notebook is the collection of theorem proofs, exercises and answers from Unit 1 of the Number Theory Through Inquiry (Mathematical Association of America Textbooks).
 
-\section*{Divisibility \& Congruence}
+\section*{Theorem Proofs to Mark}
+
+\subsection*{1.3 Theorem} 
+\quad \textit{Let a, b, and c be integers. If $a \vert b$ and $a \vert c$, then $a \vert bc$.}
+
+\begin{proof}
+Our hypothesises is that $a \vert b$ and $a \vert c$ are, by definition, $b = k_1a$ and $c = k_2a$ for some integer $k_1$ and $k_2$. Then, $a \vert bc$ means that $bc = (k_1a)(k_2a) = k_1k_2a^2$. Using that we can say that $bc = k_1k_2a^2 = (k_1k_2a)a$. Thus by definition, $a \vert (k_1k_2a)$, knowing that $bc= (k_1k_2a)a$, we can satisfy the definition of $a \vert bc$.
+\end{proof}
+
+\subsection*{1.18 Theorem} 
+\quad \textit{Let a, b, k and n be integers with $n > 0$ and $k > 1$. Show that if $a \equiv b \;(\bmod\; n)$, then}
+
+\begin{proof}
+\textbf{Base case (k = 1):  }
+    \begin{flalign*}
+        && a^{k} &\equiv b^{k} \;(\bmod\; n) &&\\
+        && a^{1} &\equiv b^{1} \;(\bmod\; n)
+    \end{flalign*}
+    Thus making the statement true if k = 1.\\
+\textbf{Inductive Hypothesis: } Assume k = h + 1\\
+\textbf{Inductive Step: }     
+    \begin{flalign*}
+        && a^{k} &\equiv b^{k} \;(\bmod\; n) &&\\
+        && a^{h+1} &\equiv b^{h+1} \;(\bmod\; n) &&\\
+        && a^{h}a &\equiv b^{h}b \;(\bmod\; n) && \text{(Exponential Property)}\\
+    \end{flalign*}
+    By theorem 1.14, we know that $a \equiv b \;(\bmod\; n)$ and $c \equiv d \;(\bmod\; n)$ then $ac \equiv bd \;(\bmod\; n)$. This helps satisfies $a^{h+1} \equiv b^{h+1} \;(\bmod\; n)$ since $a^{h} \equiv b^{h} \;(\bmod\; n)$ (similarly to $a^{k} \equiv b^{k} \;(\bmod\; n)$) and $a \equiv b \;(\bmod\; n)$.
+\end{proof}
+
+\subsection*{1.28 Theorem} 
+\quad \textit{Let a, b and n be integers with $n > 0$.  Then $a \equiv b \;(\bmod\; n)$ if and only if a and b have the same remainder when divided by n. Equivalently, $a \equiv b \;(\bmod\; n)$ if and only if when $a=nq_1+r_1$ $(0\leq r_1 \leq n-1)$ and $b = nq_2+r_2$ $ (0\leq r_2 \leq n-1)$, then $r_1=r_2$.}
+
+\begin{proof}
+By definition, $a \equiv b \;(\bmod\; n)$ can be expressed as $n \vert a-b \Longleftrightarrow a-b = nk$ with $ k \in \mathbb{Z}$ which can also be expressed as $a = nk + b$. This statement is similar to the division algorithm $m = nq + r$. This shows that b is the remainder when a is divided by n. Now, suppose r is the remainder of b when divided by n $b = qn + r \Longleftrightarrow b \equiv r \;(\bmod\; n)$ with $q \in \mathbb{Z}$:
+\begin{flalign*}
+    && a &= nk + b &&\\
+    && a &= nk + (qn + r) && \text{(Substituting b)}\\
+    && a &= n(k +q) + r
+\end{flalign*}
+Thus r is also the remainder of a, $a \equiv r \;(\bmod\; n)$ as $(k +q)$ is some integer.
+\end{proof}
+
+\subsection*{1.32 Theorem} 
+\quad \textit{Let a, n, b, r and k be integers. If $a = nb +r$ and $k \vert a$ and $k \vert b$, then $k \vert r$.}
+
+\begin{proof}
+By definition, $k \vert a$, $k \vert b$ and $k \vert r$ can be expressed as:
+    \begin{flalign*}
+        &&  a &= tk && \text{where $t \in \mathbb{Z}$ and $t > 0$}
+    \end{flalign*}
+Similarly,
+    \begin{flalign*}
+        &&  b &= sk && \text{where $s \in \mathbb{Z}$ and $s > 0$}
+    \end{flalign*}
+and
+    \begin{flalign*}
+        &&  r &= uk && \text{where $u \in \mathbb{Z}$ and $u > 0$}
+    \end{flalign*}
+Substituting in $a = nb +r$:
+    \begin{flalign*}
+        &&  a &= nb +r &&\\
+        &&  tk &= n(sk) +r &&\\
+        &&  tk - n(sk) &= r &&\\
+        &&  (t - ns)k &= r
+    \end{flalign*}
+Where $t-ns \in \mathbb{Z}$ and $t-ns > 0$ same as $u$ in $r = uk$, thus satisfying $k \vert r$.
+\end{proof}
+
+\subsection*{1.43 Theorem} 
+\quad \textit{Let a, b, and n be integers. If (a,n) = 1 and (b,n) = 1, then (ab, n) = 1.}
+
+\begin{proof}
+By definition, $(a,n) = 1$ and $(b,n) = 1$ can be expressed as $(a,n) = 1 \Longrightarrow at + ns = 1 \Longrightarrow at = 1-ns, \exists t,s \in \mathbb{Z}$ and $(b,n) = 1 \Longrightarrow bu + nv = 1 \Longrightarrow bu = 1-nv, \exists u,v \in \mathbb{Z}$. By multiplying both equations, we get $at * bu$
+    \begin{flalign*}
+        && (at)(bu) &= (1-ns)(1-nv) &&\\
+        && ab(tu) &= 1-ns-nv-n^{2}sv &&\\
+        && ab(tu) &= 1-n(s-v-nsv) &&\\
+        && ab(tu)+n(s-v-nsv) &= 1 &&\\
+        && ab(x)+n(s-v-nsv) &= 1 &&\text{($tu = x$ where $x \in \mathbb{Z}$)}\\
+        && ab(x)+n(y) &= 1 &&\text{($(s-v-nsv) = y$ where $y \in \mathbb{Z}$)}\\
+    \end{flalign*}
+    Thus, by definition $ab(x)+n(y) = 1 \Longrightarrow gcd(ab,n)=1$.
+\end{proof}
+
+\subsection*{1.58 Corollary} 
+\quad \textit{If a and b are natural numbers, then $lcm(a,b) = ab$ if and only if a and b are relatively prime.}
+
+\begin{proof}
+If a and b are not relative primes then $gcd(a,b) = c > 1$.\\
+Since $\gcd(a,b) \cdot lcm(a,b) = ab \Rightarrow abc \neq ab$. Thus a and b must be relative primes so gcd(a,b) = 1.
+\end{proof}
+
+\section*{Practice Theorems from Divisibility \& Congruence}
 
 \subsection*{1.1 Theorem} 
 \quad \textit{Let a, b, and c be integers. If $a \vert b$ and $a \vert c$, then $a \vert (b+c)$.}

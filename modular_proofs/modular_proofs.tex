@@ -1,0 +1,767 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage[makeroom]{cancel}
+\usepackage{amssymb}
+\usepackage{enumitem}
+
+\title{Prime Proofs}
+\author{Karim El Shenawy}
+\date{February 2021}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+This course notebook is the collection of theorem proofs, exercises and answers from Unit 3 of the Number Theory Through Inquiry (Mathematical Association of America Textbooks).
+
+\section*{Theorems to Mark}
+
+\subsection*{3.9 Corollary} 
+\quad \textit{Let the natural number n be expressed in base 10 as}
+\begin{center}
+    $n = a_ka_{k-1}...a_1a_0$.
+\end{center}
+\textit{Let $m = a_k + a_{k-1} + ... + a_1 + a_0$. Then $9 \mid n$ if and only if $9 \mid m$.}
+
+\begin{proof}
+By contradiction, assume that $9 \nmid n$, where n is a natural number and can be expressed as $n = a_ka_{k-1}...a_1a_0$. Also suppose that $9 \mid m$ where m is a natural number and can be expressed as $m = a_k + a_{k-1} + ... + a_1 + a_0$. This also implies that that $n \equiv d \;(\bmod\; 9)$ where d is a natural number and $d \neq 0$. Moreover, we can express $n \equiv d \;(\bmod\; 9)$ as follows;
+    \begin{flalign*}
+        &\Longrightarrow n \equiv d \;(\bmod\; 9)&&\\
+        &\Longrightarrow a_ka_{k-1}...a_1a_0 \equiv d \;(\bmod\; 9)&&\\
+        &\text{Now lets express $a_ka_{k-1}...a_1a_0$ as multiple factors of 10:} &&\\
+        &\Longrightarrow (a_k\cdot 10^k + a_{k-1} \cdot 10^{k-1} + ... + a_1\cdot 10^{1} + a_0) \equiv d \;(\bmod\; 9)&&
+    \end{flalign*}
+Modular arithmetic respects distributively and thus by Modular Distributive Property we can distribute $\;(\bmod\; 9)$
+    \begin{flalign*}
+        &\Longrightarrow (a_k\cdot 10^k \;(\bmod\; 9) + a_{k-1} \cdot 10^{k-1} \;(\bmod\; 9) + ... + a_1\cdot 10^{1} \;(\bmod\; 9)&&\\
+        &+ a_0 \;(\bmod\; 9)) \equiv d \;(\bmod\; 9)&&\\
+        &\text{By theorem 1.18, we can conclude that $10^k \;(\bmod\; 9) \equiv 1^k \;(\bmod\; 9) \equiv 1$.}&&\\
+        &\Longrightarrow (a_k + a_{k-1} + ... + a_1 + a_0) \equiv d \;(\bmod\; 9)&&\\
+        &\text{Since, $m = a_k + a_{k-1} + ... + a_1 + a_0$, we can express the above equation interms of m;} &&\\
+        &\Longrightarrow m \equiv d \;(\bmod\; 9)&&
+    \end{flalign*}
+    Based off the theorm in, given that $9 \mid m$, thus $m \;(\bmod\; 9) \equiv 0$. Therefore, d has to be zero., thus 9 must divide m so then $9 \mid n$.
+\end{proof}
+
+\subsection*{3.14 Theorem} 
+\quad \textit{Given any integer a and any natural number n, there exists a unique integer t in the set {$0,1,2,...,n-1$} such that $a \equiv t \;(\bmod\; n)$.}
+
+\begin{proof}
+Given an integer a and a natural number n. There exist integers t and q such that, by division algorithm, $a = nq + t$ where t is in the set {$0,1,2,...,n-1$}. We can express $a = nq + t$ as follows;
+\begin{flalign*}
+    & \Longrightarrow a = nq + t&&\\
+    & \Longrightarrow a -t = nq &&\\
+    &\Longrightarrow n \mid a-t &&\\
+    &\Longrightarrow a \equiv t \;(\bmod\; n)&& \text{By Definition of Congruence}
+\end{flalign*}
+By $a \equiv t \;(\bmod\; n)$, we can conclude that a is congruent to one or more elements from the set {$0,1,2,...,n-1$}, since t is apart of that set. Thus a must be congruent to t modulo n where t is a unique integer in {$0,1,2,...,n-1$}. 
+\end{proof}
+
+\subsection*{3.16 Theorem} 
+\quad \textit{Let n be a natural. Every complete residue system modulo n contains n elements.}
+
+\begin{proof}
+Suppose there exist this set m where $m = \{0,1,2,3,4,...,n-1\}$ where n is some natural number. Also let me be a complete residue system $\bmod n$ and suppose that the size of m is greater than n.\\
+Now at least two elements from m must have the same remainder when divided by n, by Pigeonhole Principle. This contradicts he aforementioned statement that m is a complete residue system $\bmod n$. Therefore complete residue system modulo n must contains equal or less than the size of m.
+\end{proof}
+
+
+\subsection*{3.19 Theorem} 
+\quad \textit{Let a, b, and n be integers with $n>0$. Show that $ax \equiv b \;(\bmod\; n)$ has a solution if and only if there exist integers x and y such that $ax+ny=b$.}
+
+\begin{proof}
+We'll need to prove 2 parts;
+\begin{enumerate}
+    \item Let $a, b, n \in \mathbf{Z}$ with $n > 0$. By definition, $ax \equiv b \;(\bmod\; n) \Longrightarrow n \mid ax-b$ and thus also $ax - b = np$ for some integer p. Moreover, by direct proof,
+    \begin{flalign*}
+        &&  ax - b &= np && \\
+        &&  ax - np &= b && \\
+        &&  ax + n(-p) &= b && \\
+        &&  ax + ny &= b && \text{Since $p \in \mathbf{Z}$, let $y \in \mathbf{Z}$ such that $p = -y$}
+    \end{flalign*}
+    Thus $ax \equiv b \;(\bmod\; n)$ has a solution such that $ax + ny = b$ for some integer x and y.
+    \item Given that $ax + ny = b$ where $a,b,n,x,y \in \mathbf{Z}$ and $n>0$. By direct proof, assume that x and y exist we can assimilate the following
+    \begin{flalign*}
+        &&  ax + ny &= b && \\
+        &&  ax - b &= -ny && \\
+        &&  ax - b &= n(-y) && \\
+        &&  ax - b &= n(-y) && \\
+        &&  ax  &\equiv b \;(\bmod\; n)&&
+    \end{flalign*}
+    Now by contradiction let's assume that x and y did not exist;
+    \begin{flalign*}
+        &&  a + n &= b && \\
+        &&  a - b &= n && \\
+        &&  a  &\equiv b \;(\bmod\; n)&&
+    \end{flalign*}
+    Which is not the solution. Thus x and y must exist.
+\end{enumerate}
+\end{proof}
+
+\subsection*{3.20 Theorem} 
+\quad \textit{Let a, b, and n be integers with $n>0$. The equation $ax \equiv b \;(\bmod\; n)$ has a solution if and only if $(a,n) \mid b$.}
+
+\begin{proof}
+We'll need to prove 2 parts;
+\begin{enumerate}
+    \item Let a, b, and n be integers with $n>0$. Given $ax \equiv b \;(\bmod\; n)$, then by definition, 
+    \begin{flalign*}
+        &\Longrightarrow ax \equiv b \;(\bmod\; n)& \\
+        &\Longrightarrow n \mid ax - b& \\
+        &\Longrightarrow ny = ax - b & \text{by definition where y is some integer.}\\
+        &\Longrightarrow b = ax - ny&
+    \end{flalign*}
+    Now say p = (a,n), then by Theorem 1.40, $p = as + nt, \exists s, t \in \mathbf{Z}$. Thus p must divide a and n, where $p \mid a \Longrightarrow a = pg$. Similarly $p \mid n \Longrightarrow n = ph$ where g and h are some integers. \\
+    Substituting  a and n in $b = ax - ny$ results to $b = pgx - phy = p(gx - hy)$. Since $(gx - hy)$ will result to some integer, let that integer be z, $z = (gx - hy)$. Therefore $b = p(z)$ which implies that $p \mid b$ or rather $(a, n) \mid b$.
+    \item Given integers p, a, b, n with $n>0$. Let $p = (a,n)$. We know that $p \mid b$ where $b = pz = p(gx - hy)$ for some integer z that is equal to $(gx - hy), \exists g,h,x,y \in \mathbf{Z}$. Then, by direct proof;
+    \begin{flalign*}
+        &&  b &= p(gx - hy)&& \\
+        &&  b &= pgx - phy&& \\
+        &&  b &= ax - ny&& \text{Since (proven in 1.) $a = pg$ and $n = ph$}\\
+        &&  ny &= ax - b&&\\
+        &&  ax &\equiv b \;(\bmod\; n)&&
+    \end{flalign*}
+    Thus, $ax \equiv b \;(\bmod\; n)$ has a solution if and only if $(a,n) \mid b$.
+\end{enumerate}
+\end{proof}
+
+\subsection*{3.28 Theorem} 
+\quad \textit{Let a, b, m, and n be integers with $m>0$, $n>0$, and $(m,n) = 1$. Then the system}
+\begin{flalign*}
+    && x &\equiv a \;(\bmod\; n)&&\\
+    && x &\equiv b \;(\bmod\; m)&&
+\end{flalign*}
+\textit{has a unique solution modulo mn.}
+
+\begin{proof}
+Given the system above, we know from theorem 3.27 that the system has a solution if and only if $(n,m) \mid a-b$ and in this case $(n,m) \mid a-b \Longrightarrow 1 \mid a-b$. However, to show that the solution x modulo mn unique, we need to satisfy that for the following given system, $x_0 = x_1$;
+\begin{flalign*}
+    && x_0 \equiv a \;(\bmod\; n)\text{ and }& x_0 \equiv b \;(\bmod\; m)&&\\
+    && x_1 \equiv a \;(\bmod\; n)\text{ and }& x_1 \equiv b \;(\bmod\; m)&&
+\end{flalign*}
+By subtraction of each congruence $x_0 - x_1$, we get the following;
+\begin{flalign*}
+    && x_0 - x_1 &\equiv a - a \equiv 0 \;(\bmod\; n) \Longrightarrow n \mid (x_0 - x_1)&&\\
+    && x_0 - x_1 &\equiv b - b \equiv 0 \;(\bmod\; m) \Longrightarrow m \mid (x_0 - x_1)&&
+\end{flalign*}
+Since $gcd(n, m) = 1$ and $x_0 - x_1$ is a multiple of both n and m, by theorem 1.42, we can express $mn \mid (x_0 - x_1)$. Thus, this implies that $x_0 - x_1 \equiv 0 \;(\bmod\; mn) \Longrightarrow x_0 \equiv x_1 \;(\bmod\; mn)$ which satisfies the uniqueness if the solution x.
+\end{proof}
+
+\section*{Practice Theorems from A Modular World}
+
+\subsection*{3.1 Exercise} 
+\quad \textit{Show that $41$ divides $2^{20}-1$ by following these steps. Explain why each step is true.}
+
+\begin{enumerate}
+    \item $2^5 \equiv -9 \;(\bmod\; 41)$. 
+    \textit{This step is true because $2^5 + 9 = 41$ which if of course is divisible by 41.}
+    \item $(2^5)^4 \equiv (-9)^4 \;(\bmod\; 41)$. \textit{This is true because it follows the following theorem 1.18, let a, b, k and n be integers with $n > 0$ and $k>0$. If $a \equiv b \;(\bmod\; n)$ }
+    \begin{center}
+    $a^k \equiv b^k \;(\bmod\; n)$
+    \end{center}
+    \item $2^{20} \equiv 81^2 \;(\bmod\; 41) \equiv (-1)^2 \;(\bmod\; 41)$. \textit{This step is true because $2^{20} = (2^5)^4$ and $(-9)^4 = 81^4$. As well as, since $81 -(2)41= -1$ and using theorem 1.18, $81^2 \equiv (-1)^2 \;(\bmod\; 41)$ is also true.}
+    \item $2^{20}-1 \equiv 0 \;(\bmod\; 41)$. \textit{True because $2^{20}-1 = (2^5)^4 - 1$ which is divisble by 41.}
+\end{enumerate}
+
+\subsection*{3.2 Question} 
+\quad \textit{In your head, can you find the natural number $k$, $0 \leq k \leq 11$, such that $k \equiv 37^{453} \;(\bmod\; 12)$?}
+
+\begin{proof}
+By Direct proof,
+    \begin{flalign*}
+        &\Longrightarrow k \equiv 37^{453} \;(\bmod\; 12)&&\\
+        &\Longrightarrow k \equiv 1^{453} \;(\bmod\; 12)&&\\
+        &\Longrightarrow k \equiv 1 \;(\bmod\; 12)&&
+    \end{flalign*}
+    Thus k = 1.
+\end{proof}
+
+
+\subsection*{3.3 Question} 
+\quad \textit{In your head or using paper and pencil, but no calculator, can you find the natural number $k$, $0 \leq k \leq 6$, such that $2^{50} \equiv k \;(\bmod\; 12)$?}
+
+
+\begin{proof}
+By Direct proof, we can disassemble 50 as a product of primes (Fundamental Theorem of Arithmetic);
+    \begin{flalign*}
+        &\Longrightarrow 2^{50} \equiv k \;(\bmod\; 7)&&\\
+        &\Longrightarrow 2^{48} \cdot 2^2 \equiv k \;(\bmod\; 7)&&\\
+        &\Longrightarrow 2^{24 \cdot 2} \cdot 2^2 \equiv k \;(\bmod\; 7)&&\\
+        &\Longrightarrow 2^{3 \cdot 2^4} \cdot 2^2 \equiv k \;(\bmod\; 7)\textcircled{1}&&
+    \end{flalign*}
+Moreover, we know that $8 \equiv 1 \;(\bmod\; 7)$ and that $2^3 = 8$. This way we can reconstruct $2^{50}$ to find the value of k;
+    \begin{flalign*}
+        &\Longrightarrow 8 \equiv 1 \;(\bmod\; 7)&&\\
+        &\Longrightarrow 2^{3} \equiv 1 \;(\bmod\; 7)&&\\
+        &\Longrightarrow 2^{3 \cdot 2^4} \equiv 1^{2^4} \;(\bmod\; 7) &&\\
+        &\Longrightarrow 2^{3 \cdot 2^4} \cdot 2^2 \equiv 1 \cdot 2^2 \;(\bmod\; 7) &&\\
+        &\Longrightarrow 2^{3 \cdot 2^4} \cdot 2^2 \equiv 4 \;(\bmod\; 7) \textcircled{1}&&\\
+        &\Longrightarrow 2^{50} \equiv 4 \;(\bmod\; 7)&&
+    \end{flalign*}
+    Thus k = 4.
+\end{proof}
+
+\subsection*{3.4 Question} 
+\quad \textit{Using paper and pencil, but no calculator, can you find the natural number k, $0 \leq k \leq 11$, such that $39^{453} \equiv k \;(\bmod\; 12)$?}
+\begin{proof}
+By direct proof, since $39 \equiv 3 \;(\bmod\; 12)$, we can also say that  
+    \begin{flalign*}
+        &\Longrightarrow 39^{453} \equiv k \;(\bmod\; 12)&&\\
+        &\Longrightarrow (13 \cdot 3)^{453} \equiv k \;(\bmod\; 12)&&\\
+        &\Longrightarrow 13^{453} \cdot 3^{453} \equiv k \;(\bmod\; 12)&&\\
+        &\Longrightarrow 1^{453} \cdot 3^{453} \equiv k \;(\bmod\; 12)&&\\
+        &\Longrightarrow 3^{453} \equiv k \;(\bmod\; 12)&&
+    \end{flalign*}
+\end{proof}
+
+\subsection*{3.5 Exercise} 
+\quad \textit{Show that $39$ divides $17^{48} - 5^{24}$?}
+
+\begin{proof}
+By direct proof, we need to prove that $17^{48} - 5^{24} \equiv 0 \;(\bmod\; 39)$ by calculating the congruent of $17^{48} = 17^{2^4*3}$ and $5^{24} = 5^{2^3*3}$ modulo 39 separately as follows,
+    \begin{flalign*}
+        && 17^{2} &\equiv 16 \;(\bmod\; 39)&&\\
+        && 17^{2^2} &\equiv 16^2 \;(\bmod\; 39)&&\\
+        && 17^{2^2} &\equiv 196 \;(\bmod\; 39)&&\\
+        && 17^{2^2} &\equiv 1 \;(\bmod\; 39)&&\\
+        && 17^{2^2*12} &\equiv 1 \;(\bmod\; 39)&&\\
+        && 17^{2^4*3} &\equiv 1 \;(\bmod\; 39)&&
+    \end{flalign*}
+    And similarly,
+    \begin{flalign*}
+        && 5^{3} &\equiv 8 \;(\bmod\; 39)&&\\
+        && 5^{4} &\equiv 8*5 \;(\bmod\; 39)&&\\
+        && 5^{2^2} &\equiv 49 \;(\bmod\; 39)&&\\
+        && 5^{2^2} &\equiv 1 \;(\bmod\; 39)&&\\
+        && 5^{2^2*6} &\equiv 1 \;(\bmod\; 39)&&\\
+        && 5^{2^3*3} &\equiv 1 \;(\bmod\; 39)&&
+    \end{flalign*}
+    Thus $17^{48} - 5^{24} \equiv 0 \;(\bmod\; 39) \Longrightarrow 1 - 1 \;(\bmod\; 39) \equiv 0 \;(\bmod\; 39)$.
+\end{proof}
+
+\subsection*{3.6 Question (Describe technique)} 
+\quad \textit{Let a, n, and r be natural numbers. Describe how to find the number k ($0 \leq k \leq n-1$) such that $k \equiv a^r \;(\bmod\; n)$ subject to the restraint that you never multiply numbers larger than n and that you only have to do about $\log_2{r}$ such multiplications.}
+
+\textit{Solution.} Let a, n, r and k be natural numbers where k is $0 \leq k \leq n-1$, then we can proceed with the following;
+\begin{flalign*}
+    && k_1 &\equiv a^2 \;(\bmod\; n)&& \text{$0 \leq k_1 \leq n-1$}\\
+    && k_1 \cdot a &\equiv a^3 \;(\bmod\; n)&&\\
+    && k_2 &\equiv a^3 \;(\bmod\; n)&& \text{Where $k_2 = k_1 * a$ and $0 \leq k_2 \leq n-1$}\\
+    && k_3 &\equiv a^4 \;(\bmod\; n)&& \text{Where $k_3 = k_2 * a$ and $0 \leq k_3 \leq n-1$}\\
+    && &... &&\\
+    && k_{r}*a &\equiv a^{r+2} \;(\bmod\; n)&& \text{Where $k_r = k_{r-1} * a$ and $0 \leq k_r \leq n-1$}\\
+    && k_{r-1} &\equiv a^{r} \;(\bmod\; n)&&
+\end{flalign*}
+Thus, you never multiply numbers larger than n.
+
+\subsection*{3.7 Question} 
+\quad \textit{Let $f(x) = 13x^{49} - 27x^{27} + x^{14} - 6$. Is it true that}
+\begin{center}
+    $f(98) \equiv f(-100) \;(\bmod\; 99)$?
+\end{center}
+
+\begin{proof}
+By direct proof, we need to evaluate the each function:
+    \begin{flalign*}
+        && f(98) &\equiv (13(98)^{49} - 27(98)^{27} + (98)^{14} - 6) \;(\bmod\; 99)&&\\
+        && f(98) &\equiv (13(-1)^{49} - 27(-1)^{27} + (-1)^{14} - 6) \;(\bmod\; 99)&& \text{$98 \equiv -1 \;(\bmod\; 99)$}\\
+        && f(98) &\equiv (13(-1) - 27(-1) + 1 - 6) \;(\bmod\; 99)&&\\
+        && f(98) &\equiv (-13 + 27 + 1 - 6) \;(\bmod\; 99)&&
+    \end{flalign*}
+    And similarly,
+    \begin{flalign*}
+        && f(-100) &\equiv (13(-100)^{49} - 27(-100)^{27} + (-100)^{14} - 6) \;(\bmod\; 99)&&\\
+        && f(-100) &\equiv (13(-1)^{49} - 27(-1)^{27} + (-1)^{14} - 6) \;(\bmod\; 99)&& \text{$-100 \equiv -1 \;(\bmod\; 99)$}\\
+        && f(-100) &\equiv (13(-1) - 27(-1) + 1 - 6) \;(\bmod\; 99)&&\\
+        && f(-100) &\equiv (-13 + 27 + 1 - 6) \;(\bmod\; 99)&&
+    \end{flalign*}
+    Therefore, $f(98) \equiv f(-100) \;(\bmod\; 99) \equiv (-13 + 27 + 1 - 6) \;(\bmod\; 99) \;(\bmod\; 99)$, making it true.
+\end{proof}
+
+\subsection*{3.8 Theorem} 
+\quad \textit{Suppose $f(x) = a_{n}x^{n} + a_{n-1}x^{n-1} + ... + a_0$ is a polynomial of degree $n>0$ with integer coefficients. Let a, b, and m be integers with $m>0$. If $a \equiv b \;(\bmod\; m)$, then $f(a) \equiv f(b) \;(\bmod\; m)$.}
+
+\begin{proof}
+We can prove the theorem by direct proof. Let a and b be integers, now using the same $f(x)$ from the theorem, we get $f(a)$ and $f(b)$ as following;
+\begin{center}
+    $f(a) = a_{n}a^{n} + a_{n-1}a^{n-1} + ... + a_0$\\
+    $f(b) = a_{n}b^{n} + a_{n-1}b^{n-1} + ... + a_0$
+\end{center}
+Then we can express $f(a) \equiv f(b) \;(\bmod\; m)$ from the theorem as $f(a) - f(b) \equiv 0 \;(\bmod\; m)$  where m divides $f(a) - f(b)$. Lets attempt at finding the difference between each equation;
+\begin{flalign*}
+    &\Longrightarrow f(a) - f(b)&&\\
+    &\Longrightarrow (a_{n}a^{n} + a_{n-1}a^{n-1} + ... + a_0) - (a_{n}b^{n} + a_{n-1}b^{n-1} + ... + a_0) &&\\
+    &\Longrightarrow a_{n}(a^{n}-b^{n}) + a_{n-1}(a^{n-1}-b^{n-1}) + ... + a_1(a-b)&&
+\end{flalign*}
+Given that $(a^n - b^n)$ is divisible by $(a - b)$, since $(a^n - b^n) = (a-b)(a^{n-1}+a^{n-2}b+...+ab^{n-2}+b^{n-1}+b)$. We can observe that $(a-b)$ divides each element in $a_{n}(a^{n}-b^{n}) + a_{n-1}(a^{n-1}-b^{n-1}) + ... + a_1(a-b)$, thus allowing us to express it as follows;
+\begin{flalign*}
+    &\Longrightarrow a_{n}((a-b)\cdot k_1) + a_{n-1}((a-b)\cdot k_n) + ... + a_1(a-b)&&\\
+    &\text{Where all $k_1,..., k_n$ are some integers}&&\\
+    &\Longrightarrow (a-b)(a_{n}k_1 + a_{n-1}k_n + ... + a_1)&&\\
+    &\Longrightarrow (a-b)(a_{n}k_1 + a_{n-1}k_n + ... + a_1)&&\\
+    &\Longrightarrow (a-b)t&&\\
+    &\text{Since $(a_{n}k_1 + a_{n-1}k_n + ... + a_1)$ will result to some integer, we can then say that t is that integer.}&&\\
+    & \Longrightarrow f(a)-f(b) = (a-b)t&&
+\end{flalign*}
+Given that $a \equiv b \;(\bmod\; m)$, we then know that $a-b \equiv 0 \;(\bmod\; m)$. Hence, m must divide $a-b$ or it can be expressed $(a-b)=ms$ for some integer s. Therefore, we can express $f(a)-f(b)$ as;
+\begin{flalign*}
+    &&f(a)-f(b) &= (a-b)t&&\\
+    &&f(a)-f(b) &= mst&& \text{for some integers s and t}
+\end{flalign*}
+Thus, since $f(a)-f(b) = mst$, we can then say that m does divide $f(a) - f(b)$.
+\end{proof}
+
+\subsection*{3.9 Corollary} 
+\quad \textit{Let the natural number n be expressed in base 10 as}
+\begin{center}
+    $n = a_ka_{k-1}...a_1a_0$.
+\end{center}
+\textit{Let $m = a_k + a_{k-1} + ... + a_1 + a_0$. Then $9 \mid n$ if and only if $9 \mid m$.}
+
+\begin{proof}
+By contradiction, assume that $9 \nmid n$, where n is a natural number, we know that $n \equiv d \;(\bmod\; 9)$ where d is a natural number and $d \neq 0$. By direct proof, we can express $n \equiv d \;(\bmod\; 9)$ as follows;
+    \begin{flalign*}
+        &\Longrightarrow n \equiv d \;(\bmod\; 9)&&\\
+        &\Longrightarrow a_ka_{k-1}...a_1a_0 \equiv d \;(\bmod\; 9)&&\\
+        &\text{$a_ka_{k-1}...a_1a_0$ can be expressed as multiple factors of 10} &&\\
+        &\Longrightarrow (a_k\cdot 10^k + a_{k-1} \cdot 10^{k-1} + ... + a_1\cdot 10^{1} + a_0) \equiv d \;(\bmod\; 9)&&\\
+        &\text{By Modular Distributive Property,} &&\\
+        &\Longrightarrow (a_k\cdot 10^k \;(\bmod\; 9) + a_{k-1} \cdot 10^{k-1} \;(\bmod\; 9) + ... + a_1\cdot 10^{1} \;(\bmod\; 9) + a_0 \;(\bmod\; 9)) \equiv d \;(\bmod\; 9)&&\\
+        &\text{Given that $10^k \;(\bmod\; 9) \equiv 1^k \equiv 1$, by theorem 1.18}&&\\
+        &\Longrightarrow (a_k + a_{k-1} + ... + a_1 + a_0) \equiv d \;(\bmod\; 9)&&\\
+        &\text{Since, $m = a_k + a_{k-1} + ... + a_1 + a_0$,} &&\\
+        &\Longrightarrow m \equiv d \;(\bmod\; 9)&&
+    \end{flalign*}
+    Given that $9 \mid m$, thus $m \;(\bmod\; 9) \equiv 0$. Therefore, d has to be zero., thus 9 must divide m so then $9 \mid n$.
+\end{proof}
+
+\subsection*{3.9 - Exercise}
+\begin{enumerate}[label=(\alph*)]
+    \item 36 distinct times.
+    \item By using corollary 3.9, we know that for each 6 digit number is divisible by 37, then the total of adding each digit must also be divisible by 37. 
+\end{enumerate}
+
+\subsection*{3.10 Corollary} 
+\quad \textit{Let the natural number n be expressed in base 10 as}
+\begin{center}
+    $n = a_ka_{k-1}...a_1a_0$.
+\end{center}
+\textit{Let $m = a_k + a_{k-1} + ... + a_1 + a_0$. Then $3 \mid n$ if and only if $3 \mid m$.}
+
+\begin{proof}
+By contradiction, assume that $3 \nmid n$, where n is a natural number, we know that $n \equiv d \;(\bmod\; 3)$ where d is a natural number and $d \neq 0$. By direct proof, we can express $n \equiv d \;(\bmod\; 3)$ as follows;
+    \begin{flalign*}
+        &\Longrightarrow n \equiv d \;(\bmod\; 3)&&\\
+        &\Longrightarrow a_ka_{k-1}...a_1a_0 \equiv d \;(\bmod\; 3)&&\\
+        &\text{$a_ka_{k-1}...a_1a_0$ can be expressed as multiple factors of 10} &&\\
+        &\Longrightarrow (a_k\cdot 10^k + a_{k-1} \cdot 10^{k-1} + ... + a_1\cdot 10^{1} + a_0) \equiv d \;(\bmod\; 3)&&\\
+        &\text{By Modular Distributive Property,} &&\\
+        &\Longrightarrow (a_k\cdot 10^k \;(\bmod\; 3) + a_{k-1} \cdot 10^{k-1} \;(\bmod\; 3) + ... + a_1\cdot 10^{1} \;(\bmod\; 3) + a_0 \;(\bmod\; 3)) \equiv d \;(\bmod\; 3)&&\\
+        &\text{Given that $10^k \;(\bmod\; 3) \equiv 1^k \equiv 1$, by theorem 1.18}&&\\
+        &\Longrightarrow (a_k + a_{k-1} + ... + a_1 + a_0) \equiv d \;(\bmod\; 3)&&\\
+        &\text{Since, $m = a_k + a_{k-1} + ... + a_1 + a_0$,} &&\\
+        &\Longrightarrow m \equiv d \;(\bmod\; 3)&&
+    \end{flalign*}
+    Given that $3 \mid m$, thus $m \;(\bmod\; 3) \equiv 0$. Therefore, d has to be zero. Therefore, thus 3 must divide m so then $3 \mid n$.
+\end{proof}
+
+\subsection*{3.11 Theorem} 
+\quad \textit{Suppose $f(x) = a_{n}x^{n} + a_{n-1}x^{n-1} + ... + a_0$ is a polynomial of degree $n>0$ and suppose $a_n > 0$. Then there is an integer k such that if $x > k$, then $f(x)>0$.}
+
+\begin{proof}
+Given $f(x) = a_{n}x^{n} + a_{n-1}x^{n-1} + ... + a_0$ is a polynomial of degree $n>0$ and suppose $a_n > 0$. Let $f(x) > 0$, we'll need to prove that $m>0$, $\exists k \in \mathbf{Z}$ such that $x>k \Longrightarrow f(x) > m > 0$.\\
+By induction,
+    \textbf{Base case (n = 1):  }
+    \begin{flalign*}
+        &\Longrightarrow f(x) = a_{1}x + a_0 &&\\
+        &\Longrightarrow f(x) > m &&\text{With $f(x) > m$, we can then say}\\
+        &\Longrightarrow a_{1}x + a_0 > m &&\\
+        &\Longrightarrow x > \frac{m-a_0}{a_1} &&\\
+        & \text{assume that $f(x) = m > 0$, then} &&\\
+        &\Longrightarrow a_{1}x + a_0 > m-a_0 + a_0 > m = 0&&\\
+        &\text{Pick } k = [\frac{m - a_0}{a_1} \text{then, $x > k$ (Ceiling Function)}] &&\\
+        &\Longrightarrow f(x) > m > 0 &&
+    \end{flalign*}
+    Theorem holds for n = 1.\\
+\textbf{Inductive Hypothesis: } Assume n = n + 1, then Theorem still holds.\\ 
+\textbf{Inductive Step: }
+     \begin{flalign*}
+        &\Longrightarrow f(x) = a_{n+1}x^{n+1} + a_{n}x^{n} + ...+ a{1}x  + a_0&&\\
+        &\Longrightarrow f(x) = x(a_{n}x^{n} + a_{n}x^{n-1} + ... + a{1}) + a_0&&\\
+        &\Longrightarrow f(x) = x(g(n)) + a_0&&\\
+        &\text{Where $g(n) = a_{n}x^{n} + a_{n}x^{n-1} + ... + a{1}$.}&&\\
+        &\text{$g(n)$ degree is 1 and leading coefficient of g(n) is greater than 0.}&&
+    \end{flalign*}
+    Now there must be a k such that $g(n) > m - a_0, \forall x > k > 1$. $a_0 + xg(n) > a_0 + m - a_0 >m > 0, \forall x > k$. Therefore, the theorem still holds.
+\end{proof}
+
+\subsection*{3.12 Theorem} 
+\quad \textit{Suppose $f(x) = a_{n}x^{n} + a_{n-1}x^{n-1} + ... + a_0$ is a polynomial of degree $n>0$ and suppose $a_n > 0$. Then for any number M there is an integer k (which depends on M) such that if $x>k$, then $f(x) > M$.}
+
+\begin{proof}
+Given $f(x) = a_{n}x^{n} + a_{n-1}x^{n-1} + ... + a_0$ is a polynomial of degree $n>0$ and suppose $a_n > 0$. Let $x = k + h$ where k is an integer such that if $x > k$ and h is positive.\\
+$f(k+h) = a_{n}(k+h)^{n} + a_{n-1}(k+h)^{n-1} + ...+ a_1(k+h) + a_0$
+$f(k+h) = a_{n}k^{n} + a_{n-1}k^{n-1} + ...+ a_1k + a_0 +$ Some positive values with h. Let them be H.
+$f(k+h) = f(k) + H$.
+Thus, $f(k+h) = f(x) > f(k), \forall k$.
+\end{proof}
+
+\subsection*{3.13 Theorem} 
+\quad \textit{Suppose $f(x) = a_{n}x^{n} + a_{n-1}x^{n-1} + ... + a_0$ is a polynomial of degree $n>0$ with integer coefficients. Then $f(x)$ is a composite number for infinitely many integers x.}
+
+\begin{proof}
+By fundamental theorem of arithmetic, f(x) can be expressed in the form of product of primes and depending on n, there can be an infinitely number of x integers.
+\end{proof}
+
+\subsection*{3.14 Theorem} 
+\quad \textit{Given any integer a and any natural number n, there exists a unique integer t in the set {$0,1,2,...,n-1$} such that $a \equiv t \;(\bmod\; n)$.}
+
+\begin{proof}
+Given an integer a and a natural number n. There exist integers t and q such that, by division algorithm, $a = nq + t$ where t is in the set {$0,1,2,...,n-1$}. We can express $a = nq + t$ as follows;
+\begin{flalign*}
+    & \Longrightarrow a = nq + t&&\\
+    & \Longrightarrow a -t = nq &&\\
+    &\Longrightarrow n \mid a-t &&\\
+    &\Longrightarrow a \equiv t \;(\bmod\; n)&& \text{By Definition of Congruence}
+\end{flalign*}
+By $a \equiv t \;(\bmod\; n)$, this implies that a is congruent 1 or more elements from the set {$0,1,2,...,n-1$}, since t is apart of that set. Thus a must be congruent to t modulo n. 
+\end{proof}
+
+\subsection*{3.15 Exercise} 
+\quad \textit{Find three complete residue systems modulo 4: the canonical complete residue system, one containing negative numbers, and one containing no two consecutive numbers.}
+
+\begin{itemize}
+    \item $\{5,6,7,8\} \Longrightarrow \{1,2,3,0\}$
+    \item $\{13,14,15,16\} \Longrightarrow \{-1,2,3,0\}$
+    \item $\{23,24,25,26\} \Longrightarrow \{3,0,1,2\}$
+\end{itemize}
+
+\subsection*{3.16 Theorem} 
+\quad \textit{Let n be a natural. Every complete residue system modulo n contains n elements.}
+
+\begin{proof}
+Suppose there exist this set m where $m = \{0,1,2,3,4,...,n-1\}$ where n is some natural number. Also let me be a complete residue system $\bmod n$ and suppose that the size of m is greater than n.\\
+Now at least two elements from m must have the same remainder when divided by n, by Pigeonhole Principle. This contradicts he aforementioned statement that m is a complete residue system $\bmod n$. Therefore complete residue system modulo n must contains equal or less than the size of m.
+\end{proof}
+
+\subsection*{3.17 Theorem} 
+\quad \textit{Let n be a natural number: Any set, $\{a_1,a_2,...,a_n\}$, of n integers for which no two are congruent modulo n is a complete residue system modulo n.}
+
+\begin{proof}
+Suppose that for set $A = \{a_1,a_2,...,a_n\}$ where n is natural number and there are \textbf{no} two congruent modulo n in this set. Now, let B be another residue set with $n-1$ residues, $B = \{b_1,b_2,...,b_{n-1}\}$. \\
+We can conclude that $a_1$ is not congruent modulo n for any $a_i$, where i is $1 \leq i \leq n-1$. Similarity for $a_2,..a_n$.\\
+Thus, $a_n$ is also not congruent to any $a_i$ modulo n. By division algorithm, $a_n$ can be expressed as $a_n = n(q) + b_n$, for some integer q and r. However, $a_n = n(q) + r$ implies that $a_n \equiv r \;(\bmod\; n)$. This is impossible since B has less elements than A therefore $a_n \equiv a_i \;(\bmod\; n)$ which contradicts our conclusions above. Therefore, the set a has to have no two elements that are congruent modulo n is a complete residue system modulo n.
+\end{proof}
+
+\subsection*{3.18 Exercise} 
+\quad \textit{Find all solutions in the appropriate canonical complete residue system modulo n that satisfy the following linear congruence:}
+
+\begin{enumerate}
+    \item $26x \equiv 14 \;(\bmod\; 3)$
+    \begin{flalign*}
+        &\Longrightarrow 2(13)x \equiv 2(7) \;(\bmod\; 3) &&\\
+        &\Longrightarrow 13x \equiv 7 \;(\bmod\; 3) &&\\
+        &\Longrightarrow 13(4) \equiv 7 \;(\bmod\; 3) &&\\
+        &\Longrightarrow x = 4 + 3, 4 + 2(3)...&&
+    \end{flalign*}
+    \item $2x \equiv 3 \;(\bmod\; 5)$
+    \begin{flalign*}
+        &\Longrightarrow 2x \equiv 3 \;(\bmod\; 5) &&\\
+        &\Longrightarrow 2(4) \equiv 3 \;(\bmod\; 5) &&
+        &\Longrightarrow x = 4 + 5, 4 + 2(5)...&&
+    \end{flalign*}
+    \item $4x \equiv 7 \;(\bmod\; 8)$
+    \begin{flalign*}
+        &\Longrightarrow 4x \equiv 7 \;(\bmod\; 8) &&\\
+        &\Longrightarrow \text{No possible solutions.} &&
+    \end{flalign*}
+    \item $24x \equiv 123 \;(\bmod\; 213)$
+    \begin{flalign*}
+        &\Longrightarrow 24x \equiv 123 \;(\bmod\; 213) &&\\
+        &\Longrightarrow 8(3)x \equiv 41(3) \;(\bmod\; \frac{213}{(3,213)} = 71) &&\\
+        &\Longrightarrow 8x \equiv 41 \;(\bmod\; 71) &&\\
+        &\Longrightarrow 8x \cdot 9 \equiv 41 \cdot 9 \;(\bmod\; 71) && \text{Since $8*9 \equiv \;(\bmod\; 71)$}\\
+        &\Longrightarrow x \equiv 396 \equiv 14 \;(\bmod\; 71) && \\
+        &\Longrightarrow x = 14, 14 + 71, 14 + 2(71)...&& \\
+    \end{flalign*}
+\end{enumerate}
+
+\subsection*{3.19 Theorem} 
+\quad \textit{Let a, b, and n be integers with $n>0$. Show that $ax \equiv b \;(\bmod\; n)$ has a solution if and only if there exist integers x and y such that $ax+ny=b$.}
+
+\begin{proof}
+We'll need to prove 2 parts;
+\begin{enumerate}
+    \item Let $a, b, n \in \mathbf{Z}$ with $n > 0$. By definition, $ax \equiv b \;(\bmod\; n) \Longrightarrow n \mid ax-b$ and thus also $ax - b = np$ for some integer p. Moreover, by direct proof,
+    \begin{flalign*}
+        &&  ax - b &= np && \\
+        &&  ax - np &= b && \\
+        &&  ax + n(-p) &= b && \\
+        &&  ax + ny &= b && \text{Since $p \in \mathbf{Z}$, let $y \in \mathbf{Z}$ such that $p = -y$}
+    \end{flalign*}
+    Thus $ax \equiv b \;(\bmod\; n)$ has a solution such that $ax + ny = b$ for some integer x and y.
+    \item Given that $ax + ny = b$ where $a,b,n,x,y \in \mathbf{Z}$ and $n>0$. By direct proof, assume that x and y exist we can assimilate the following
+    \begin{flalign*}
+        &&  ax + ny &= b && \\
+        &&  ax - b &= -ny && \\
+        &&  ax - b &= n(-y) && \\
+        &&  ax - b &= n(-y) && \\
+        &&  ax  &\equiv b \;(\bmod\; n)&& \\
+    \end{flalign*}
+    Now by contradiction let's assume that x and y did not exist;
+    \begin{flalign*}
+        &&  a + n &= b && \\
+        &&  a - b &= n && \\
+        &&  a  &\equiv b \;(\bmod\; n)&&
+    \end{flalign*}
+    Which is not the solution. Thus x and y must exist.
+\end{enumerate}
+\end{proof}
+
+\subsection*{3.20 Theorem} 
+\quad \textit{Let a, b, and n be integers with $n>0$. The equation $ax \equiv b \;(\bmod\; n)$ has a solution if and only if $(a,n) \mid b$.}
+
+\begin{proof}
+We'll need to prove 2 parts;
+\begin{enumerate}
+    \item Let a, b, and n be integers with $n>0$. Given $ax \equiv b \;(\bmod\; n)$, then by definition, 
+    \begin{flalign*}
+        &\Longrightarrow ax \equiv b \;(\bmod\; n)& \\
+        &\Longrightarrow n \mid ax - b& \\
+        &\Longrightarrow ny = ax - b & \text{by definition where y is some integer.}\\
+        &\Longrightarrow b = ax - ny&
+    \end{flalign*}
+    Now say p = (a,n), then by Theorem 1.40, $p = as + nt, \exists s, t \in \mathbf{Z}$. Thus p must divide a and n, where $p \mid a \Longrightarrow a = pg$ and similarly $p \mid n \Longrightarrow n = ph$ where g and h are some integers. Substituting  a and n in $b = ax - ny$ results to $b = pgx - phy = p(gx - hy)$. Since $(gx - hy)$ will result to some integer, let that integer be z, $z = (gx - hy)$. Therefore $b = p(z)$ which implies that $p \mid b$ or rather $(a, n) \mid b$.
+    \item Given integers p, a, b, n with $n>0$. Let $p = (a,n)$. We know that $p \mid b$ where $b = pz = p(gx - hy)$ for some integer z that is equal to $(gx - hy), \exists g,h,x,y \in \mathbf{Z}$. Then, by direct proof;
+    \begin{flalign*}
+        &&  b &= p(gx - hy)&& \\
+        &&  b &= pgx - phy&& \\
+        &&  b &= ax - ny&& \text{Since (proven in 1.) $a = pg$ and $n = ph$}\\
+        &&  ny &= ax - b&&\\
+        &&  ax &\equiv b \;(\bmod\; n)&&
+    \end{flalign*}
+    Thus, $ax \equiv b \;(\bmod\; n)$ has a solution if and only if $(a,n) \mid b$.
+\end{enumerate}
+\end{proof}
+
+\subsection*{3.21 Question} 
+\quad \textit{What does the proceeding theorem tell us about the congruence (4) in Exercise 3.18 above?}
+
+That $24x \equiv 123 \;(\bmod\; 213)$ has a solution if and only if $(24, 213) \mid 123$.
+
+\subsection*{3.22 Exercise} 
+\quad \textit{Use the Euclidean Algorithm to find a member x of the canonical complete residue system modulo 213 that satisfies $24x \equiv 123 \;(\bmod\; 213)$. Find all members x of the canonical complete residue system modulo 213 that satisfy $24x \equiv 123 \;(\bmod\; 213)$.}
+
+Done in question 3.18.
+
+\subsection*{3.23 Question} 
+\quad \textit{Let a, b, and n be integers with $n>0$. How many solutions are there to the linear congruence $ax \equiv b \;(\bmod\; n)$ in the canonical complete residue system modulo n? Can you describe a technique to find them?}
+
+There are infinite number. We can find them by simplifying the modulo with the fundamental rule of arithmetic as well as finding the new modulo $\frac{n}{((gcd(a, b)),n)}$. This way we are able to find the smallest possible x. Then any other x would be $x_0 + \frac{n}{((gcd(a, b)),n)} \times [1,....]$. 
+
+\subsection*{3.24 Theorem} 
+\quad \textit{Let a, b, and n be integers with $n > 0$. Then}
+\begin{enumerate}
+    \item \textit{The congruence $ax \equiv b \;(\bmod\; n)$ is solvable in integers if and only if $(a,n) \mid b$;}
+    \item \textit{If $x_0$ is solution to the congruence $ax \equiv b \;(\bmod\; n)$, then all solutions are given by}
+        \begin{center}
+            $x_0 + (\frac{n}{(a,n)} \cdot m) \;(\bmod\; n)$
+        \end{center}
+        \textit{for $m = 0, 1, 2,...,(a,n)-1;$ and}
+    \item \textit{If $ax \equiv b \;(\bmod\; n)$ has a solution, then there are exactly (a,n) solution in the canonical complete residue modulo n.}
+\end{enumerate}
+
+\begin{proof}
+By theorem, 2.20 and 1.53.
+\end{proof}
+
+\subsection*{3.25 Exercise} 
+\quad \textit{A band of 17 pirates stole a sack of gold coins. When they tried to divide the fortune into equal portions, 3 coins remained, In the ensuing brawl over who should get the extra coins, on pirates was killed. The coins were redistributed, but this time an equal division left 10 coins. Again they fought about who should get the remaining coins and another pirates was killed. Now fortunately, the coins could be divided evenly among the surviving 15 pirates. What was the fewest number of coins that could have been in the sack?}
+
+\begin{itemize}
+    \item $x \equiv 3 \;(\bmod\; 17)$, let $r_1 = 3$.
+    \item $x \equiv 10 \;(\bmod\; 16)$, let $r_2 = 10$.
+    \item $x \equiv 0 \;(\bmod\; 15)$, let $r_3 = 0$.
+\end{itemize}
+
+\begin{flalign*}
+    &\text{Let k be the product of each total number of pirates} &&\\
+    &p = 15 \cdot 16 \cdot 17 = 4080 &&\\
+    &\text{let $p_1, p_2 and p_3$ be the quotient of p by each instance number of pirates.} &&\\
+    &\text{Then we express each congruence from above using each quotient for some integer $x_1, x_2$ and $x_3$.} &&\\
+    &p_1 = 4080 \div 17 = 240 &&\\
+    &\Longrightarrow 240x \equiv 1 \;(\bmod\; 17) \Longrightarrow 240x_1 - 1 \equiv 0 \;(\bmod\; 17)&&\\
+    &p_2 = 4080 \div 16 = 255 &&\\
+    &\Longrightarrow 255x \equiv 1 \;(\bmod\; 16) \Longrightarrow 255x_2 - 1 \equiv 0 \;(\bmod\; 16)&&\\
+    &p_3 = 4080 \div 15 = 272 &&\\
+    &\Longrightarrow 272x \equiv 1 \;(\bmod\; 15) \Longrightarrow 272x_3 - 1 \equiv 0 \;(\bmod\; 15)&&
+\end{flalign*}
+
+For each congruence, we can attempt to find $x_1, x_2$ and $x_3$ using the definition $a \mid b \Longrightarrow a \cdot bc, \exists a,b,c \in \mathbf{Z}$.\\
+
+For $p_1$:
+\begin{flalign*}
+    & 17 \mid 240x_1 - 1&&\\
+    &\Longrightarrow 17y_1 = 240x_1 - 1 \text{, for some integer $y_1$}&&  \\
+    &\Longrightarrow 240x_1 - 17y_1 = 1&&\\
+    &\text{Note that gcd(240, 17) is 1. Thus by Theorem 1.39, $240a + 17b = 1$ for some integer a and b.} &&\\
+    &\Longrightarrow 240a + 17b = 1&&\\
+    &\Longrightarrow 240(-8) + 17(113) = 1&&\\
+    &\Longrightarrow a = -8&&\\
+    &\Longrightarrow x_1 \equiv -8 \equiv 9 \;(\bmod\; 17)&&
+\end{flalign*}
+
+For $p_2$:
+\begin{flalign*}
+    & 16 \mid 255x_2 - 1&&\\
+    &\Longrightarrow 16y_2 = 255x_2 - 1 \text{, for some integer $y_2$}&&  \\
+    &\Longrightarrow 255x_2 - 16y_2 = 1&&\\
+    &\text{Note that gcd(255, 16) is 1. Thus by Theorem 1.39, $255a + 16b = 1$ for some integer a and b.} &&\\
+    &\Longrightarrow 255a + 16b = 1&&\\
+    &\Longrightarrow 255(-1) + 16(16) = 1&&\\
+    &\Longrightarrow a = -1&&\\
+    &\Longrightarrow x_2 \equiv -1 \equiv 15 \;(\bmod\; 16)&&
+\end{flalign*}
+
+For $p_2$:
+\begin{flalign*}
+    & 15 \mid 272x_3 - 1&&\\
+    &\Longrightarrow 15y_3 = 272x_3 - 1 \text{, for some integer $y_3$}&&  \\
+    &\Longrightarrow 272x_3 - 15y_3 = 1&&\\
+    &\text{Note that gcd(272, 15) is 1. Thus by Theorem 1.39, $272a + 15b = 1$ for some integer a and b.} &&\\
+    &\Longrightarrow 272a + 15b = 1&&\\
+    &\Longrightarrow 272(-7) + 15(127) = 1&&\\
+    &\Longrightarrow a = -7&&\\
+    &\Longrightarrow x_3 \equiv -7 \equiv 8 \;(\bmod\; 15)&&
+\end{flalign*}
+
+\begin{flalign*}
+    &n  = (x_1 \times r_1 \times p_1) + (x_2 \times r_2 \times p_2) + (x_3 \times r_3 \times p_3)&&\\
+    &n  = (9 \times 3 \times 240) + (15 \times 10 \times 255) + (8 \times 0 \times 272) = 44730&&\\
+    &n \;(\bmod\; p) \equiv 44730 \;(\bmod\; 4080) \equiv 3930.&&
+\end{flalign*}
+
+Thus, $x = 3930$.
+
+\subsection*{3.26 Exercise (Brathmagupta, 7th century A.D.)} 
+\quad \textit{When eggs in a basket are removed two, three, four, five, or six at a time, there remain, respectively, one, two, three, four, or five eggs. When they are taken out seven a a time,  none are left over. Find the smallest number of eggs that could have been contained in the basket.}
+
+Let the smallest number of eggs be x. Based off the context, we can make a few assumptions about x;
+\begin{itemize}
+    \item $7 \mid x$
+    \item $x \;(\bmod\; 2) \equiv 1$, thus an odd number.
+    \item $x \;(\bmod\; 3) \equiv 2$.
+    \item $x \;(\bmod\; 4) \equiv 3$.
+    \item $x \;(\bmod\; 5) \equiv 4$, thus the last digit of x must be 9 since 9 is odd.
+    \item $x \;(\bmod\; 6) \equiv 5$.
+\end{itemize}
+
+We can try to list all multiples of 7 that are odd and end with a 9. And then see if all assumptions apply;
+\begin{itemize}
+    \item $\cancel{49}$ since $49 \;(\bmod\; 3) \equiv 1$ 
+    \item 119 is the correct least number of eggs.
+    \item $\cancel{189}$ since $189 \;(\bmod\; 3) \equiv 0$ 
+    \item $\cancel{259}$ since $259 \;(\bmod\; 3) \equiv 1$ 
+    \item $\cancel{329}$ since $329 \;(\bmod\; 4) \equiv 1$ 
+\end{itemize}
+Thus $x = 119$.
+
+\subsection*{3.27 Theorem} 
+\quad \textit{Let a, b, m, and n be integers with $m>0$ and $n>0$. Then the system}
+\begin{flalign*}
+    && x &\equiv a \;(\bmod\; n)&&\\
+    && x &\equiv b \;(\bmod\; m)&&
+\end{flalign*}
+\textit{has a solution if and only if $(n,m) \mid a-b$.}
+
+\begin{proof}
+We can prove this theorem from 2 side 
+Given the system above with x as it's solution. We can also identify that $x \equiv a \;(\bmod\; n) \Longrightarrow x - a\equiv 0 \;(\bmod\; n)$ implies that $ n \mid x - a$. Similarly for $x \equiv b \;(\bmod\; m)$ where $x - b$ is a multiple of m. 
+
+Moreover, by definition, $x-a$ and $x-b$ must also both multiples of gcd(n, m) where $gcd(n,m) \mid x - a$ and $gcd(n,m) \mid x - b$. That also implies also that $(x-b) - (x-a)$ is also a multiple of gcd(n, m), by Theorem 1.2. By subtraction, we can get $a - b$ from $(x-b) - (x-a) = x - b -x + a = a - b$. Thus, $gcd(n,m) \mid a-b$.\\
+
+Furthermore, assuming the same system above, we can also prove this moving backwards and constructing the system's congruence given that $gcd(n, m) \mid a-b$. Firstly, we want to construct the solution $x \equiv a \;(\bmod\; n)$. By definition, $x = a + hn, \exists h \in \mathbf{Z}$. Hence, based off the second congruence, we need to find the integer h such that $a + hn \equiv b \;(\bmod\; m)$ which can also be expressed as $hn \equiv b-a \;(\bmod\; m)$.  
+
+Now, suppose that $t = gcd(n, m)$ thus $t \mid a - b$. Then by definition, $t \times s = a - b, \exists s \in \mathbf{Z}$ and $-s = \frac{b-a}{t}$. By theorem 1.40, we know that there exists the solution to $nx + my = t, \exists x, y \in \mathbf{Z}$. By definition of congruences, this can also be expressed as $nx \equiv t \;(\bmod\; m)$. By direct proof;
+\begin{flalign*}
+    && nx &\equiv t \;(\bmod\; m)&&\\
+    && nx(-s) &\equiv t(-s) \;(\bmod\; m)&& \text{Multiplying $-s$ in both sides}\\
+    && n(-xs) &\equiv b - a \;(\bmod\; m)&& \text{$-s = \frac{b-a}{t}$}\\
+    && nh &\equiv b - a \;(\bmod\; m)&& \text{Since x, s and h $\in \mathbf{Z}$, we can say that $h = -xs$}
+\end{flalign*}
+Thus, $x = a + hn = a + n(-xs)$ which satisfies the system.
+\end{proof}
+
+\subsection*{3.28 Theorem} 
+\quad \textit{Let a, b, m, and n be integers with $m>0$, $n>0$, and $(m,n) = 1$. Then the system}
+\begin{flalign*}
+    && x &\equiv a \;(\bmod\; n)&&\\
+    && x &\equiv b \;(\bmod\; m)&&
+\end{flalign*}
+\textit{has a unique solution modulo mn.}
+
+\begin{proof}
+Given the system above, we know from theorem 3.27 that the system has a solution if and only if $(n,m) \mid a-b$ and in this case $(n,m) \mid a-b \Longrightarrow 1 \mid a-b$. However, to show that the solution x modulo mn unique, we need to satisfy that for the following given system, $x_0 = x_1$;
+\begin{flalign*}
+    && x_0 \equiv a \;(\bmod\; n)\text{ and }& x_0 \equiv b \;(\bmod\; m)&&\\
+    && x_1 \equiv a \;(\bmod\; n)\text{ and }& x_1 \equiv b \;(\bmod\; m)&&
+\end{flalign*}
+By subtraction of each congruence $x_0 - x_1$, we get the following;
+\begin{flalign*}
+    && x_0 - x_1 &\equiv a - a \equiv 0 \;(\bmod\; n) \Longrightarrow n \mid (x_0 - x_1)&&\\
+    && x_0 - x_1 &\equiv b - b \equiv 0 \;(\bmod\; m) \Longrightarrow m \mid (x_0 - x_1)&&
+\end{flalign*}
+Since $gcd(n, m) = 1$ and $x_0 - x_1$ is a multiple of both n and m, by theorem 1.42, we can express $mn \mid (x_0 - x_1)$. Thus, this implies that $x_0 - x_1 \equiv 0 \;(\bmod\; mn) \Longrightarrow x_0 \equiv x_1 \;(\bmod\; mn)$ which satisfies the uniqueness if the solution x.
+\end{proof}
+
+\subsection*{3.29 Theorem (Chinese Remainder Theorem)} 
+\quad \textit{Suppose $n_1, n_2,...,n_L$ are positive integers that are pairwise relatively prime, that is, $(n_i, n_j) = 1$ for $i \neq j, 1 \leq i, \j \leq L$. Then the system of L congruences}
+
+\begin{flalign*}
+    && x &\equiv a_1 \;(\bmod\; n_1)&&\\
+    && x &\equiv a_2 \;(\bmod\; n_2)&&\\
+    && &\ldots &&\\
+    && x &\equiv a_L \;(\bmod\; n_L)&&
+\end{flalign*}
+
+\textit{has a unique solution modulo the product $n_1n_2n_3...n_L$.}
+
+\begin{proof}
+Given the system above. Suppose that the solution x can be deconstructed as:
+\begin{center}
+    $x = A_1x_1 + A_2x_2 + ... + A_Lx_L$
+\end{center}
+Since $n_1, n_2,...,n_L$ are pairwise relatively prime. We know that no integers in $\{n_1, n_2,...,n_L\}$ have any primes in the same set. Therefore, for example $\frac{n_1n_2...n_L}{n_1} = n_2...n_L$. And the same goes for all integers.
+We can now replace all $A_1, A_2,..,A_L$ with the product of the corresponding $n_1, n_2,...,n_L$;
+
+\begin{flalign*}
+    && \frac{n_1n_2...n_L}{n_1}x_1 &\equiv a_1 \;(\bmod\; n_1)&&\\
+    && \frac{n_1n_2...n_L}{n_2}x_2 &\equiv a_2 \;(\bmod\; n_2)&&\\
+    && &\ldots &&\\
+    && \frac{n_1n_2...n_L}{n_L}x_L &\equiv a_L \;(\bmod\; n_L)&&
+\end{flalign*}
+
+By Theorem 3.20, the solution for all $x_L$ exists if and only if $(A_L, n_L) \mid a_L$. Thus we are able to find all possible solutions for $x_1, x_2,...,x_L$ and also by replacing it back into the system we can then find the unique solution x.
+
+Moreover, by contradiction, lets now assume that $x'$ is found as a solution with x. Using the same proof as in theorem 3.28, we'll need to prove that $n_1n_2...n_L \mid x - x'$. Since we know that $n_1, n_2,...,n_L$ are pairwise relatively prime. We can conclude that $n_1n_2...n_L \mid x - x'$ is valid. Thus, by definition, making $x \equiv x' \;(\bmod\; n_1n_2...n_L)$ which satisfies the uniqueness if the solution.
+\end{proof}
+
+\subsection*{3.30 Blank Paper Exercise} 
+\begin{itemize}
+    \item Modulo to the power
+    \item Polynominal Modulo
+    \item Canoical complete residue systems
+    \item Linear Congrueneces
+    \item Chinese Remainder Theorem
+    \item Proof 3.24 and 3.29 were extremely difficult. Required a lot of research and readings.
+\end{itemize}
+
+\end{document}
