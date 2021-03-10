@@ -8,7 +8,7 @@ This repository is a collection of proofs from Number Theory and Cyrptography re
 
 ### From "[_Number Theory Through Inquiry_](https://bookstore.ams.org/text-9)"
 
-- Divide and Conquer [[.pdf]](https://github.com/elninokr/MathsProofs/blob/master/divide%26conquer_proofs/divide%26conquer_proofs.pdf) [[.tex]](https://github.com/elninokr/MathsProofs/blob/master/divide%26conquer_proofs/divide%26conquer_proofs.tex)
+- Divide and Conquer [[.pdf]](https://github.com/elninokr/MathsProofs/blob/master/divide%26conquer_proofs/divide_conquer_proofs.pdf) [[.tex]](https://github.com/elninokr/MathsProofs/blob/master/divide%26conquer_proofs/divide%26conquer_proofs.tex)
 - Prime Time [[.pdf]](https://github.com/elninokr/MathsProofs/blob/master/primes_proofs/prime_proofs.pdf) [[.tex]](https://github.com/elninokr/MathsProofs/blob/master/primes_proofs/prime_proofs.tex)
 - A Modular World [[.pdf]](https://github.com/elninokr/MathsProofs/blob/master/modular_proofs/modular_proofs.pdf) [[.tex]](https://github.com/elninokr/MathsProofs/blob/master/modular_proofs/modular_proofs.tex)
 - Fermat's Little Theorem and Euler's Theorem [[.pdf]](https://github.com/elninokr/MathsProofs/blob/master/fermat%26euler_proofs/fermat%26euler_proofs.pdf) [[.tex]](https://github.com/elninokr/MathsProofs/blob/master/fermat%26euler_proofs/fermat%26euler_proofs.tex)
