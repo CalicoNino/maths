@@ -18,3 +18,7 @@ This repository is a collection of proofs from Number Theory and Cyrptography re
 - Pythagorean Triples, Sums of Squares, and Fermat's Last Theorem [[.pdf]](https://github.com/elninokr/MathsProofs/blob/master/pythagoreantriples_sumofsquares_FLT_proofs/pythagoreantriples_sumofsquares_FLT_proofs.pdf) [[.tex]](https://github.com/elninokr/MathsProofs/blob/master/pythagoreantriples_sumofsquares_FLT_proofs/pythagoreantriples_sumofsquares_FLT_proofs.tex)
 - Rationals Close to Irrationals andthe Pell Equation [[.pdf]](https://github.com/elninokr/MathsProofs/blob/master/rational_close_2_irrationals%26pell_equation_proofs/rational_close_2_irrationals%26pell_equation_proofs.pdf) [[.tex]](https://github.com/elninokr/MathsProofs/blob/master/rational_close_2_irrationals%26pell_equation_proofs/rational_close_2_irrationals%26pell_equation_proofs.tex)
 - The Search for Primes [[.pdf]](https://github.com/elninokr/MathsProofs/blob/master/search4primes_proofs/search4primes__proofs.pdf) [[.tex]](https://github.com/elninokr/MathsProofs/blob/master/search4primes_proofs/search4primes__proofs.tex)
+
+## Cryptography
+
+- RSA Computational Essay [[.pdf]](https://github.com/elninokr/MathsProofs/blob/master/RSA.pdf) [[.tex]](https://github.com/elninokr/MathsProofs/blob/master/RSA.tex)
