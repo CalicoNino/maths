@@ -1,0 +1,953 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Divide \& Conquer Proofs}
+\author{Karim El Shenawy}
+\date{January 2021}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+This course notebook is the collection of theorem proofs, exercises and answers from Unit 1 of the Number Theory Through Inquiry (Mathematical Association of America Textbooks).
+
+\section*{Theorem Proofs to Mark}
+
+\subsection*{1.3 Theorem} 
+\quad \textit{Let a, b, and c be integers. If $a \vert b$ and $a \vert c$, then $a \vert bc$.}
+
+\begin{proof}
+Our hypothesises is that $a \vert b$ and $a \vert c$ are, by definition, $b = k_1a$ and $c = k_2a$ for some integer $k_1$ and $k_2$. Then, $a \vert bc$ means that $bc = (k_1a)(k_2a) = k_1k_2a^2$. Using that we can say that $bc = k_1k_2a^2 = (k_1k_2a)a$. Thus by definition, $a \vert (k_1k_2a)$, knowing that $bc= (k_1k_2a)a$, we can satisfy the definition of $a \vert bc$.
+\end{proof}
+
+\subsection*{1.18 Theorem} 
+\quad \textit{Let a, b, k and n be integers with $n > 0$ and $k > 1$. Show that if $a \equiv b \;(\bmod\; n)$, then}
+
+\begin{proof}
+\textbf{Base case (k = 1):  }
+    \begin{flalign*}
+        && a^{k} &\equiv b^{k} \;(\bmod\; n) &&\\
+        && a^{1} &\equiv b^{1} \;(\bmod\; n)
+    \end{flalign*}
+    Thus making the statement true if k = 1.\\
+\textbf{Inductive Hypothesis: } Assume k = h + 1\\
+\textbf{Inductive Step: }     
+    \begin{flalign*}
+        && a^{k} &\equiv b^{k} \;(\bmod\; n) &&\\
+        && a^{h+1} &\equiv b^{h+1} \;(\bmod\; n) &&\\
+        && a^{h}a &\equiv b^{h}b \;(\bmod\; n) && \text{(Exponential Property)}\\
+    \end{flalign*}
+    By theorem 1.14, we know that $a \equiv b \;(\bmod\; n)$ and $c \equiv d \;(\bmod\; n)$ then $ac \equiv bd \;(\bmod\; n)$. This helps satisfies $a^{h+1} \equiv b^{h+1} \;(\bmod\; n)$ since $a^{h} \equiv b^{h} \;(\bmod\; n)$ (similarly to $a^{k} \equiv b^{k} \;(\bmod\; n)$) and $a \equiv b \;(\bmod\; n)$.
+\end{proof}
+
+\subsection*{1.28 Theorem} 
+\quad \textit{Let a, b and n be integers with $n > 0$.  Then $a \equiv b \;(\bmod\; n)$ if and only if a and b have the same remainder when divided by n. Equivalently, $a \equiv b \;(\bmod\; n)$ if and only if when $a=nq_1+r_1$ $(0\leq r_1 \leq n-1)$ and $b = nq_2+r_2$ $ (0\leq r_2 \leq n-1)$, then $r_1=r_2$.}
+
+\begin{proof}
+By definition, $a \equiv b \;(\bmod\; n)$ can be expressed as $n \vert a-b \Longleftrightarrow a-b = nk$ with $ k \in \mathbb{Z}$ which can also be expressed as $a = nk + b$. This statement is similar to the division algorithm $m = nq + r$. This shows that b is the remainder when a is divided by n. Now, suppose r is the remainder of b when divided by n $b = qn + r \Longleftrightarrow b \equiv r \;(\bmod\; n)$ with $q \in \mathbb{Z}$:
+\begin{flalign*}
+    && a &= nk + b &&\\
+    && a &= nk + (qn + r) && \text{(Substituting b)}\\
+    && a &= n(k +q) + r
+\end{flalign*}
+Thus r is also the remainder of a, $a \equiv r \;(\bmod\; n)$ as $(k +q)$ is some integer.
+\end{proof}
+
+\subsection*{1.32 Theorem} 
+\quad \textit{Let a, n, b, r and k be integers. If $a = nb +r$ and $k \vert a$ and $k \vert b$, then $k \vert r$.}
+
+\begin{proof}
+By definition, $k \vert a$, $k \vert b$ and $k \vert r$ can be expressed as:
+    \begin{flalign*}
+        &&  a &= tk && \text{where $t \in \mathbb{Z}$ and $t > 0$}
+    \end{flalign*}
+Similarly,
+    \begin{flalign*}
+        &&  b &= sk && \text{where $s \in \mathbb{Z}$ and $s > 0$}
+    \end{flalign*}
+and
+    \begin{flalign*}
+        &&  r &= uk && \text{where $u \in \mathbb{Z}$ and $u > 0$}
+    \end{flalign*}
+Substituting in $a = nb +r$:
+    \begin{flalign*}
+        &&  a &= nb +r &&\\
+        &&  tk &= n(sk) +r &&\\
+        &&  tk - n(sk) &= r &&\\
+        &&  (t - ns)k &= r
+    \end{flalign*}
+Where $t-ns \in \mathbb{Z}$ and $t-ns > 0$ same as $u$ in $r = uk$, thus satisfying $k \vert r$.
+\end{proof}
+
+\subsection*{1.43 Theorem} 
+\quad \textit{Let a, b, and n be integers. If (a,n) = 1 and (b,n) = 1, then (ab, n) = 1.}
+
+\begin{proof}
+By definition, $(a,n) = 1$ and $(b,n) = 1$ can be expressed as $(a,n) = 1 \Longrightarrow at + ns = 1 \Longrightarrow at = 1-ns, \exists t,s \in \mathbb{Z}$ and $(b,n) = 1 \Longrightarrow bu + nv = 1 \Longrightarrow bu = 1-nv, \exists u,v \in \mathbb{Z}$. By multiplying both equations, we get $at * bu$
+    \begin{flalign*}
+        && (at)(bu) &= (1-ns)(1-nv) &&\\
+        && ab(tu) &= 1-ns-nv-n^{2}sv &&\\
+        && ab(tu) &= 1-n(s-v-nsv) &&\\
+        && ab(tu)+n(s-v-nsv) &= 1 &&\\
+        && ab(x)+n(s-v-nsv) &= 1 &&\text{($tu = x$ where $x \in \mathbb{Z}$)}\\
+        && ab(x)+n(y) &= 1 &&\text{($(s-v-nsv) = y$ where $y \in \mathbb{Z}$)}\\
+    \end{flalign*}
+    Thus, by definition $ab(x)+n(y) = 1 \Longrightarrow gcd(ab,n)=1$.
+\end{proof}
+
+\subsection*{1.58 Corollary} 
+\quad \textit{If a and b are natural numbers, then $lcm(a,b) = ab$ if and only if a and b are relatively prime.}
+
+\begin{proof}
+If a and b are not relative primes then $gcd(a,b) = c > 1$.\\
+Since $\gcd(a,b) \cdot lcm(a,b) = ab \Rightarrow abc \neq ab$. Thus a and b must be relative primes so gcd(a,b) = 1.
+\end{proof}
+
+\section*{Practice Theorems from Divisibility \& Congruence}
+
+\subsection*{1.1 Theorem} 
+\quad \textit{Let a, b, and c be integers. If $a \vert b$ and $a \vert c$, then $a \vert (b+c)$.}
+
+\begin{proof}
+Our hypothesises that $a \vert b$ and $a \vert c$ both mean respectively, by definition, that $b = k_1a$ and $c = k_2a$ for some integer $k_1$ and $k_2$. Also by definition, $a \vert (b+c)$ means that $b + c = k_3a$ for some integer $k_3$. Using that we can say that $b + c = k_1a + k_2a = a(k_1+k_2) = k_3a$. Thus by definition, $a \vert a(k_1+k_2)$, knowing that $(b+c) = a(k_1+k_2)$, we can satisfy the definition of $a \vert (b+c)$.
+\end{proof}
+
+\subsection*{1.2 Theorem} 
+\quad \textit{Let a, b, and c be integers. If $a \vert b$ and $a \vert c$, then $a \vert (b-c)$.}
+
+\begin{proof}
+Our hypothesises that $a \vert b$ and $a \vert c$ both mean respectively, by definition, that $b = k_1a$ and $c = k_2a$ for some integer $k_1$ and $k_2$. Also by definition, $a \vert (b-c)$ means that $b - c = k_3a$ for some integer $k_3$. Using that we can say that $b - c = k_1a - k_2a = a(k_1 - k_2) = k_3a$. Thus by definition, $a \vert a(k_1 - k_2)$, knowing that $(b - c) = a(k_1 - k_2)$, we can satisfy the definition of $a \vert (b - c)$.
+\end{proof}
+
+\subsection*{1.3 Theorem} 
+\quad \textit{Let a, b, and c be integers. If $a \vert b$ and $a \vert c$, then $a \vert bc$.}
+
+\begin{proof}
+Our hypothesises that $a \vert b$ and $a \vert c$ both mean respectively, by definition, that $b = k_1a$ and $c = k_2a$ for some integer $k_1$ and $k_2$. Also by definition, $a \vert bc$ means that $bc = (k_1a)(k_2a) = k_1k_2a^2$. Using that we can say that $bc = k_1k_2a^2 = (k_1k_2a)a$. Thus by definition, $a \vert (k_1k_2a)$, knowing that $bc= (k_1k_2a)a$, we can satisfy the definition of $a \vert bc$.
+\end{proof}
+
+\subsection*{1.4 Question} 
+\quad \textit{Can you weaken the hypothesis of the previous theorem and still prove the conclusion? Can you keep the same hypothesis, but replace the conclusion by the stronger conclusion that $a^2 \vert bc$ and still prove the theorem?}
+
+We can weaken the hypothesis by saying that by definition, if $a \vert c$ is true then $a \vert kc$ for some integer k. We can then maintain the same hypothesis and also state that because $bc = (k_1a)(k_2a) = k_1k_2a^2$, $a^2 \vert bc$
+
+\subsection*{1.5 Question} 
+\quad \textit{Can you formulate your own conjecture along the lines of the above theorems and then prove it to make your theorem?}
+
+We can formulate the following conjecture: \textit{Let a, b and c be integers. If $a \vert b$ and $a \vert c$ then $a \vert t$ where $t$ is the sum, difference or the multiplication total of $b$ and $c$.}
+\begin{proof}
+Using theorems 1.1, 1.2 and 1.3, we can proof this theorem.
+\end{proof}
+
+\subsection*{1.6 Theorem} 
+\quad \textit{Let a, b, and c be integers. If $a \vert b$, then $a \vert bc$.}
+
+\begin{proof}
+By definition, we can deduce that $bc = ka$ where $k \in \mathbb{Z}$ since $a \vert b$ then $b = na$ where $n \in \mathbb{Z}$. Substituting b, 
+\begin{flalign*}
+    && bc &= ka &&\\
+    && (na)c &= ka &&\\
+    && a(nc) &= a(k) &&\\
+    && (nc) &= (k)
+\end{flalign*}
+Which ca n be expressed as $c \vert k$. Therefore, we can conclude that $bc = ka$ is true.
+
+\end{proof}
+
+\subsection*{1.7 Exercise} 
+\begin{enumerate}
+    \item \textit{Is $45 \equiv 9 \;(\bmod\; 4)$?}
+    \newline Yes, since $4 \vert (45-9) = 4 \vert 36$ and 4 does divide 36.
+    \item \textit{Is $37 \equiv 2 \;(\bmod\; 5)$?}
+    \newline Yes, since $5 \vert (37-2) = 5 \vert 35$ and 5 does divide 35.
+    \item \textit{Is $37 \equiv 3 \;(\bmod\; 5)$?}
+    \newline No, since $5 \vert (37-3) = 5 \vert 34$ and 5 does not divide 34.
+    \item \textit{Is $37 \equiv -3 \;(\bmod\; 5)$?}
+    \newline Yes, since $5 \vert (37-(-3)) = 5 \vert 40$ and 5 does divide 40.
+\end{enumerate}
+
+\subsection*{1.8 Exercise} 
+\begin{enumerate}
+    \item $m \equiv 0 \;(\bmod\; 3)$.
+    \newline $m$ can be any integer such that $3 \vert m$ thus m can be any integer from \{$-3(N), -3(N-1)...-3(1), 3(1),3(2),3(3),12,15...3(N-1), 3(N)$\} where is $N$ is the length of the set.
+    \item $m \equiv 1 \;(\bmod\; 3)$.
+    \newline $m$ can be any integer such that $3 \vert (m+1)$ thus m can be any integer from \{$-3(N)-1, -3(N-1)-1...-3(1)-1, 3(1)-1,3(2)-1,3(3)-1,11,14...3(N-1)-1, 3(N)-1$\} where is $N$ is the length of the set.
+    \item $m \equiv 2 \;(\bmod\; 3)$.
+    \newline $m$ can be any integer such that $3 \vert (m+2)$ thus m can be any integer from \{$-3(N)-2, -3(N-1)-2...-3(1)-2, 3(1)-2,3(2)-2,3(3)-2,10,13...3(N-1)-2, 3(N)-2$\} where is $N$ is the length of the set.
+    \item $m \equiv 3 \;(\bmod\; 3)$.
+    \newline $m$ can be any integer such that $3 \vert m$ thus m can be any integer from \{$-3(N), -3(N-1)...-3(1), 3(1),3(2),3(3),12,15...3(N-1), 3(N)$\} where is $N$ is the length of the set.
+    \item $m \equiv 4 \;(\bmod\; 3)$.
+    \newline $m$ can be any integer such that $3 \vert m+4$ thus m can be any integer from \{$-3(N)-1, -3(N-1)-1...-3(1)-1, 3(1)-1,3(2)-1,3(3)-1,11,14...3(N-1)-1, 3(N)-1$\} where is $N$ is the length of the set.
+\end{enumerate}
+
+\subsection*{1.9 Theorem} 
+\quad \textit{Let a, and n be integers with $n > 0$. Then $a \equiv a \;(\bmod\; n)$.}
+
+\begin{proof}
+By Definition, the statement above can be written as $n \vert a-a$ which would also mean that $n \vert 0$. And $n$ does divide $0$ with the following logic $0 = n * 0$.
+\end{proof}
+
+\subsection*{1.10 Theorem} 
+\quad \textit{Let a, b, and n be integers with $n > 0$. If $a \equiv b \;(\bmod\; n)$, then $b \equiv a \;(\bmod\; n)$}
+
+\begin{proof}
+By definition, we can represent the above statements as $n \vert a-b$ and $n \vert b-a$. Using the Theorem 1.2 proved above we can deduce that this is true.
+\end{proof}
+
+\subsection*{1.11 Theorem} 
+\quad \textit{Let a, b, c and n be integers with $n > 0$. If $a \equiv b \;(\bmod\; n)$ and $b \equiv c \;(\bmod\; n)$ then $a \equiv c \;(\bmod\; n)$}
+
+\begin{proof}
+By definition, $a \equiv b \;(\bmod\; n)$ can be represented as:
+\begin{flalign*}
+&& (a-b) &= nk && \text{for a given integer k} \\
+\Rightarrow && 1) b &= a - nk
+\end{flalign*}
+
+Similarly, 
+\begin{flalign*}
+&& (c-b) &= ns && \text{for a given integer s} \\
+\Rightarrow && 2) b &= c - ns
+\end{flalign*}
+Now equating 1) and 2),
+\begin{flalign*}
+&& c &= c && \\
+\Rightarrow && a-nk &= c - ns && \\
+\Rightarrow && a-c &= nk - ns && \\
+\Rightarrow && a-c &= n(k - s)
+\end{flalign*}
+Thus, satisfying the claim that $a \equiv c \;(\bmod\; n)$.
+\end{proof}
+
+\subsection*{1.12 Theorem} 
+\quad \textit{Let a, b, c, d and n be integers with $n > 0$. If $a \equiv b \;(\bmod\; n)$ and $c \equiv d \;(\bmod\; n)$ then $a + c \equiv b+d \;(\bmod\; n)$}
+
+\begin{proof}
+By definition, $a \equiv b \;(\bmod\; n)$ can be represented as:
+\begin{flalign*}
+&& (a-b) &= nk && \text{for a given integer k} \\
+\Rightarrow && 1) b &= a - nk
+\end{flalign*}
+
+Similarly, 
+\begin{flalign*}
+&& (c-d) &= ns && \text{for a given integer s} \\
+\Rightarrow && 2) d &= c - ns
+\end{flalign*}
+Now adding 1) and 2),
+\begin{flalign*}
+&& b+d &= (a - nk) + (c - ns) && \\
+\Rightarrow && b+d &= a + c - n(k + s) && \\
+\Rightarrow && n(k + s)&= (a + c) - (b+d)
+\end{flalign*}
+Thus, satisfying the claim that $a + c \equiv b+d \;(\bmod\; n)$.
+\end{proof}
+
+\subsection*{1.13 Theorem} 
+\quad \textit{Let a, b, c, d and n be integers with $n > 0$. If $a \equiv b \;(\bmod\; n)$ and $c \equiv d \;(\bmod\; n)$ then $a - c \equiv b-d \;(\bmod\; n)$}
+
+\begin{proof}
+By definition, $a \equiv b \;(\bmod\; n)$ can be represented as:
+\begin{flalign*}
+&& (a-b) &= nk && \text{for a given integer k} \\
+\Rightarrow && 1) b &= a - nk
+\end{flalign*}
+
+Similarly, 
+\begin{flalign*}
+&& (c-d) &= ns && \text{for a given integer s} \\
+\Rightarrow && 2) d &= c - ns
+\end{flalign*}
+Now subtracting 1) and 2),
+\begin{flalign*}
+&& b-d &= (a - nk) - (c - ns) && \\
+\Rightarrow && b-d &= a - c - n(k + s) && \\
+\Rightarrow && n(k + s)&= (a - c) - (b-d)
+\end{flalign*}
+Thus, satisfying the claim that $a - c \equiv b-d \;(\bmod\; n)$.
+\end{proof}
+
+\subsection*{1.14 Theorem} 
+\quad \textit{Let a, b, c, d and n be integers with $n > 0$. If $a \equiv b \;(\bmod\; n)$ and $c \equiv d \;(\bmod\; n)$ then $ac \equiv bd \;(\bmod\; n)$}
+
+\begin{proof}
+By definition, $a \equiv b \;(\bmod\; n)$ can be represented as:
+\begin{flalign*}
+&& (a-b) &= nk && \text{for a given integer k} \\
+\Rightarrow && 1) b &= a - nk
+\end{flalign*}
+
+Similarly, 
+\begin{flalign*}
+&& (c-d) &= ns && \text{for a given integer s} \\
+\Rightarrow && 2) d &= c - ns
+\end{flalign*}
+Now multiplying 1) and 2),
+\begin{flalign*}
+&& bd &= (a - nk)(c - ns) && \\
+\Rightarrow && bd &= ac - a(ns)-c(nk) + (nk)(ns) && \\
+\Rightarrow && bd &= ac - n*(a(s)-c(k) + n(k)(s))
+\end{flalign*}
+Thus, satisfying the claim that $ac \equiv bd \;(\bmod\; n)$.
+\end{proof}
+
+\subsection*{1.15 Theorem} 
+\quad \textit{Let a, b and n be integers with $n > 0$. Show that if $a \equiv b \;(\bmod\; n)$ then $a^2 \equiv b^2 \;(\bmod\; n)$}
+
+\begin{proof}
+$a^2 \equiv b^2 \;(\bmod\; n)$ can be represented as $a(a) \equiv b(b) \;(\bmod\; n)$ by exponential property. Based off Theorem 1.14, we know that $ac \equiv bd \;(\bmod\; n)$ if $a \equiv b \;(\bmod\; n)$ and $c \equiv d \;(\bmod\; n)$. This shows that $a^2 \equiv b^2 \;(\bmod\; n)$ is true.
+\end{proof}
+
+\subsection*{1.16 Theorem} 
+\quad \textit{Let a, b and n be integers with $n > 0$. Show that if $a \equiv b \;(\bmod\; n)$ then $a^3 \equiv b^3 \;(\bmod\; n)$}
+
+\begin{proof}
+By properties of exponents, $a^3 \equiv b^3 \;(\bmod\; n)$ can be represented as $(a)a^2 \equiv (a)b^2 \;(\bmod\; n)$. Using theorems 1.14 and 1.15, we can satisfy that $a^3 \equiv b^3 \;(\bmod\; n)$ is true.
+\end{proof}
+
+\subsection*{1.17 Theorem} 
+\quad \textit{Let a, b, k and n be integers with $n > 0$ and $k > 1$. Show that if $a \equiv b \;(\bmod\; n)$ and $a^{k-1} \equiv b^{k-1} \;(\bmod\; n)$, then}
+\begin{center}
+    $a^{k} \equiv b^{k} \;(\bmod\; n)$
+\end{center}
+
+\begin{proof}
+By properties of exponents, we can present the above statement as
+    \begin{flalign*}
+        && a^{k} &\equiv b^{k} \;(\bmod\; n) &&\\
+        && a^{k}a^1a^{-1} &\equiv b^{k}b^1b^{-1} \;(\bmod\; n)&&\\
+        && a^1a^{k-1} &\equiv b^1b^{k-1} \;(\bmod\; n)
+    \end{flalign*}
+Knowing that $a \equiv b \;(\bmod\; n)$ and $a^{k-1} \equiv b^{k-1} \;(\bmod\; n)$ and theorem 1.14, we can satisfy that $a^{k} \equiv b^{k} \;(\bmod\; n)$.
+\end{proof}
+
+\subsection*{1.18 Theorem} 
+\quad \textit{Let a, b, k and n be integers with $n > 0$ and $k > 1$. Show that if $a \equiv b \;(\bmod\; n)$, then}
+
+\begin{proof}
+\textbf{Base case (k = 1):  }
+    \begin{flalign*}
+        && a^{k} &\equiv b^{k} \;(\bmod\; n) &&\\
+        && a^{1} &\equiv b^{1} \;(\bmod\; n)
+    \end{flalign*}
+    Thus making the statement true if k = 1.\\
+\textbf{Inductive Hypothesis: } Assume k = h + 1\\
+\textbf{Inductive Step: }     
+    \begin{flalign*}
+        && a^{k} &\equiv b^{k} \;(\bmod\; n) &&\\
+        && a^{h+1} &\equiv b^{h+1} \;(\bmod\; n) &&\\
+        && a^{h}a &\equiv b^{h}b \;(\bmod\; n) && \text{(Exponential Property)}\\
+    \end{flalign*}
+    By theorem 1.14, we know that $a \equiv b \;(\bmod\; n)$ and $c \equiv d \;(\bmod\; n)$ then $ac \equiv bd \;(\bmod\; n)$. This helps satisfies $a^{h+1} \equiv b^{h+1} \;(\bmod\; n)$ since $a^{h} \equiv b^{h} \;(\bmod\; n)$ and $a \equiv b \;(\bmod\; n)$.
+\end{proof}
+
+\subsection*{1.19 Theorem}
+\begin{itemize}
+    \item \textbf{1.12 Theorem} $n = 3, a = 2, b = 17, c = 1$ and $d = 19$ then $2 + 1 \equiv 17+19 \;(\bmod\; 3)$
+    \item \textbf{1.13 Theorem} $n = 3, a = 2, b = 17, c = 1$ and $d = 19$ then $2 - 1 \equiv 17-19 \;(\bmod\; 3)$
+    \item \textbf{1.14 Theorem} $n = 3, a = 2, b = 17, c = 1$ and $d = 19$ then $2 *1 \equiv 17*19 \;(\bmod\; 3)$
+    \item \textbf{1.15 Theorem} $n = 3, a = 2, b = 17$ then $2^2 \equiv 17^2 \;(\bmod\; 3)$
+    \item \textbf{1.16 Theorem} $n = 3, a = 2, b = 17$ then $2^3 \equiv 17^3 \;(\bmod\; 3)$
+    \item \textbf{1.17 Theorem} $n = 3, a = 2, b = 17$ then $2^k \equiv 17^k \;(\bmod\; 3)$ where $k \in \mathbb{Z}$ and $k > 1$
+    \item \textbf{1.18 Theorem} $n = 3, a = 2, b = 17$ then $2^k \equiv 17^k \;(\bmod\; 3)$ where $k \in \mathbb{Z}$ and $k > 1$
+\end{itemize}
+
+\subsection*{1.20 Theorem} 
+\quad \textit{Let a, b, c and n be integers for which $ac \equiv bc \;(\bmod\; n)$. Can we conclude that $a \equiv b \;(\bmod\; n)$?}
+
+\begin{proof}
+By counterexample, given $a=1, b= 17, c=2$ and $n =3$ where $ac \equiv bc \;(\bmod\; n)$ with $1(2) \equiv 17(2) \;(\bmod\; 3)$. However, we can not conclude that $1 \equiv 17 \;(\bmod\; 3)$. 
+\end{proof}
+
+\subsection*{1.21 Theorem} 
+\quad \textit{Let a natural number n be expressed in base 10 as}
+\begin{center}
+    $n = a_ka_{k-1}...a_1a_0$
+\end{center}
+\textit{If $m=a_k+a_{k+1}+...+a_1+a_0$, then $n \equiv m \;(\bmod\; 3)$.}
+
+\begin{proof}
+By definition, $n \equiv m \;(\bmod\; 3)$ can be expressed as:
+    \begin{flalign*}
+        && 3 &\vert n-m &&\\
+    \end{flalign*}
+\end{proof}
+By theorem 1.2, for this theorem to be true, $3 \vert n$ and $3 \vert m$ must be true.
+
+\subsection*{1.22 Theorem} 
+\quad \textit{If a natural number is divisible by 3, then when expressed in base 10 , the sum of its digits is divisible by 3.}
+
+\begin{proof}
+Suppose natural number $n = a_ka_{k-1}...a_1a_0$ and sum of its digits $m=a_k+a_{k+1}+...+a_1+a_0$. We can use theorem 1.21 to prove this.
+\end{proof}
+
+\subsection*{1.23 Theorem} 
+\quad \textit{If the sum of the digits of a natural number expressed in base 10 is divisible by 3, then the number is divisible by 3 as well.}
+
+\begin{proof}
+Suppose natural number $n = a_ka_{k-1}...a_1a_0$ and sum of its digits $m=a_k+a_{k+1}+...+a_1+a_0$. We can use theorem 1.21 to prove this.
+\end{proof}
+
+\subsection*{1.24 Exercise} 
+\quad \textit{Suppose natural number $n = a_ka_{k-1}...a_1a_0$ and sum of its digits $m=a_k+a_{k+1}+...+a_1+a_0$. If the sum is divisible by 6, then the natural number is 3.}
+
+\begin{proof}
+By theorem 1.21, since 6 is divisible by 3 as well.
+\end{proof}
+
+\subsection*{1.25 Exercise} 
+
+\begin{enumerate}
+    \item $m = 25, n = 7$ 
+    \begin{flalign*}
+        m &= nq + r &&\\
+        25 &= 7q + r &&\\
+        25 &= 7\times3 + 4 &&\\
+        3 &= 7\times1 + 3 &&\\
+        7 &= 4\times1 + 3 &&\\
+    \end{flalign*}
+    $q = 3, r = 4$
+    \item $m = 277, n = 4$ 
+    \begin{flalign*}
+        m &= nq + r &&\\
+        277 &= 4q + r &&\\
+        277 &= 4\times69 + 1 &&\\
+        4 &= 4\times1 + 0
+    \end{flalign*}
+    $q = 69, r = 1$
+    \item $m = 33, n = 11$ 
+    \begin{flalign*}
+        m &= nq + r &&\\
+        33 &= 11q + r &&\\
+        33 &= 11\times3 + 0
+    \end{flalign*}
+    $q = 3, r = 0$
+    \item $m = 33, n = 45$ 
+    \begin{flalign*}
+        m &= nq + r &&\\
+        33 &= 45q + r &&\\
+        33 &= 45\times0 + 33
+    \end{flalign*}
+    $q = 1, r = -12$
+    
+\end{enumerate}
+
+\subsection*{1.26 Theorem} 
+\quad \textit{Prove the existence part of the Division Algorithm. (Hint: Given n and m, how will you define q? Once you choose this q, then how is r chosen? Then show that $0 \leq r \leq n -1$.)}
+
+\begin{proof}
+Suppose m and n both integers and positive where $m > n$. Given the equation $m-nq$, where $q \in \mathbb{Z}$, results to a set of non-negative integers $S$. Since $m > n$, $S$ is non empty.\\
+The set $S$ represents the remainders and let r be the smallest element with $0 \leq r$.\\
+By contradiction, since $r=m-nq$, if $r \geq n$, then $m-n(q)-n =r-n \Longleftrightarrow m-n(q+1) =r-n$. Now, $m-n(q+1) \leq r \leq 0$ which contradicts the fact that r is the smallest element of S. Therefore $0 \leq r \leq n-1$ is true and which we can use to find both r and q.
+
+\end{proof}
+
+\subsection*{1.27 Theorem} 
+\quad \textit{Prove the uniqueness part of the Division Algorithm. (Hint: If $nq+r = nq^{'}+r^{'}$, then $nq-nq^{'}=r^{'}-r$. Use what you know about $r$ and $r^{'}$ as part of your argument that $q = q^{'}$.}
+
+\begin{proof}
+We can create the assumption that $q$ and $r$ in the Division Algorithm are not unique. \\
+Given $q_1, q_2, r_1$ and $r_2$ are integers and $q_1 \neq q_2$ and $r_1 \neq r_2$, we can then assume that:
+\begin{flalign*}
+    && nq_1 +r_1 = m = nq_2 + r_2&& \text{with $0 \leq r_1, r_2 \leq n-1$}
+\end{flalign*}
+Then,
+\begin{flalign*}
+    && nq_1 +r_1 &= nq_2 + r_2 &&\\
+    && n(q_1 -q_2) &= r_2 - r_1 &&\\
+\end{flalign*}
+Which suggests that $n \vert r_2 - r_1$. With the above inequalities we can deduce that 
+\begin{flalign*}
+&& -n < r_2 - r_1 < n&&
+\end{flalign*}
+This suggests that the only multiple of n is 0 so $r_2 - r_1 = 0 \Longleftrightarrow r_2 = r_1$. this shows that r is unique. Consequently, we can deduce that $q_1 = q_2$ since $r_2 = r_1$ and $nq_1 +r_1 = nq_2 + r_2 = nq_1 + r_2 = nq_2 + r_1$. Thus both $q$ and $r$ are unique.
+\end{proof}
+
+\subsection*{1.28 Theorem} 
+\quad \textit{Let a, b and n be integers with $n > 0$.  Then $a \equiv b \;(\bmod\; n)$ if and only if a and b have the same remainder when divided by n. Equivalently, $a \equiv b \;(\bmod\; n)$ if and only if when $a=nq_1+r_1$ $(0\leq r_1 \leq n-1)$ and $b = nq_2+r_2$ $ (0\leq r_2 \leq n-1)$, then $r_1=r_2$.}
+
+\begin{proof}
+By definition, $a \equiv b \;(\bmod\; n)$ can be expressed as $n \vert a-b \longleftrightarrow a-b = nk$ with $ k \in \mathbb{Z}$ which can also be expressed as $a = nk + b$. this statement is similar to the division algorithm $m = nq + r$. This shows that b is the remainder when a is divided by n. Now, suppose r is r the remainder of b when divided by n $b = qn + r \Longleftrightarrow b \equiv r \;(\bmod\; n)$ with $q \in \mathbb{Z}$:
+\begin{flalign*}
+    && a &= nk + b &&\\
+    && a &= nk + (qn + r) && \text{(Substituting b)}\\
+    && a &= n(k +q) + r
+\end{flalign*}
+Thus r is also the remainder of a, $a \equiv r \;(\bmod\; n)$.
+\end{proof}
+
+\subsection*{1.29 Question} 
+\quad \textit{Do every two integers have a least one common divisor?}\\
+Yes, each number can be divided by at least one common divisor which is 1. For example, prime numbers.
+
+\subsection*{1.30 Question} 
+\quad \textit{Can two integers have infinitely many common divisors?}\\
+No, except for 0 and 0.
+
+\subsection*{1.31 Exercise} 
+\quad \textit{Find the the following greatest common divisors. Which pairs are relatively prime?}
+
+\begin{enumerate}
+    \item (36, 22)
+        \begin{flalign*}
+            \gcd(36, 22) &= 2 &&
+        \end{flalign*}
+    \item (45, -15)
+        \begin{flalign*}
+            \gcd(45, -15) &= 5 &&
+        \end{flalign*}
+    \item (-296, -88)
+        \begin{flalign*}
+            \gcd(-296, -88) &= 8 &&
+        \end{flalign*}
+    \item (0, 256)
+        \begin{flalign*}
+            \gcd(0, 256) &= 0 &&
+        \end{flalign*}
+    \item (15, 28)
+        \begin{flalign*}
+            \gcd(15, 28) &= 1 &&
+        \end{flalign*}
+    \item (1, -2436)
+        \begin{flalign*}
+            \gcd(1, -2436) &= 1 &&
+        \end{flalign*}
+\end{enumerate}
+
+\subsection*{1.32 Theorem} 
+\quad \textit{Let a, n, b, r and k be integers. If $a = nb +r$ and $k \vert a$ and $k \vert b$, then $k \vert r$.}
+
+\begin{proof}
+By definition, $k \vert a$, $k \vert b$ and $k \vert r$ can be expressed as:
+    \begin{flalign*}
+        &&  a &= tk && \text{where $t \in \mathbb{Z}$ and $t > 0$}
+    \end{flalign*}
+Similarly,
+    \begin{flalign*}
+        &&  b &= sk && \text{where $s \in \mathbb{Z}$ and $s > 0$}
+    \end{flalign*}
+and
+    \begin{flalign*}
+        &&  r &= uk && \text{where $u \in \mathbb{Z}$ and $u > 0$}
+    \end{flalign*}
+Substituting in $a = nb +r$:
+    \begin{flalign*}
+        &&  a &= nb +r &&\\
+        &&  tk &= n(sk) +r &&\\
+        &&  tk - n(sk) &= r &&\\
+        &&  (t - ns)k &= r
+    \end{flalign*}
+Where $t-ns \in \mathbb{Z}$ and $t-ns > 0$ same as $u$ in $r = uk$, thus satisfying $k \vert r$.
+\end{proof}
+
+\subsection*{1.33 Theorem} 
+\quad \textit{Let a, b, $n_1$ and $r_1$ be integers with a and b not both $0$. If $a = n_{1}b+r_1$, then $(a,b)=(b,r_1)$.}
+
+\begin{proof} 
+By the Division Algorithm, we know that:
+    \begin{flalign*}
+        &&  a &= n_1b +r_1 &&\\
+        &&  b &= n_1r_1 +r^{'} 
+    \end{flalign*}
+This goes on until $ 0 \leq r^{'} \leq n_1 - 1$, which shows that if $(a,b) = r^{'}$ then $(b,r_1) = r^{'}$.
+\end{proof}
+
+\subsection*{1.34 Exercise} 
+\quad \textit{Use the above theorem (Euclidean Algorithm) to show that if $a=51$ and $b=15$, then $(51, 15)=(6,3)=3$.}
+
+\begin{flalign*}
+    &&  51 &= 3 * 15 + 6 &&\\
+    &&  15 &= 2 * 6 + 3 &&\\
+    &&  6 &= 2 * 3 + 0
+\end{flalign*}
+Thus 6 is the $\gcd(51, 15)$ and since $3 \vert 6$ then $(51, 15)=(6,3)=3$.
+
+\subsection*{1.35 Exercise (Euclidean Algorithm)} 
+\quad \textit{Devise a procedure for finding the greatest common divisor of two integers using the previous theorem and the Division Algorithm.}
+Given (a,b), reorder a and b such that a is greater than b
+\begin{enumerate}
+    \item Divide a with b, the result should give an approximation to n
+    \item Now guess an n with an r such that r is the smallest value possible but not 0.
+    \item Replace a with b and b with r until no further possibilities available or until the remainder is 0. Then the r right before the remainder was 0 is our gcd.
+\end{enumerate}
+
+\subsection*{1.36 Exercise} 
+\quad \textit{Use the Euclidean Algorithm to find the gcd of}
+
+\begin{enumerate}
+    \item (96, 112) = 16
+    \begin{flalign*}
+        112 &= 1 * 96 + 16 &&\\ 
+        96 &= 6 * 16 + 0 
+    \end{flalign*}
+    \item (162, 31) = 1
+    \begin{flalign*}
+        162 &= 5 * 31 + 7 && \\
+        31 &= 4 * 7 + 3 && \\
+        7 &= 2 * 3 + 1 && \\
+        3 &= 3 * 1 + 0
+    \end{flalign*}
+    \item (0, 256)
+    \begin{flalign*}
+        256 &= 0 * 0 + 256 &&
+    \end{flalign*}
+        \text{Not possible}
+    \item (-288, -166) = 2
+    \begin{flalign*}
+        -288 &= 1 * -166 - 122 && \\
+        -166 &= 1 * -122 - 44  && \\
+        -122 &= 2 * -44 - 34 && \\
+        -44 &= 1 * -34 - 10 &&\\
+        -34 &= 3 * -10 - 4 &&\\
+        -10 &= 2 * -4 - 2 &&\\
+        -4 &= 2 * -2 + 0
+    \end{flalign*}
+    \item (1, -2436) = 1
+    \begin{flalign*}
+        -2436 &= -2436 * 1 = 0 &&
+    \end{flalign*}
+\end{enumerate}
+
+\subsection*{1.37 Exercise} 
+\quad \textit{Find integers x and y such that $162x+31y=1$.}
+
+Since x and y are integers they must satisfy:\\
+$1 \equiv 162x \;(\bmod\; 31)$ \\
+$1 \equiv 31y \;(\bmod\; 162)$\\
+
+We can find x by doing an multiplication inverse on $162 \;(\bmod\; 31) \equiv 9$. Then we can plug in x to find y which would be -47.
+
+\subsection*{1.38 Theorem} 
+\quad \textit{Let a and b be integers. If (a, b) = 1, then there exist integers x and y such that $ax+by=1$.}
+
+\begin{proof}
+Using Euclidean Algorithm, we can demonstrate 
+    \begin{flalign*}
+        && a &= n * b + 1&&\\
+        && b &= n_1 * 1 + 0
+    \end{flalign*}
+Substituting in $ax+by=1$:
+    \begin{flalign*}
+        && ax + by &= 1&&\\
+        && x(n*b + 1) + by &= 1&&
+    \end{flalign*}
+Since x and y are integers they must satisfy:\\
+$1 \equiv (n*b + 1)x \;(\bmod\; b)$ \\
+$1 \equiv by \;(\bmod\; (n*b + 1))$\\
+\end{proof}
+We can conclude that since both statements are true that there exists x and y such that $ax+by=1$.
+
+\subsection*{1.39 Theorem} 
+\quad \textit{Let a and b be integers. If there exist integers x and y with $ax+by = 1$, then (a,b) = 1.}
+
+\begin{proof}
+Assume that $(a,b) = k \neq 1$. In this case we would have, $a = k * p$ and $b = k * q$ where p and q are some integers.\\
+Lets evaluate $ax+by=1$:
+    \begin{flalign*}
+        && ax + by &= 1&&\\
+        && dpx + dqy &= 1&&\\
+        && d(px + qy) &= 1
+    \end{flalign*}
+If we modulo each side to $\;(\bmod\; d)$:
+\begin{itemize}
+    \item Left side: $d(px + qy) \;(\bmod\; d) \equiv 0$
+    \item Right side: $1 \;(\bmod\; d) \equiv 1$
+\end{itemize}
+This is impossible if $d \neq 1$. Therefore, $(a,b) = 1$.
+\end{proof}
+
+\subsection*{1.40 Theorem (Bezout’s Theorem)} 
+\quad \textit{For any integers a and b not both 0, there are integers x and y such that}
+\begin{center}
+    $ax+by=(a,b)$
+\end{center}
+
+\begin{proof}
+Given an assumption that $a \neq 0$. We can construct set S with the results of $ap+bq$ such that:
+    \begin{flalign*}
+     S = \{ap + bq\} \text{ with } ap+bq > 0 \text{ and } p,q \in \mathbb{Z}
+    \end{flalign*}
+The set is also non-empty since $\lvert a \rvert = ap + b*0$ where $u \in \{-1,1\}$ depending on the sign of a (negative or positive). By well-ordering principle, the set S must contain a least element, say $u$. That means that since $u \in S$, there must exist integers p and q such that $u = ap+bq > 0$. By the above claim, $u = \gcd(a, b)$.\\
+By the Division Algorithm, $a = n*u+r$ where $n,r \in \mathbb{Z}$ and $0 \leq r \leq u$. Assume $r \neq 0$:
+\begin{center}
+    $0 < r = a - n*u = a - n*(ap+bq) = a - n*ap -n*bq = a(1-np) + b(-nq)$
+\end{center}
+Now considering our set $S$, the equation above implies that $r$ is in $S$ which contradicts the well-ordering principle that suggest that $u$ is the smallest element in the set $S$. Thus, showing that $u \vert a$ and similarly $u \vert b$ by theorem 1.2 if $a-r = n*u$.\\
+Thus since d divides both a and b, d = gcd(a,b).
+\end{proof}
+
+\subsection*{1.41 Exercise} 
+\quad \textit{Let a, b, and c be integers. If $a \vert bc$ and (a,b) = 1, then $a \vert c$.}
+
+\begin{proof}
+By definition, (a,b) = 1 implies that $ax+by=1$ which we can then manipulate:
+    \begin{flalign*}
+        && ax + by &= 1&&\\
+        && c(ax + by) &= c&& \text{(Multiplying c in both sides)}\\
+        && acx + bcy &= c
+    \end{flalign*}
+We can then assume that $a \vert a \Longrightarrow a \vert acx$ and $ a \vert bc \Longrightarrow a \vert bcy$. By theorem 1.4, we can express $a \vert acx + bcy \Longrightarrow a \vert c$ since $c = acx + bcy$.
+\end{proof}
+
+\subsection*{1.42 Theorem} 
+\quad \textit{Let a, b, and n be integers. If $a \vert n$, $b \vert n$ and (a,b) = 1, then $ab \vert n$.}
+
+\begin{proof}
+By definition, (a,b) = 1 can be expressed as $ax + by = 1$. $a \vert n \Longrightarrow n =at, t \in \mathbb{Z}$, $b \vert n \Longrightarrow n = bs, s \in \mathbb{Z}$ Also that With manipulation we can prove that $ab \vert n$ with the following:
+    \begin{flalign*}
+        && ax + by &= 1&&\\
+        && n(ax + by) &= n&& \text{(Multiplying n in both sides)}\\
+        && anx + bny &= n &&\\ 
+        && (bs)ax + (at)by &= n && \text{(Substituing n with $bs$ and $at$)}\\  
+        && ab(sx + ty) &= n && \text{Where $sx+ty \in \mathbb{Z}$} 
+    \end{flalign*}
+    Thus proving that $ab \vert n$.
+\end{proof}
+
+\subsection*{1.43 Theorem} 
+\quad \textit{Let a, b, and n be integers. If (a,n) = 1 and (b,n) = 1, then (ab, n) = 1.}
+
+\begin{proof}
+By definition, $(a,n) = 1$ and $(b,n) = 1$ can be expressed as $(a,n) = 1 \Longrightarrow at + ns = 1 \Longrightarrow at = 1-ns, \exists t,s \in \mathbb{Z}$ and $(b,n) = 1 \Longrightarrow bu + nv = 1 \Longrightarrow bu = 1-nv, \exists u,v \in \mathbb{Z}$. By multiplying both equations, we get $at * bu$
+    \begin{flalign*}
+        && (at)(bu) &= (1-ns)(1-nv) &&\\
+        && ab(tu) &= 1-ns-nv-n^{2}sv &&\\
+        && ab(tu) &= 1-n(s-v-nsv) &&\\
+        && ab(tu)+n(s-v-nsv) &= 1 &&\\
+        && ab(x)+n(s-v-nsv) &= 1 &&\text{($tu = x$ where $x \in \mathbb{Z}$)}\\
+        && ab(x)+n(y) &= 1 &&\text{($(s-v-nsv) = y$ where $y \in \mathbb{Z}$)}\\
+    \end{flalign*}
+    Thus, by definition $ab(x)+n(y) = 1 \Longrightarrow \gcd (ab,n)=1$.
+\end{proof}
+
+\subsection*{1.44 Question} 
+\quad \textit{What hypothesis about a, b, c, and n could be added so that $ac \equiv bc \;(\bmod\; n)$ would imply $a \equiv b \;(\bmod\; n)$?}
+The hypothesis implies that (c, n) = 1. 
+\begin{proof}
+Suppose (c, n) = 1 then c is prime to n. Now, given $ac \equiv bc \;(\bmod\; n) \Longrightarrow ac - bc = pn, p \in \mathbb{Z}$. Consequently,
+    \begin{flalign*}
+        && ac - bc &= pn &&\\
+        && c(a - b) &= pn &&\\
+        && a - b &= \frac{pn}{c} &&\\
+    \end{flalign*}
+Since, $a-b \in \mathbb{Z}$ then $\frac{pn}{c} \in \mathbb{Z}$ thus $c \vert pn$. Knowing that c is prime to n, $c \vert pn \Longrightarrow c \vert p \Longrightarrow p = cq, q \in \mathbb{Z}$. Now substituting p in $a - b = \frac{pn}{c} \Longrightarrow a - b = qn$. Thus, $a \equiv b \;(\bmod\; n)$.
+\end{proof}
+
+\subsection*{1.45 Theorem} 
+\quad \textit{Let a, b, c and n be integers with $n > 0$. If $ac \equiv bc \;(\bmod\; n)$ and (c,n) = 1, then $a \equiv b \;(\bmod\; n)$.}
+
+\begin{proof}
+Given that $(c,n) = 1$, this means that c is prime to n. With that in mind, $ac \equiv bc \;(\bmod\; n) \Longrightarrow n \vert (ac-bc) \Longrightarrow n \vert c(a-b)$. With c being prime to n, we c have $n \vert (a-b) \Longrightarrow a \equiv b \;(\bmod\; n)$.
+\end{proof}
+
+\subsection*{1.46 Question} 
+\quad \textit{Suppose a, b, and c are integers and that there is a solution to the linear Diophantine equation}
+\begin{center}
+    $ax+by = c$
+\end{center}
+\textit{that is, suppose there are integers x and y that satisfy the equation $ax+by = c$. What condition must c satisfy in terms of a and b?}
+
+The condition that must be satisfied is that $\gcd (a,b) \vert c$. 
+
+\subsection*{1.47 Question} 
+\quad \textit{Can you make a conjecture by completing the following statement?}\\
+\textbf{Conjecture.} 
+\textit{Given integers a, b, and c, there exist integers x and y that satisfy the equation $ax+by=c$ if and only if: $(a,b) \vert c$.}
+
+\subsection*{1.48 Theorem} 
+\quad \textit{Given integers a, b, and c with a and b not both 0, there exist integers x and y that satisfy the equation $ax+by=c$ if and only if $(a,b) \vert c$.}
+
+\begin{proof}
+If $(a,b) \vert c$ then $\gcd(a,b) * n = c, \exists n \in \mathbb{Z}$. Now by definition, $(a,b) = ax_1 + by_1, \exists x_{1},y_{1} \in \mathbb{Z}$. Suppose that $x_1 = x*n$ and $y_1 = y*n$. We know that $(a,b) \vert ax_1 \Longrightarrow (a,b) \vert ax*n$ and $(a,b) \vert by_1 \Longrightarrow (a,b) \vert by*n$. By theorem 1.1, $(a,b) \vert x_1 + y_1 \Longrightarrow (a,b) \vert x*n+x*n \Longrightarrow (a,b) \vert n(ax+by) \Longrightarrow (a,b) \vert c$.
+\end{proof}
+
+\subsection*{1.49 Question} 
+\quad \textit{For integers a, b, and c, consider the linear Diophantine equation}
+\begin{center}
+    $ax+by = c$
+\end{center}
+\textit{Suppose integers $x_0$ and $y_0$ satisfy the equation: that is, $ax_0 + by_0 = c$. What other values}
+\begin{center}
+    $x = x_0 + h$ and $y = y_0 + k$
+\end{center}
+
+\textit{also satisfy $ax+by=c$? Formulate a conjecture that answers this question. Devise some numerical examples to ground your exploration. For example, $6(-3) + 15 * 2 = 12$. Can you find other integers x and y such that $6x+15y=12$? How many other pairs of integers x and y can you find? Can you find infinitely many other solutions?}\\
+\textbf{Conjecture.} 
+\textit{Given $x = x_0 + \frac{bn}{\gcd(a,b)}, \exists n \in \mathbb{Z}$, same goes for $y = y_0 - \frac{an}{\gcd(a,b)}$. Any integer value of n would result in an infinite number of solutions.}
+
+\begin{proof}
+Given that $ax+by = c, (a,b) \vert c$, $6x + 15y = 12, \gcd(6,15) \vert 12 \Longrightarrow 3 \vert 12$. Using the Division Algorithm on this linear Diophantine, we can deduce:
+    \begin{flalign*}
+        && 15 &= 6*2+3 &&\\
+        && \Longrightarrow 3 &= 15 -6*2 &&\\
+        && \Longrightarrow 12 &= 15(4) -6*(8) && \text{(Multiplying by 2 on each side)}
+    \end{flalign*}
+    Thus $x_0 = -8$ and $y_0 = 4$. Attempting solution with $x = x_0 + \frac{bn}{\gcd(a,b)}$ and $y = y_0 - \frac{an}{\gcd(a,b)}$
+    \begin{flalign*}
+        && x &= x_0 + \frac{bn}{\gcd(a,b)} &&\\
+        && x &= -8 + \frac{15n}{3} &&
+    \end{flalign*}
+    \begin{flalign*}
+        && y &= y_0 - \frac{an}{\gcd(a,b)} &&\\
+        && y &= 4 - \frac{6n}{3} &&
+    \end{flalign*}
+    With simple trial, we can see that all values for n work.
+\end{proof}
+
+\subsection*{1.50 Exercise (Euler).} 
+\quad \textit{A farmer lays out the sum of 1,770 crowns in purchasing horses and oxen. He pays 31 crowns for each horse and 21 crowns for each ox. What are possible numbers of horses and oxen that the farmer bought?}
+
+Let $x =$ number of horses and $y =$ number of oxen. The problem results into a Diophantine such as:
+\begin{center}
+    $31x + 21y = 1770$
+\end{center}
+Since $\gcd(31,21) = 1$, then we can assume that $31x_0 + 21y_0 = 1, \exists x_0, y_0 \in \mathbb{Z}$. By Euclidean algorithm, we can find $x_0$ and $y_0$ to be:
+    \begin{flalign*}
+        && 31x_0 + 21y_0 &= 1 &&\\
+        && 31(-2) + 21(3) &= 1 &&\\
+        && 31(-2*1770) + 21(3*1770) &= 1770 &&
+    \end{flalign*}
+    Hence, $x_0 = -2*1770$ and $y_0 = 3*1770$. Following the conjecture from the previous question, $x = -2*1770 + 21n$ and $y = 3*1770 - 31n$ for some $n \in \mathbb{Z}$. We can also approximate n by the following:\\
+    $-2*1770 + 21n \geq 0 \Rightarrow 21n \geq 2*1770 \Rightarrow n \geq \frac{2*1770}{21}$\\
+    $3*1770 - 31n \geq 0 \Rightarrow 3*1770 \geq 31n \Rightarrow \frac{3*1770}{31} \geq n$\\
+    Therefore, n can possibly be 169, 170 or 171. After re plugging back, we can arrive to the following solutions:\\
+    $(x,y) = (9,71) = (30,40) = (51, 9)$
+    
+\subsection*{1.51 Theorem} 
+\quad \textit{Let a, b, c, $x_0$, and $y_0$ be integers with a and b not both 0 such that $ax_0 + by_0 = c$. Then the integers}
+\begin{center}
+    $x = x_0 + \frac{b}{(a,b)}$ and $y = y_0 - \frac{a}{(a,b)}$
+\end{center}
+\textit{also satisfy the linear Diophantine equation $ax+by=c$.}
+
+\begin{proof}
+Assuming $x = x_0$ and $y=y_0$ are solution for $ax+by=c$.\\
+Considering $x = x_0+\frac{bn}{(a,b)}$ and $y = y_0-\frac{an}{(a,b)}$ where for some $n \in \mathbb{Z}$ from the 1.49 Question. Now equating in $ax+by=c$:
+    \begin{flalign*}
+        & \Rightarrow ax+by \\
+        & \Rightarrow a(x_0+\frac{bn}{(a,b)})+b(y_0-\frac{an}{(a,b)})\\
+        & \Rightarrow ax_0+\frac{abn}{(a,b)}+by_0-\frac{abn}{(a,b)}\\
+        & \Rightarrow ax_0 + by_0+\frac{abn-abn}{(a,b)}\\
+        & \Rightarrow ax_0 + by_0\\
+        & \Rightarrow c\\
+    \end{flalign*}
+\end{proof}
+Therefore, $x = x_0+\frac{bn}{(a,b)}$ and $y = y_0-\frac{an}{(a,b)}$ is a solution for $ax+by =c$.
+
+\subsection*{1.52 Question} 
+\quad \textit{If a, b, and care integers with a and b not both 0, and the linear Diophantine equation}
+\begin{center}
+    $ax+by=c$
+\end{center}
+
+\textit{has at least one integer solution, can you find a general expression for all the integer solutions to that equation?}\\
+\textbf{Conjecture.} 
+\textit{Given $x = x_0 + \frac{bn}{\gcd(a,b)}, \exists n \in \mathbb{Z}$, same goes for $y = y_0 - \frac{an}{\gcd(a,b)}$. Any integer value of n would result in an infinite number of solutions for $ax+by=c$.}
+
+\begin{proof}
+Proof can be found in question 1.49.
+\end{proof}
+
+\subsection*{1.53 Theorem} 
+\quad \textit{Let a, b, and c be integers with a and b not both 0. If $x = x_0$, $y = y_0$ is an integer solution to the equation $ax+by=c$ (that is, $ax_0 + by_0=c$) then for every integer k, the numbers}
+\begin{center}
+    $x = x_0 + \frac{kb}{(a,b)}$ and $y = y_0 - \frac{ka}{(a,b)}$
+\end{center}
+\textit{are integers that also satisfy the linear Diophantine equation $ax+by = c$. Moreover, every solution to the linear Diophantine equation $ax+by=c$ is of this form.}
+
+\begin{proof}
+Substituting into $ax+by=c$ and given that (a,b) = c:
+\begin{flalign*}
+    ax + by &= c &&\\
+    a(x_0 + \frac{kb}{(a,b)}) + b(y_0 - \frac{ka}{(a,b)}) &= c &&\\
+    ax_0 + \frac{kab}{x} + by_0 - \frac{kab}{c} &= c &&\\
+    ax_0 + by_0 &= c &&
+\end{flalign*}
+Since $x_0$ and $y_0$ are integers, we can conclude that the proof is complete.  
+
+\end{proof}
+
+\subsection*{1.54 Exercise} 
+\quad \textit{Find all integer solutions to the equation $24x+9y=33$.}
+
+Possible solutions for x and y are $x = 1, y = 1$. From there, we can use the above theorem where $\gcd(24,9) = 3$:
+\begin{center}
+    $x = 1 + 3k$      
+    $y = 1 - 8k$      
+\end{center}
+Our results can vary depending on k.
+
+\subsection*{1.55 Theorem} 
+\quad \textit{If a and b are integers, not both 0, and k is a natural number, then}
+\begin{center}
+    $\gcd(ka,kb) = k * \gcd(a,b)$.
+\end{center}
+
+\begin{proof}
+Assume that $\gcd(a,b) = c$ and that $\gcd(ka, kb) = d$. Hence the theorem becomes $\gcd(ka,kb) = kc = k * \gcd(a,b) = d$.
+\begin{flalign*}
+    & \Rightarrow \gcd(a,b) = c \\
+    & \Rightarrow c \vert a \text{ and } c \vert b\\
+    & \Rightarrow kc \vert ka \text{ and } kc \vert kb & \text{Multiplying each side with k}\\
+    & \Rightarrow kc \vert \gcd(ka, kb) = d\\
+    & \Rightarrow kc\vert d
+\end{flalign*}
+Also since $\gcd(a,b) = c$, using Theorem 1.48, $ax+by = c, \exists x, y \in \mathbb{Z} \Rightarrow k(ax+by) = kc$.//
+Now since $\gcd(ka,kb) = d$:
+\begin{flalign*}
+    & \Rightarrow \gcd(ka,kb) = d \\
+    & \Rightarrow d \vert ka \text{ and } d \vert kb\\
+    & \Rightarrow d \vert ka(x) + kb(y)\\
+    & \Rightarrow d \vert kc
+\end{flalign*}
+Since $kc \vert d$ and $d \vert kc$, we can then conclude that $kc = d$.
+\end{proof}
+
+\subsection*{1.56 Exercise} 
+\quad \textit{For natural numbers a and b, give a suitable definition for "least common multiple of a and b", denoted $lcm(a,b)$. Construct and compute some examples.}
+\begin{center}
+    $lcm(5,10) = min{(5,10)} = min{10, 20, 30, 40...} = 10$
+    $lcm(24,26) = min{(2 \cdot 2 \cdot 2 \cdot 3) \cup (2 \cdot 2 \cdot 3 \cdot 3)} = 2$
+\end{center}
+
+\subsection*{1.57 Theorem} 
+\quad \textit{If a and b are natural numbers, then $\gcd(a,b) \cdot lcm(a,b) = ab$.}
+
+\begin{proof}
+Assume that a and b are divisible by c, $c \vert a$ and $c \vert b$. With that $a = cn, b = cm, \exists m,n \in \mathbb{Z}$ and also co-primes. Thus making lcm(m,n) with no common factors.\\
+Now, if lcm(a,b) would be cmn and gcd(a,b) = c thus $\gcd(a,b) \cdot lcm(a,b) = c \cdot cmn = cm \cdot cn = ab$.
+\end{proof}
+
+\subsection*{1.58 Corollary} 
+\quad \textit{If a and b are natural numbers, then $lcm(a,b) = ab$ if and only if a and b are relatively prime.}
+
+\begin{proof}
+If a and are not relative primes then $gcd(a,b) = c > 1$.\\
+Since $\gcd(a,b) \cdot lcm(a,b) = ab \Rightarrow abc \neq ab$. Thus a and b must be relative primes so gcd(a,b) = 1.
+\end{proof}
+
+\subsection*{1.59 Blank Paper Exercise} 
+
+\begin{itemize}
+    \item Divides notation $n \vert a \Rightarrow a = kn, \exists k \in \mathbb{Z}$
+    \item Induction Proofs
+    \item Congruence and Modulo calculation
+    \item Division Algorithm
+    \item Greatest Common Divisor
+    \item Least Common Divisor
+    \item Diophantine Equations and uses for relative primes
+    \item Euclidean Algorithm and the Euler farmer problem
+    \item multiple solution for x and y for $ax+by=c, (a,b)=c$
+\end{itemize}
+Most difficult part was formulating proofs using other proofs instead of derving equations.
+
+\end{document}

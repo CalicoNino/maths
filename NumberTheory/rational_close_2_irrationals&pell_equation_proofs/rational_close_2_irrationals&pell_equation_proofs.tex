@@ -1,0 +1,725 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage[makeroom]{cancel}
+\usepackage{amssymb}
+\usepackage{enumitem}
+
+\title{Rationals Close to Irrationals and the Pell Equations Proofs}
+\author{Karim El Shenawy}
+\date{March 2021}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+This course notebook is the collection of theorem proofs, exercises and answers from Unit 9 of the Number Theory Through Inquiry (Mathematical Association of America Textbooks).
+
+\section*{Theorems to Mark}
+
+\subsection*{9.14 Theorem} 
+\quad \textit{If the natural number N is a perfect square, then the Pell equation}
+\begin{center}
+    $x^2-Ny^2 = 1$
+\end{center}
+\textit{has no non-trivial integer solutions.}
+
+\begin{proof}
+Given natural number N is a perfect square where $N = n^2$ then the Pell equation can be expressed as,
+\begin{align*}
+    &&x^2 - Ny^2 &= 1 && x,y,n \in \mathbf{Z}\\
+    &&x^2 - n^2y^2 &= 1 &&\\
+    &&x^2 - (ny)^2 &= 1 &&\\
+    &&(x - ny)(x + ny) &= 1 &&\\
+    &&\Longrightarrow (x - ny) = (x + ny) &= \pm 1&& \textbf{Considering $y \neq 0$}
+\end{align*}
+Then we have 2 cases, by direct proof,
+\begin{itemize}
+    \item Case 1: $(x - ny) = (x + ny) = 1$ with $y \neq 0$ then
+    \begin{alignat*}{2}
+        (x - ny) &= (x+ny) \;&= 1\\
+        2x &= 2ny \;&= 1\\
+        x &= ny \;&= \frac{1}{2}
+    \end{alignat*}
+    Thus, $x = \frac{1}{2} $ which is impossible since $x \in \mathbf{Z}$.
+    \item Case 1: $(x - ny) = (x + ny) = -1$ with $y \neq 0$ then
+    \begin{alignat*}{2}
+        (x - ny) &= (x+ny) \;&= -1\\
+        2x &= 2ny \;&= -1\\
+        x &= ny \;&= \frac{-1}{2}
+    \end{alignat*}
+    Thus, $x = \frac{-1}{2} $ which is impossible since $x \in \mathbf{Z}$.
+\end{itemize}
+Therefore, the Pell equation has no trivial solutions.
+\end{proof}
+
+\subsection*{9.17 Theorem} 
+\quad \textit{Suppose N is a natural number and the Pell equation $x^2-Ny^2=1$ has two solutions, namely, $a^2-Nb^2=1$ and $c^2-Nd^2 = 1$ for some integers a, b, c and d. Then $x = ac + Nbd$ and $y = ad + bc$ is also an integer solution to the Pell equation $x^2-Ny^2=1$. That is,}
+\begin{center}
+    $(ac + Nbd)^2 - N(ad + bc)^2 = 1$.
+\end{center}
+
+\begin{proof}
+Given $N \in \mathbf{N}$ and the Pell equation $x^2-Ny^2=1$ has two solutions, namely, $a^2-Nb^2=1$ and $c^2-Nd^2 = 1$ with $a, b, c, d \in \mathbf{Z}$. Suppose that $x = ac + Nbd$ and $y = ad + bc$ is also an integer solution to the Pell equation $x^2-Ny^2=1$. Then, by direct proof,
+\begin{alignat*}{2}
+    x^2 - Ny^2 &= (ac + Nbd)^2 - N(ad + bc)^2 \;&= 1\\
+               &= (ac + Nbd)^2 - N(ad + bc)^2 \;&= 1\\
+               &= a^2c^2 + N^2b^2d^2 + 2Nabcd - N(a^2d^2 + b^2c^2 + 2abcd) \;&= 1\\
+               &= a^2c^2 + N^2b^2d^2 + 2Nabcd - Na^2d^2 + Nb^2c^2 + 2Nabcd \;&= 1\\
+               &= a^2c^2 + N^2b^2d^2 - Na^2d^2 + Nb^2c^2 \;&= 1\\
+               &= a^2(c^2-Nd^2) - Nb^2(c^2-Nd^2) \;&= 1\\
+               &= (c^2-Nd^2)(a^2 - Nb^2) \;&= 1
+\end{alignat*}
+Therefore, $(c^2-Nd^2) = (a^2 - Nb^2) = 1$ or $(c^2-Nd^2) = (a^2 - Nb^2) = -1$. Thus, $(ac + Nbd)^2 - N(ad + bc)^2 = 1$ holds an integer solution to the Pell equation where $x = ac + Nbd$ and $y = ad + bc$.
+\end{proof}
+
+\subsection*{9.19 Theorem} 
+\quad \textit{Let N be a natural number and suppose that x and y are positive integers satisfying $|x-y\sqrt{N}| < \frac{1}{y}$. Then}
+\begin{center}
+    $|x^2 - Ny^2| < 3\sqrt{N}$.
+\end{center}
+
+\begin{proof}
+Let $N \in \mathbf{N}$ and suppose $x,y \in \mathbf{Z_+}$ satisfying $|x-y\sqrt{N}| < \frac{1}{y}$, then $|x^2 - Ny^2| < 3\sqrt{N}$ by direct proof,
+\begin{align*}
+    && |x^2 - Ny^2| &= |(x - \sqrt{N} y)(x + \sqrt{N} y)| &&\\
+    &&              &< |(x - \sqrt{N} y)|(3y\sqrt{N}) && \text{By Theorem 9.18}\\
+    &&              &< \frac{1}{y} \cdot 3y\sqrt{N} && \text{Since $|x-y\sqrt{N}| < \frac{1}{y}$}\\
+    &&              &< 3\sqrt{N} &&
+\end{align*}
+Therefore, $|x^2 - Ny^2| < 3\sqrt{N}$ holds.
+\end{proof}
+
+\subsection*{9.23 Theorem} 
+\quad \textit{If N is a positive integer that is not a square, then the Pell equation $x^2 - Ny^2 = 1$ has a non-trivial solution in positive integers.}
+
+\begin{proof}
+Given N is a positive integer that is not a square, then the Pell equation $x^2 - Ny^2 = 1$ has a non-trivial solution in positive integers. We can use 3 cases by contradiction to prove this.
+\begin{itemize}
+    \item Case 1: $N = -1$
+    Then the Pell equation $x^2 - Ny^2 = 1 \Longrightarrow x^2 + y^2 = 1$ which leads to 4 trivial solutions: (1,0), (-1, 0), (0,1) and (0,-1).
+    \item Case 2: $N < -1$
+    Then suppose $x \neq 0$ implies $x^2 - Ny^2 \geq 2$. Thus $x^2 - Ny^2 = 1$ has the trivial solutions the solutions of (1,0) and (-1,0). 
+    \item Case 3: $N = n^2$
+    Then $x^2 - Ny^2 = x^2 - n^2y^2 = (x - ny)(x + ny) = 1$. And thus by Theorem 9.14, the Pell equation has only trivial integer solutions.
+\end{itemize}
+Therefore, only if N is a positive integer that is not a square then the Pell equation $x^2 - Ny^2 = 1$ has a non-trivial solution in positive integers.
+\end{proof}
+
+\subsection*{9.27 Corollary} 
+\quad \textit{Let N be a natural number and r and s integers. If $\alpha = r+s\sqrt{N}$ gives a solution to $x^2 - Ny^2 = 1$, then so does $\alpha^k$ for any integer k.}
+
+\begin{proof}
+Suppose $N \in \mathbf{N}$ and $r,s \in \mathbf{Z}$. Assume that $\alpha = r+s\sqrt{N}$ gives a solution to $x^2 - Ny^2 = 1$. Suppose integer k such that $\alpha^k$ holds a solution for the Pell equation. As k can be either negative or positive integer, we obtain two cases;
+\begin{itemize}
+    \item Suppose $k < 0$, then by induction,\\
+    \textbf{Base case (k = -1):  }
+    \begin{align*}
+        && a^{k} &= a^{-1}&&\\
+        &&       &= \frac{1}{\alpha}
+    \end{align*}
+    By Theorem 9.26, $\alpha^k$ gives a solution when $ k = -1$.\\
+    \textbf{Inductive Hypothesis: } Assume k = k - 1 since $k \in \mathbf{Z}, k < 0$ \\
+    \textbf{Inductive Step: }     
+    \begin{align*}
+        && a^{k} &= a^{k-1}&&\\
+        && a^{k} &= a^{k}a^{-1}&&\\
+        &&       &= a^{k}\frac{1}{\alpha}
+    \end{align*}
+    By Theorem 9.26, we know that $\frac{1}{\alpha}$ gives a solution. Thus making $a^k$ where $k <0$ give a solution to $x^2 - Ny^2 = 1$.
+    \item Suppose $k > 0$, then by induction,\\
+    \textbf{Base case (k = 1):  }
+    \begin{align*}
+        && a^{k} &= a^{1}&&
+    \end{align*}
+    We know that $\alpha$ gives a solution.\\
+    \textbf{Inductive Hypothesis: } Assume k = k + 1 since $k \in \mathbf{Z}, k > 0$ \\
+    \textbf{Inductive Step: }     
+    \begin{align*}
+        && a^{k} &= a^{k+1}&&\\
+        && a^{k} &= a^{k}a&&
+    \end{align*}
+    We know that $\alpha$ gives a solution. Thus making $a^k$ where $k > 0$ give a solution to $x^2 - Ny^2 = 1$.
+\end{itemize}
+Therefore, $\alpha^k$ is a solution for any integer k.
+\end{proof}
+
+\subsection*{9.29 Theorem} 
+\quad \textit{Let N be a positive integer that is not a square. Let A be the set of all real numbers of the form $r + s\sqrt{N}$, with r and s positive integers, that give solutions to $x^2 - Ny^2 = 1$. Then}
+\begin{enumerate}
+    \item \textit{there is a smallest element $\alpha$ in A}.
+    \item \textit{the real numbers $\alpha^k$, $k = 1,2,...$ give all positive integer solutions to $x^2  -Ny^2 = 1$.}
+\end{enumerate}
+
+\begin{proof}
+Let N be a positive integer that is not a square. Let A be the set of all real numbers of the form $r + s\sqrt{N}$, with r and s positive integers, that give solutions to $x^2 - Ny^2 = 1$. Now, 
+\begin{enumerate}
+    \item By Theorem 9.23, we know that $x^2 - Ny^2 = 1$ has a non-trivial solution in positive integers. Thus, the set A cannot be empty. Moreover, since for any real number in the form of $r + s\sqrt{N}$, we can observe that $r \leq r + s\sqrt{N}$. Thus, by the Well-Ordering Axiom, the set of natural numbers has a minimal element and since it is ordered by the positive integer r, then there is a smallest element $\alpha$ in A.
+    \item Suppose that there is a smallest element $\alpha$ in A. Now let $\alpha = x_1 + y_1\sqrt{N}$. Since $\alpha \in A$ then $x_1^2 + y_1^2N = 1$. By Corollary 9.27, we know that $\alpha^k$, $k = 1,2,...$ gives all positive integer solutions to $x^2  -Ny^2 = 1$. Thus proven.
+\end{enumerate}
+\end{proof}
+
+\section*{Practice Theorems from Rationals Close to Irrationals and the Pell Equations Proofs}
+
+\subsection*{9.1 Theorem} 
+\quad \textit{Let $\alpha$ be an irrational number and let b be a natural number. Then there exists an integer a such that}
+\begin{center}
+    $|\alpha - \frac{a}{b}| \leq \frac{1}{2b}$.
+\end{center}
+
+\begin{proof}
+Suppose $\alpha$ is an irrational number and let b be a natural number. If there exists an integer a such that
+\begin{alignat*}{2}
+    \; &|\alpha - \frac{a}{b}| &\leq \frac{1}{2b}\\
+    -\frac{1}{2b} \leq \;& (\alpha - \frac{a}{b}) &\leq \frac{1}{2b}\\
+    -\frac{1}{2b} + \frac{a}{b} \leq \;& (\alpha - \frac{a}{b} + \frac{a}{b}) \;&\leq \frac{1}{2b} + \frac{a}{b}\\
+    \frac{2a-1}{2b} \leq \;& \alpha \; &\leq \frac{2a+1}{2b}\\
+    2a-1 \leq \;& 2b\alpha &\leq 2a+1
+\end{alignat*}
+then
+\begin{center}
+    $2a-1 \leq \; 2b\alpha \leq 2a+1$.
+\end{center}
+Let integer k be $2b\alpha$. Now k can either be odd or even.
+\begin{itemize}
+    \item Case 1: If k is odd, then $k = 2a+1$ for some integer a, then
+    \begin{alignat*}{2}
+        2a-1 \leq \;& 2b\alpha &\leq 2a+1\\
+        2a-1 \leq \;& k &\leq 2a+1\\
+        2a-1 \leq \;& 2a-1 &\leq 2a+1
+    \end{alignat*}
+    Thus, it holds.
+    \item Case 2: If k is even, then $k = 2a$ for some integer a, then
+    \begin{alignat*}{2}
+        2a-1 \leq \;& 2b\alpha &\leq 2a+1\\
+        2a-1 \leq \;& k &\leq 2a+1\\
+        2a-1 \leq \;& 2a &\leq 2a+1
+    \end{alignat*}
+    Thus, it holds as well.
+\end{itemize}
+Therefore, there exists an integer a such that
+\begin{center}
+    $|\alpha - \frac{a}{b}| \leq \frac{1}{2b}$.
+\end{center}
+\end{proof}
+
+\subsection*{9.2 Exercise} 
+\quad \textit{Among the first eleven multiples of $\sqrt{2}$,}
+\begin{center}
+    $0\sqrt{2},\sqrt{2},2\sqrt{2},3\sqrt{2},...,10\sqrt{2}$,
+\end{center}
+\textit{find the two whose difference is closest to a positive integer. Feel free to use a calculator. Use those two multiples to find a good rational approximation for $\sqrt{2}$. By good, we mean that you find integers a and b such that}
+\begin{center}
+    $|\frac{a}{b} - \sqrt{2}| \leq \frac{1}{b^{2}}$.
+\end{center}
+
+\textit{Solution.} We can notice using a calculator that $7\sqrt{2}$ and $2\sqrt{2}$ are the two whose difference is closest to a positive integer. Since $7\sqrt{2} - 2\sqrt{2} = 5\sqrt{2} \approx 7.07 \approx 7 \in \mathbf{Z}$.\\
+Now, we can observe that $\sqrt{2} = \frac{7}{5} \approx 1.4 \Longrightarrow |\frac{7}{5} - \sqrt{2}| \approx 0.014213$ and that $\frac{1}{5^2} = 0.04$. Thus,
+\begin{center}
+    $|\frac{7}{5} - \sqrt{2}| \leq \frac{1}{5^{2}}$.
+\end{center}
+
+\subsection*{9.3 Exercise} 
+\quad \textit{Repeat the previous exercise for $\sqrt{7}$ using the first 13 multiples of $\sqrt{7}$.}
+
+\textit{Solution.} We can notice using a calculator that $10\sqrt{7}$ and $7\sqrt{7}$ are the two whose difference is closest to a positive integer. Since $10\sqrt{7} - 7\sqrt{7} = 3\sqrt{7} \approx 7.937 \approx 8 \in \mathbf{Z}$.\\
+Now, we can observe that $\sqrt{7} = \frac{8}{3} \approx 2.6667 \Longrightarrow |\frac{8}{3} - \sqrt{7}| \approx 0.0209$ and that $\frac{1}{3^2} = 0.111$. Thus,
+\begin{center}
+    $|\frac{8}{3} - \sqrt{7}| \leq \frac{1}{3^{2}}$.
+\end{center}
+
+\subsection*{9.4 Exercise} 
+\quad \textit{Repeat the previous exercise for $\pi$, using the first 15 multiples of $\pi$.}
+
+\textit{Solution.} We can notice using a calculator that $14\pi$ and $7\pi$ are the two whose difference is closest to a positive integer. Since $14\pi - 7\pi = 7\pi \approx 21.99 \approx 22 \in \mathbf{Z}$.\\
+Now, we can observe that $\pi = \frac{22}{7} \approx 3.1428 \Longrightarrow |\frac{22}{7} - \pi| \approx 0.0012644$ and that $\frac{1}{7^2} = 0.0204$. Thus,
+\begin{center}
+    $|\frac{22}{7} - \pi| \leq \frac{1}{7^{2}}$.
+\end{center}
+
+\subsection*{9.5 Exercise} 
+\quad \textit{Let $\alpha$ be an irrational number.}
+\begin{enumerate}
+    \item \textit{Imagines making a list of the first 11 multiples of $\alpha$. Can you predict how close to an integer the nearest difference between two of those numbers must be?} Yes, when the difference is under $\frac{1}{11}$.
+    \item \textit{Now imagine making a list of 11 multiples of $\alpha$, but not the first 11. Can you still predict how close to an integer the nearest difference between two of those numbers must be?} Yes, when the difference is under $\frac{1}{11}$ which is the number of multiples.
+    \item \textit{Now imagine making a list of 50 multiples of $\alpha$, rather than just 11. Can you predict how close to an integer the nearest difference between two of those numbers must be?} Yes, when the difference is under $\frac{1}{50}$.
+    \item \textit{What is the general relationship between how many multiples of $\alpha$ we consider and how well we can rationally approximate $\alpha$ using our multiples?} When the difference is under $\frac{1}{\text{number of multiples of } \alpha}$.
+\end{enumerate}
+
+\subsection*{9.6 Theorem} 
+\quad \textit{Let K be a positive integer. Then, among any K real numbers, there is a pair of them whose difference is within $\frac{1}{K}$ of being an integer.}
+
+\begin{proof}
+Suppose K is a positive integer and that there exists the set of real numbers $A = \{a_1, a_2, a_3,...,a_K\}$. No assume that each element $a_i$ from the set A is ordered by the value $b_i$ where $b_i$ is the difference between $a_i$ and it's approximation to an integer, say, $c_i$. Thus, $b_i = |a_i - c_i|$. Therefore, each $b_i$ would also be ordered as $b_1,b_2,b_3,...,b_K$ where 
+\begin{center}
+    $0 \leq b_1 \leq b_2 \leq b_3 \leq ... \leq b_K < 1$. 
+\end{center}
+We can notice that the sum of differences between consecutive $b_i$ will sum to 1,
+\begin{center}
+    $(b_2 - b_1) + (b_3 - b_2) + ... + (b_K - b_{K-1}) + (1 + b_1 - b_K) = 1$
+\end{center}
+All these differences are also greater or equal to zero and at least one of them must be less than or equal to $\frac{1}{K}$ since 
+\begin{center}
+    $0 < \frac{1}{K} - 1< b_1 - b_K < 1$\\
+    $0 < 1 - \frac{1}{K}< b_K - b_1 < 1$
+\end{center}
+\end{proof}
+
+\subsection*{9.7 Theorem} 
+\quad \textit{Let $\alpha$ be a positive irrational number and K be a positive integer. Then there exist positive integers a, b and c with $0 \leq a < b \leq K$ and $0 \leq c \leq K\alpha$ such that}
+\begin{center}
+    $|\frac{c}{b-a}-\alpha| \leq \frac{1}{(b-a)^2}$.
+\end{center}
+
+\begin{proof}
+Let $\alpha$ be a positive irrational number and K be a positive integer. Now suppose there exist positive integers a, b and c with $0 \leq a < b \leq K$ and $0 \leq c \leq K\alpha$. Using Theorem 9.6, we can find a and b since $0 \leq a < b \leq K$ and that $b-a = K$. Now again using Theorem 9.6 and by direct proof, we can say that 
+\begin{align*}
+    &&|c - \alpha K| &\leq \frac{1}{K} &&\\
+    &&|c - \alpha(b-a)| &\leq \frac{1}{K} && K = (b - a) \\
+    &&|(c - \alpha(b-a)) \times \frac{1}{b-a}| &\leq \frac{1}{K(b-a)} && \text{dividing $(b-a)$}\\
+    &&|\frac{c}{b-a} - \alpha| &\leq \frac{1}{K(b-a)} &&\\
+    &&|\frac{c}{b-a} - \alpha| &\leq \frac{1}{(b-a)(b-a)} &&\\
+    &&|\frac{c}{b-a} - \alpha| &\leq \frac{1}{(b-a)^2} && K = (b-a)
+\end{align*}
+Thus, we can express $\alpha, K, a, b, $ and c as
+\begin{center}
+    $|\frac{c}{b-a}-\alpha| \leq \frac{1}{(b-a)^2}$.
+\end{center}
+\end{proof}
+
+\subsection*{9.8 Theorem (Dirichlet's Rational Approximation Theorem, Version I)} 
+\quad \textit{Let $\alpha$ be a real number. Then there exist infinitely many rational numbers $\frac{a}{b}$ satisfying}
+\begin{center}
+    $|\frac{a}{b}-\alpha| \leq \frac{1}{b^2}$.
+\end{center}
+
+\begin{proof}
+Let $\alpha$ be a real number. Suppose, that there exist rational number $\frac{a}{b}$ satisfying
+\begin{center}
+    $|\frac{a}{b}-\alpha| \leq \frac{1}{b^2}$.
+\end{center}
+Since $|a - b\alpha|$ is always greater than 0 when $\alpha$ is irrational. We can assume that these exist integers $K_i, i \in \mathbf{Z}$ such that, by Theorem 9.6,
+\begin{center}
+    $|\frac{a_i}{b_i}-\alpha| > \frac{1}{K_i}$.
+\end{center}
+Now by Theorem 9.7, we know that  $|\frac{c}{b-a}-\alpha| \leq \frac{1}{(b-a)^2}$ which only holds if  $0 \leq a < b \leq K$ and $0 \leq c \leq K\alpha$. Suppose let $K_1 = 2$ then we can express Theorem 9.7 as,
+\begin{center}
+    $\frac{1}{K_{i+1}} < |\frac{c_i}{b_i-a_i}-\alpha| \leq \frac{1}{K_i}$.
+\end{center}
+Which we know becomes
+\begin{center}
+    $|\frac{c_i}{b_i-a_i}-\alpha| \leq \frac{1}{(b_i-a_i)^2}$.
+\end{center}
+This implies that we can find $a_{i+1}$ and $b_{i+1}$ such that the difference of $a_{i+1}\alpha$, $b_{i+1}\alpha$ from $c_{i+1}$ is less than $\frac{1}{K_{i+1}}$. However, by
+\begin{center}
+    $\frac{1}{K_{i+1}} < |\frac{c_i}{b_i-a_i}-\alpha| \leq \frac{1}{K_i}$
+\end{center}
+$a_{i+1}$ and $b_{i+1}$ must be distinct from each of the previous $a_i$ and $b_i$. Therefore, we have found another rationale number thus proving that there exist infinitely many rational numbers $\frac{a}{b}$.
+\end{proof}
+
+\subsection*{9.9 Theorem} 
+\quad \textit{Show that Versions I and II of Dirichlet's Rational Approximation Theorem can be deduced from one another.}
+
+\begin{proof}
+By direct proof, 
+\begin{align*}
+    &&|\frac{a}{b}-\alpha| &\leq \frac{1}{b^2} &&\\
+    &&|a-b\alpha| &\leq \frac{1b}{b^2} && \text{multiplying by b}\\
+    &&|a-b\alpha| &\leq \frac{1}{b} &&
+\end{align*}
+\end{proof}
+
+\subsection*{9.10 Exercise} 
+\quad \textit{Show that if N is a natural number which is not a square and $x = a$ and $y = b$ is a positive integer solution to the Pell equation $x^2 - Ny^2 = 1$, then $\frac{a}{b}$ gives a good rational approximation to $\sqrt{N}$.}
+
+\begin{proof}
+By direct proof,
+\begin{align*}
+    && x^2 - Ny^2 &= 1 &&\\
+    && \frac{x^2}{y^2} - N &= \frac{1}{y^2}&&\\
+    && \frac{a}{b}^2 - N &= \frac{1}{b^2} &&\\
+    && (\frac{a}{b} - \sqrt{N}) (\frac{a}{b} + \sqrt{N}) &= \frac{1}{b^2} &&
+\end{align*}
+For this statement to be true, both $(\frac{a}{b} - \sqrt{N})$ and $(\frac{a}{b} + \sqrt{N})$ must be equal or less than $\frac{1}{b^2}$. Thus, by Dirichlet's Rationale approximation this holds.
+\end{proof}
+
+\subsection*{9.11 Theorem} 
+\quad \textit{Let N be a positive integer that is not a square. If $x = a$ and $y = b$ is a solution in positive integers to $x^2 - Ny^2 = 1$, then}
+\begin{center}
+    $|\frac{a}{b}-\sqrt{N}| \leq \frac{1}{b^2}$.
+\end{center}
+
+\begin{proof}
+Let N be a positive integer that is not a square. Suppose $x = a$ and $y = b$ is a solution in positive integers to $x^2 - Ny^2 = 1$, then
+\begin{align*}
+    && x^2 - Ny^2 &= 1 &&\\
+    && a^2 - Nb^2 &= 1 &&\\
+    && (a - b\sqrt{N})(a + b\sqrt{N}) &= 1 &&
+\end{align*}
+Then we know that $\Longrightarrow a - b\sqrt{N} = \frac{1}{a - b\sqrt{N}} > 0$ thus $a > b\sqrt{N})$. Therefore, by direct proof, 
+\begin{align*}
+    && |\frac{a}{b} - \sqrt{N}| &= \frac{a-b\sqrt{N}}{b} &&\\
+    && &= \frac{1}{b(a + b\sqrt{N})} &&\\
+    && &< \frac{1}{b(b\sqrt{N} + b\sqrt{N})} &&\\
+    && &< \frac{1}{2b^2\sqrt{N}} &&\\
+    && &= \frac{1}{2b^2\sqrt{N}} &&\\
+    && &< \frac{1}{2b^2} &&\\
+    && &< \frac{1}{b^2} &&
+\end{align*}
+Thus, 
+\begin{center}
+    $|\frac{a}{b}-\sqrt{N}| \leq \frac{1}{b^2}$.
+\end{center}
+\end{proof}
+
+\subsection*{9.12 Question} 
+\quad \textit{For every natural number N, there are some trivial values of x and y that satisfy the Pell equation $x^2 - Ny^2 = 1$. What are those trivial solutions?}
+
+\textit{Solution.} Let us express the Pell equation $x^2 - Ny^2 = 1$ as $x \cdot x - Ny \cdot y = 1$. Then there exist integers a and b where $a = x$ and $b = Ny$ with $gcd(a, b) = 1$. Therefore, the trivial solutions can be
+\begin{itemize}
+    \item $x = 1$ and $y = 0$
+    \item $x = -1$ and $y = 0$
+\end{itemize}
+
+\subsection*{9.13 Question} 
+\quad \textit{For what values of natural number N can you easily show that there are non-trivial solutions to the Pell equation $x^2-Ny^2 = 1$?}
+
+\textit{Solution.} For values of 9, 16, 25, 36 and 49. Thus perfect squares.
+
+\subsection*{9.14 Theorem} 
+\quad \textit{If the natural number N is a perfect square, then the Pell equation}
+\begin{center}
+    $x^2-Ny^2 = 1$
+\end{center}
+\textit{has no non-trivial integer solutions.}
+
+\begin{proof}
+Given natural number N is a perfect square where $N = n^2$ then the Pell equation can be expressed as,
+\begin{align*}
+    &&x^2 - Ny^2 &= 1 && x,y,n \in \mathbf{Z}\\
+    &&x^2 - n^2y^2 &= 1 &&\\
+    &&x^2 - (ny)^2 &= 1 &&\\
+    &&(x - ny)(x + ny) &= 1 &&\\
+    &&\Longrightarrow (x - ny) = (x + ny) &= \pm 1&& \textbf{Considering $y \neq 0$}
+\end{align*}
+Then we have 2 cases, by direct proof,
+\begin{itemize}
+    \item Case 1: $(x - ny) = (x + ny) = 1$ with $y \neq 0$ then
+    \begin{alignat*}{2}
+        (x - ny) &= (x+ny) \;&= 1\\
+        2x &= 2ny \;&= 1\\
+        x &= ny \;&= \frac{1}{2}
+    \end{alignat*}
+    Thus, $x = \frac{1}{2} $ which is impossible since $x \in \mathbf{Z}$.
+    \item Case 1: $(x - ny) = (x + ny) = -1$ with $y \neq 0$ then
+    \begin{alignat*}{2}
+        (x - ny) &= (x+ny) \;&= -1\\
+        2x &= 2ny \;&= -1\\
+        x &= ny \;&= \frac{-1}{2}
+    \end{alignat*}
+    Thus, $x = \frac{-1}{2} $ which is impossible since $x \in \mathbf{Z}$.
+\end{itemize}
+Therefore, the Pell equation has no trivial solutions.
+\end{proof}
+
+\subsection*{9.15 Exercise} 
+\quad \textit{Find, by trial and error, at least two non-trivial solutions to each of the Pell equations $x^2-2y^2=1$ and $x^2-3y^2=1$.}
+
+\textit{Solution.}
+\begin{itemize}
+    \item $x^2-2y^2=1$ 
+    \begin{itemize}
+        \item with $x = 3, y = 2$ then $x^2-2y^2= 3^2-2(2^2) = 9 - 8 = 1$.
+        \item with $x = 17, y = 12$ then $x^2-2y^2= 17^2-2(12^2) = 289 - 288 = 1$.
+    \end{itemize}
+    \item $x^2-3y^2=1$
+    \begin{itemize}
+        \item with $x = 2, y = 1$ then $x^2-3y^2 = 2^2-3(1^2) = 4 - 3 = 1$.
+        \item with $x = 7, y = 4$ then $x^2-3y^2 = 7^2-3(4^2) = 49 - 48 = 1$.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{9.16 Question} 
+\quad \textit{To know all the integer solutions to a Pell equation, why does it suffice to know just the positive integer solutions?}
+
+\textit{Solution.} Suppose that all integers solutions (positive or negative) are known, then the Pell equation, $x^2 - Ny^2 = 1$ where $\exists x, y \in \mathbf{Z}$, can be,
+\begin{itemize}
+    \item $x^2 - N(-y)^2 = x^2 - Ny^2 = 1$ where all solutions are in form $(x, -y)$;
+    \item $(-x)^2 - Ny^2 = x^2 - Ny^2 = 1$ where all solutions are in form $(-x, y)$;    
+    \item $(-x)^2 - N(-y)^2 = x^2 - Ny^2 = 1$ where all solutions are in form $(-x, -y)$;
+\end{itemize}
+
+\subsection*{9.17 Theorem} 
+\quad \textit{Suppose N is a natural number and the Pell equation $x^2-Ny^2=1$ has two solutions, namely, $a^2-Nb^2=1$ and $c^2-Nd^2 = 1$ for some integers a, b, c and d. Then $x = ac + Nbd$ and $y = ad + bc$ is also an integer solution to the Pell equation $x^2-Ny^2=1$. That is,}
+\begin{center}
+    $(ac + Nbd)^2 - N(ad + bc)^2 = 1$.
+\end{center}
+
+\begin{proof}
+Given $N \in \mathbf{N}$ and the Pell equation $x^2-Ny^2=1$ has two solutions, namely, $a^2-Nb^2=1$ and $c^2-Nd^2 = 1$ with $a, b, c, d \in \mathbf{Z}$. Suppose that $x = ac + Nbd$ and $y = ad + bc$ is also an integer solution to the Pell equation $x^2-Ny^2=1$. Then, by direct proof,
+\begin{alignat*}{2}
+    x^2 - Ny^2 &= (ac + Nbd)^2 - N(ad + bc)^2 \;&= 1\\
+               &= (ac + Nbd)^2 - N(ad + bc)^2 \;&= 1\\
+               &= a^2c^2 + N^2b^2d^2 + 2Nabcd - N(a^2d^2 + b^2c^2 + 2abcd) \;&= 1\\
+               &= a^2c^2 + N^2b^2d^2 + 2Nabcd - Na^2d^2 + Nb^2c^2 + 2Nabcd \;&= 1\\
+               &= a^2c^2 + N^2b^2d^2 - Na^2d^2 + Nb^2c^2 \;&= 1\\
+               &= a^2(c^2-Nd^2) - Nb^2(c^2-Nd^2) \;&= 1\\
+               &= (c^2-Nd^2)(a^2 - Nb^2) \;&= 1
+\end{alignat*}
+Therefore, $(c^2-Nd^2) = (a^2 - Nb^2) = 1$ or $(c^2-Nd^2) = (a^2 - Nb^2) = -1$. Thus, $(ac + Nbd)^2 - N(ad + bc)^2 = 1$ holds an integer solution to the Pell equation where $x = ac + Nbd$ and $y = ad + bc$.
+\end{proof}
+
+\subsection*{9.18 Theorem} 
+\quad \textit{Let N be a natural number and suppose that x and y are positive integers satisfying $|x-y\sqrt{N}| < \frac{1}{y}$. Then}
+\begin{center}
+    $x + y\sqrt{N} < 3y\sqrt{N}$.
+\end{center}
+
+\begin{proof}
+Let $N \in \mathbf{N}$ and suppose $x,y \in \mathbf{Z_+}$ satisfying $|x-y\sqrt{N}| < \frac{1}{y}$, then by direct proof,
+\begin{alignat*}{2}
+    |x-y\sqrt{N}| &< \frac{1}{y} \;& \\
+    \frac{x}{y}-\sqrt{N} &< \frac{1}{y^2} \;&\\
+    \text{Since } &y \geq 1 \Longrightarrow \frac{1}{y^2} &\leq \frac{1}{y} \leq 1:\\
+    \frac{x}{y} &< \frac{1}{y^2} + \sqrt{N}\;& < 1 + \sqrt{N}\\
+    \text{As } &1 \leq \sqrt{N}, N \in \mathbf{N}: \\
+    \frac{x}{y} &< \sqrt{N} + \sqrt{N}\;&\\
+    x &< 2y\sqrt{N}\;&\\
+    x + y\sqrt{N} &< 3y\sqrt{N}\;&
+\end{alignat*}
+\end{proof}
+
+\subsection*{9.19 Theorem} 
+\quad \textit{Let N be a natural number and suppose that x and y are positive integers satisfying $|x-y\sqrt{N}| < \frac{1}{y}$. Then}
+\begin{center}
+    $|x^2 - Ny^2| < 3\sqrt{N}$.
+\end{center}
+
+\begin{proof}
+Let $N \in \mathbf{N}$ and suppose $x,y \in \mathbf{Z_+}$ satisfying $|x-y\sqrt{N}| < \frac{1}{y}$, then $|x^2 - Ny^2| < 3\sqrt{N}$ by direct proof,
+\begin{align*}
+    && |x^2 - Ny^2| &= |(x - \sqrt{N} y)(x + \sqrt{N} y)| &&\\
+    &&              &< |(x - \sqrt{N} y)|(3y\sqrt{N}) && \text{By Theorem 9.18}\\
+    &&              &< \frac{1}{y} \cdot 3y\sqrt{N} && \text{Since $|x-y\sqrt{N}| < \frac{1}{y}$}\\
+    &&              &< 3\sqrt{N} &&
+\end{align*}
+Therefore, $|x^2 - Ny^2| < 3\sqrt{N}$ holds.
+\end{proof}
+
+\subsection*{9.20 Theorem} 
+\quad \textit{There exists a non-zero integer K such that the equation}
+\begin{center}
+    $x^2 - Ny^2 = K$
+\end{center}
+\textit{has infinitely many solutions in positive integers.}
+
+\begin{proof}
+Let there exist a non-zero integer K such that the equation $x^2 - Ny^2 = K$. Now we can express it as $x^2 = K + - Ny^2$. Now this is a linear Diophantine equation. Since $gcd(1, N) = 1$, this implies N divides K. Thus there are infinitely many solutions to $x^2$ and $y^2$ since there are infinitely many perfect squares among them. This is guaranteed if N divides K, thus a suitable K must be chosen.
+\end{proof}
+
+\subsection*{9.21 Lemma} 
+\quad \textit{Let n be a natural number and suppose that $(x_i, y_i), i = 1,2,3,...$ are infinitely many ordered pairs of integers. Then there exist distinct natural numbers j and k such that}
+\begin{center}
+    $x_j \equiv x_k \;(\bmod\; n)$\textit{ and }$y_j \equiv y_k \;(\bmod\; n)$.
+\end{center}
+
+\begin{proof}
+Let $n, j, k \in \mathbf{N}$ and suppose that $(x_i, y_i), i = 1,2,3,...$ are infinitely many ordered pairs of integers. Suppose we choose $(x_j, y_j)$ and $(x_k, y_k)$ where $j \neq k$ and where $x_k = x_j + n$ and $y_k = y_j + n$. This implies $(x_k, y_k) = (x_j + n, y_j + n)$ which is not equal to $(x_j, y_j)$. However, $x_j + n \equiv x_j \;(\bmod\; n)$ and $y_j + n \equiv y_j \;(\bmod\; n)$. Therefore, $x_j \equiv x_k \;(\bmod\; n)$ and $y_j \equiv y_k \;(\bmod\; n)$.
+\end{proof}
+
+\subsection*{9.22 Lemma} 
+\quad \textit{Let N be a natural number and K be a non-zero integer and let $(x_i, y_j)$ and $(x_k, y_k)$ be distinct integer solutions to $x^2 - Ny^2 = K$ satisfying}
+\begin{center}
+    $x_j \equiv x_k \;(\bmod\; |K|)$ and $y_j \equiv y_k \;(\bmod\; |K|)$.
+\end{center}
+\textit{Then}
+\begin{center}
+    $x = \frac{x_jx_k-y_jy_kN}{K}$\textit{ and }$y = \frac{x_jy_k-x_ky_i}{K}$
+\end{center}
+\textit{are integers satisfying $x^2 - Ny^2 = 1$.}
+
+\begin{proof}
+Incomplete.
+\end{proof}
+
+\subsection*{9.23 Theorem} 
+\quad \textit{If N is a positive integer that is not a square, then the Pell equation $x^2 - Ny^2 = 1$ has a non-trivial solution in positive integers.}
+
+\begin{proof}
+Given N is a positive integer that is not a square, then the Pell equation $x^2 - Ny^2 = 1$ has a non-trivial solution in positive integers. We can use 3 cases by contradiction to prove this.
+\begin{itemize}
+    \item Case 1: $N = -1$
+    Then the Pell equation $x^2 - Ny^2 = 1 \Longrightarrow x^2 + y^2 = 1$ which leads to 4 trivial solutions: (1,0), (-1, 0), (0,1) and (0,-1).
+    \item Case 2: $N < -1$
+    Then suppose $x \neq 0$ implies $x^2 - Ny^2 \geq 2$. Thus $x^2 - Ny^2 = 1$ has the trivial solutions the solutions of (1,0) and (-1,0). 
+    \item Case 3: $N = n^2$
+    Then $x^2 - Ny^2 = x^2 - n^2y^2 = (x - ny)(x + ny) = 1$. And thus by Theorem 9.14, the Pell equation has only trivial integer solutions.
+\end{itemize}
+Therefore, only if N is a positive integer that is not a square then the Pell equation $x^2 - Ny^2 = 1$ has a non-trivial solution in positive integers.
+\end{proof}
+
+\subsection*{9.24 Exercise} 
+\quad \textit{Follow the steps of the preceding theorems to find several solutions to the Pell equations $x^2 - 5y^2 = 1$ and $x^2 - 6y^2 = 1$ and then give some good rational approximations to $\sqrt{5}$ and $\sqrt{6}$.}
+
+\textit{Solutions.}
+\begin{itemize}
+    \item $x^2 - 5y^2 = 1 \Longrightarrow y^2 = \frac{x^2-1}{5}$
+    \begin{itemize}
+        \item x must be a positive integer
+        \item $\frac{x^2-1}{5}$ must be an integer square
+        \item $x^2-1$ is even, then x must be odd
+    \end{itemize}
+    After trial and error we can conclude to $x = 9$ and $y = \sqrt{\frac{9^2-1}{5}} = 4$. Thus (9,4) is a non-trivial solution. 
+    \item $x^2 - 6y^2 = 1 \Longrightarrow y^2 = \frac{x^2-1}{6}$
+    \begin{itemize}
+        \item x must be a positive integer
+        \item $\frac{x^2-1}{6}$ must be an integer square
+        \item $x^2-1$ is even, then x must be odd
+    \end{itemize}
+    After trial and error we can conclude to $x = 5$ and $y = \sqrt{\frac{5^2-1}{6}} = 2$. Thus (5,2) is a non-trivial solution. 
+\end{itemize}
+
+\subsection*{9.25 Theorem} 
+\quad \textit{Let N be a natural number and $r_1, r_2, s_1,$ and $s_2$ be integers. If $\alpha = r_1 + s_1\sqrt{N}$ and $\beta = r_2 + s_2\sqrt{N}$ both give solutions to the Pell equation $x^2 - Ny^2 = 1$, then so does $\alpha \beta$.}
+
+\begin{proof}
+Let $N \in \mathbf{N}$ and $r_1, r_2, s_1,s_2 \in \mathbf{Z}$. Now suppose that $\alpha = r_1 + s_1\sqrt{N}$ and $\beta = r_2 + s_2\sqrt{N}$ both give solutions to the Pell equation $x^2 - Ny^2 = 1$. Now let's compute the $\alpha \beta$,
+\begin{align*}
+    && \alpha \beta&= (r_1 + s_1\sqrt{N})(r_2 + s_2\sqrt{N}) &&\\
+    &&             &= r_1r_2 + s_1s_2N + \sqrt{N}(r_2s_1 + r_1s_2) &&
+\end{align*}
+Suppose that $\alpha \beta$ holds the solution to the Pell equation such that $x = r_1r_2 + s_1s_2N$ and $y = r_2s_1 + r_1s_2$. Then the solution to  $x^2 - Ny^2 = 1$ would be
+\begin{align*}
+    && x^2 - Ny^2 &= 1 &&\\ 
+    && (r_1r_2 + s_1s_2N)^2 - N(r_2s_1 + r_1s_2)^2 &= 1 &&\\ 
+    && r_1^2r_2^2 + s_1^2s_2^2N^2 + 2r_1r_2s_1s_2N - Nr_2^2s_1^2 - Nr_1^2s_2^2 - 2r_1r_2s_1s_2N  &= 1 &&\\ 
+    && r_1^2r_2^2 + s_1^2s_2^2N^2 - Nr_2^2s_1^2 - Nr_1^2s_2^2 &= 1 &&\\ 
+    && r_1^2(r_2^2 - Ns_2^2) - Ns_1^2(r_2^2 - Ns_2^2) &= 1 &&\\ 
+    && (r_1^2 - Ns_1^2)(r_2^2 - Ns_2^2) &= 1 &&
+\end{align*}
+Thus by definition, $\alpha \beta$ give solutions to the Pell equation $x^2 - Ny^2 = 1$.
+\end{proof}
+
+\subsection*{9.26 Theorem} 
+\quad \textit{Let N be a natural number and r and s integers. If $\alpha = r+s\sqrt{N}$ gives a solution to $x^2 - Ny^2 = 1$, then so does $\frac{1}{\alpha}$.}
+
+\begin{proof}
+Suppose $N \in \mathbf{N}$ and $r,s \in \mathbf{Z}$. Assume that $\alpha = r+s\sqrt{N}$ gives a solution to $x^2 - Ny^2 = 1$. Then $\frac{1}{\alpha}$ can be expressed as
+\begin{align*}
+    && \frac{1}{\alpha} &= \frac{1}{r+s\sqrt{N}}&&\\
+    &&                  &= \frac{1}{r+s\sqrt{N}} \cdot \frac{r-s\sqrt{N}}{r-s\sqrt{N}}&&\\
+    &&                  &= \frac{r-s\sqrt{N}}{r^2-s^2N}&&\\
+    &&                  &= \frac{r-s\sqrt{N}}{1}&& \text{By definition $r^2-s^2N = 1$}\\
+    &&                  &= r-s\sqrt{N}&&
+\end{align*}
+By direct proof, we can demonstrate that $\frac{1}{\alpha} = r-s\sqrt{N}$ is a solution;
+\begin{align*}
+    &&\frac{1}{\alpha} &= r-s\sqrt{N} &&\\
+    &&1 &= \alpha \cdot r-s\sqrt{N} &&\\
+    &&1 &= (r+s\sqrt{N}) \cdot (r-s\sqrt{N}) &&\\
+    &&1 &= r^2-s^2N &&
+\end{align*}
+Thus, $\frac{1}{\alpha}$ is a solution. 
+\end{proof}
+
+\subsection*{9.27 Corollary} 
+\quad \textit{Let N be a natural number and r and s integers. If $\alpha = r+s\sqrt{N}$ gives a solution to $x^2 - Ny^2 = 1$, then so does $\alpha^k$ for any integer k.}
+
+\begin{proof}
+Suppose $N \in \mathbf{N}$ and $r,s \in \mathbf{Z}$. Assume that $\alpha = r+s\sqrt{N}$ gives a solution to $x^2 - Ny^2 = 1$. Suppose integer k such that $\alpha^k$ holds a solution for the Pell equation. As k can be either negative or positive integer, we obtain two cases;
+\begin{itemize}
+    \item Suppose $k < 0$, then by induction,\\
+    \textbf{Base case (k = -1):  }
+    \begin{align*}
+        && a^{k} &= a^{-1}&&\\
+        &&       &= \frac{1}{\alpha}
+    \end{align*}
+    By Theorem 9.26, $\alpha^k$ gives a solution when $ k = -1$.\\
+    \textbf{Inductive Hypothesis: } Assume k = k - 1 since $k \in \mathbf{Z}, k < 0$ \\
+    \textbf{Inductive Step: }     
+    \begin{align*}
+        && a^{k} &= a^{k-1}&&\\
+        && a^{k} &= a^{k}a^{-1}&&\\
+        &&       &= a^{k}\frac{1}{\alpha}
+    \end{align*}
+    By Theorem 9.26, we know that $\frac{1}{\alpha}$ gives a solution. Thus making $a^k$ where $k <0$ give a solution to $x^2 - Ny^2 = 1$.
+    \item Suppose $k > 0$, then by induction,\\
+    \textbf{Base case (k = 1):  }
+    \begin{align*}
+        && a^{k} &= a^{1}&&
+    \end{align*}
+    We know that $\alpha$ gives a solution.\\
+    \textbf{Inductive Hypothesis: } Assume k = k + 1 since $k \in \mathbf{Z}, k > 0$ \\
+    \textbf{Inductive Step: }     
+    \begin{align*}
+        && a^{k} &= a^{k+1}&&\\
+        && a^{k} &= a^{k}a&&
+    \end{align*}
+    We know that $\alpha$ gives a solution. Thus making $a^k$ where $k > 0$ give a solution to $x^2 - Ny^2 = 1$.
+\end{itemize}
+Therefore, $\alpha^k$ is a solution for any integer k.
+\end{proof}
+
+\subsection*{9.28 Exercise} 
+\quad \textit{Let N be a natural number and r and s integers. Show that if $\alpha = r+s\sqrt{N}$ gives a solution to $x^2 - Ny^2 = 1$, then so does each of}
+\begin{center}
+    $r - s\sqrt{N}, -r + s\sqrt{N},$\textit{ and }$-r - s\sqrt{N}$.
+\end{center}
+
+\textit{Solution.} If $\alpha = r+s\sqrt{N}$ gives a solution to $x^2 - Ny^2 = 1$ then
+\begin{itemize}
+    \item With $r - s\sqrt{N} = r + (-s)\sqrt{N}$:
+    \begin{align*}
+        && x^2 - Ny^2 &= 1 &&\\ 
+        && r^2 - Ns^2 &= 1 &&\\ 
+        && r^2 - N(-s)^2 &= 1 &&
+    \end{align*}
+    Thus, $r - s\sqrt{N}$ is a solution.
+    \item With $-r + s\sqrt{N}$:
+    \begin{align*}
+        && x^2 - Ny^2 &= 1 &&\\ 
+        && r^2 - Ns^2 &= 1 &&\\ 
+        && (-r)^2 - Ns^2 &= 1 &&
+    \end{align*}
+    Thus, $-r + s\sqrt{N}$ is a solution.
+    \item With $-r - s\sqrt{N} = -r + (-s)\sqrt{N}$:
+    \begin{align*}
+        && x^2 - Ny^2 &= 1 &&\\ 
+        && r^2 - Ns^2 &= 1 &&\\ 
+        && (-r)^2 - N(-s)^2 &= 1 &&
+    \end{align*}
+    Thus, $-r - s\sqrt{N}$ is a solution.
+\end{itemize}
+
+\subsection*{9.29 Theorem} 
+\quad \textit{Let N be a positive integer that is not a square. Let A be the set of all real numbers of the form $r + s\sqrt{N}$, with r and s positive integers, that give solutions to $x^2 - Ny^2 = 1$. Then}
+\begin{enumerate}
+    \item \textit{there is a smallest element $\alpha$ in A}.
+    \item \textit{the real numbers $\alpha^k$, $k = 1,2,...$ give all positive integer solutions to $x^2  -Ny^2 = 1$.}
+\end{enumerate}
+
+\begin{proof}
+Let N be a positive integer that is not a square. Let A be the set of all real numbers of the form $r + s\sqrt{N}$, with r and s positive integers, that give solutions to $x^2 - Ny^2 = 1$. Now, 
+\begin{enumerate}
+    \item By Theorem 9.23, we know that $x^2 - Ny^2 = 1$ has a non-trivial solution in positive integers. Thus, the set A cannot be empty. Moreover, since for any real number in the form of $r + s\sqrt{N}$, we can observe that $r \leq r + s\sqrt{N}$. Thus, by the Well-Ordering Axiom, the set of natural numbers has a minimal element and since it is ordered by the positive integer r, then there is a smallest element $\alpha$ in A.
+    \item Suppose that there is a smallest element $\alpha$ in A. Now let $\alpha = x_1 + y_1\sqrt{N}$. Since $\alpha \in A$ then $x_1^2 + y_1^2N = 1$. By Corollary 9.27, we know that $\alpha^k$, $k = 1,2,...$ gives all positive integer solutions to $x^2  -Ny^2 = 1$. Thus proven.
+\end{enumerate}
+\end{proof}
+
+\subsection*{9.30 Blank Paper Exercise} 
+\begin{itemize}
+    \item Diophantine Approximation
+    \item Rational Approximation
+    \item Dirichlet's Rational Approximation
+    \item Pell Equation solutions (Trivial and non-Trivial)
+    \item Bovine Math
+\end{itemize}
+
+\end{document}
