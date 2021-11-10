@@ -1,0 +1,20 @@
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {section}{\numberline {2}The Series of Natural Numbers}{4}{section.2}%
+\contentsline {section}{\numberline {3}Defintion of Number}{4}{section.3}%
+\contentsline {section}{\numberline {4}Finitude and Mathematical Induction}{4}{section.4}%
+\contentsline {section}{\numberline {5}The Defintion of Order}{4}{section.5}%
+\contentsline {section}{\numberline {6}Kinds of Relations}{4}{section.6}%
+\contentsline {section}{\numberline {7}Similarity of Relations}{4}{section.7}%
+\contentsline {section}{\numberline {8}Rational, Real, and Complex Numbers}{4}{section.8}%
+\contentsline {section}{\numberline {9}Infinite Cardinal Numbers}{4}{section.9}%
+\contentsline {section}{\numberline {10}Infinite Series Ordinals}{4}{section.10}%
+\contentsline {section}{\numberline {11}Limits and Continuity}{4}{section.11}%
+\contentsline {section}{\numberline {12}Limits and Continuity of Functions}{4}{section.12}%
+\contentsline {section}{\numberline {13}Selections and the Multiplicative Axiom}{4}{section.13}%
+\contentsline {section}{\numberline {14}The Axiom of Infinity and Logical Types}{4}{section.14}%
+\contentsline {section}{\numberline {15}Incompatibility and the Theory of Deduction}{4}{section.15}%
+\contentsline {section}{\numberline {16}Propositional Functions}{4}{section.16}%
+\contentsline {section}{\numberline {17}Descriptions}{4}{section.17}%
+\contentsline {section}{\numberline {18}Classes}{4}{section.18}%
+\contentsline {section}{\numberline {19}Mathematics and Logic}{4}{section.19}%
